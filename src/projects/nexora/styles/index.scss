@@ -1,0 +1,27 @@
+@forward 'abstracts/variables';
+@forward 'abstracts/mixins';
+
+// Project stylesheet index for Nexora.
+// Use this file to `@use` or `@forward` shared abstractions across Nexora partials.
+// Nexora project styles entry
+// Import order matters: abstracts -> layout -> components -> pages
+
+// Abstracts (project-specific variables or overrides)
+@import './abstracts/variables';
+@import './abstracts/mixins';
+
+// Layout (wrappers, sections)
+// container layout (pending)
+// @import './layout/container';
+@import './layout/hero';
+
+// Components (Nexora-specific)
+@import './components/navbar';
+@import './components/cards';
+@import './components/breadcrumb';
+
+// Pages
+@import './pages/home';
+@import './pages/services';
+@import './pages/insights';
+@import './pages/contact';

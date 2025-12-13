@@ -1,0 +1,162 @@
+// .services-page {
+//     background: linear-gradient(135deg, $nexora-primary 0%, $nexora-secondary 100%);
+//     color: $nexora-light;
+//     // padding: 3rem 2rem;
+//     max-width: 1200px;
+//     margin: 0 auto;
+//     font-size: 1.25rem;
+
+//     &:not(:last-child) {
+//             margin-bottom: 4rem;
+//         }
+
+//     & .services-header {
+//         text-align: center;
+//         max-width: 800px;
+//         margin: 0 auto 5rem;
+//         padding-top: 3rem;
+
+//         h3 {
+//             font-size: 2.5rem;
+//             color: $nexora-accent;
+//             margin: 0 0 1rem 0;
+//         }
+//     }
+
+//     & .services-detailed {
+//         max-width: 1200px;
+//         margin: 0 auto;
+
+//         .service-category {
+//             padding: 1rem;
+
+//             &:not(:last-child) {
+//                 margin-bottom: 4rem;
+//             }
+
+//             .category-title {
+//                 font-size: 2rem;
+//                 color: $nexora-accent;
+//                 margin: 2rem 0 1rem 0;
+//                 justify-content: center;
+//                 display: flex;
+//             }
+
+//             .category-description {
+//                 font-size: 1.1rem;
+//                 color: $nexora-light;
+//                 margin-bottom: 2rem;
+//                 display: flex;
+//                 justify-content: center;
+//             }
+
+//             .service-cards {
+//                 display: grid;
+//                 grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+//                 gap: 2rem;
+
+//                 &.single {
+//                     grid-template-columns: 1fr;
+//                     /* single full-width card */
+//                 }
+
+//                 .service-detail-card {
+//                     background: $nexora-light;
+//                     padding: 2rem;
+//                     border-radius: 12px;
+//                     border: 2px solid $nexora-border;
+//                     transition: all 0.3s ease;
+
+//                     &:hover {
+//                         border-color: $nexora-primary;
+//                         box-shadow: 0 8px 20px rgba(26, 115, 232, 0.15);
+//                     }
+
+//                     h5 {
+//                         font-size: 1.25rem;
+//                         color: $nexora-dark;
+//                         margin: 0 0 0.5rem 0;
+//                     }
+
+//                     .service-detail {
+//                         margin-bottom: 1rem;
+
+//                         strong {
+//                             color: $nexora-primary;
+//                         }
+
+//                         p {
+//                             color: $nexora-text;
+//                             margin: 0.5rem 0 0 0;
+//                         }
+//                     }
+
+//                     .capabilities-list {
+//                         margin: 1rem 0 0 0;
+//                         padding-left: 1.25rem;
+//                         color: $nexora-text;
+//                         font-size: 0.98rem;
+
+//                         li {
+//                             margin-bottom: 0.5rem;
+//                         }
+//                     }
+
+//                     .outcome {
+//                         strong {
+//                             color: $nexora-primary;
+//                         }
+
+//                         p {
+//                             color: $nexora-dark;
+//                         }
+//                     }
+
+//                     .service-cta {
+//                         display: inline-block;
+//                         margin-top: 1rem;
+//                         color: $nexora-accent;
+//                         font-weight: 600;
+//                         text-decoration: none;
+
+//                         &:hover {
+//                             text-decoration: underline;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+
+//     & .services-cta {
+//         background: linear-gradient(135deg, $nexora-primary 0%, $nexora-secondary 100%);
+//         color: $nexora-light;
+//         padding: 2rem;
+//         border-radius: 12px;
+//         text-align: center;
+//         margin: 4rem auto 0 auto;
+//         max-width: 900px;
+
+//         h4 {
+//             font-size: 1.75rem;
+//             margin: 0 0 1rem 0;
+//         }
+
+//         p {
+//             opacity: 0.9;
+//             margin-bottom: 1rem;
+//         }
+
+//         .cta-link {
+//             display: inline-block;
+//             margin-top: 0.5rem;
+//             color: $nexora-accent;
+//             font-weight: 600;
+//             text-decoration: none;
+
+//             &:hover {
+//                 text-decoration: underline;
+//             }
+//         }
+//     }
+// }

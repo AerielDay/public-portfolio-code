@@ -1,0 +1,379 @@
+// Nexora services page styles placeholder
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Nexora services page styles placeholder
+.services-page {
+    background: linear-gradient(135deg, $nexora-primaryBG 0%, $nexora-secondaryBG 100%);
+    color: $nexora-light;
+    // padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 1.25rem;
+
+    & .services-header {
+        text-align: center;
+        //  max-width: 800px;
+        margin: 0 auto 1rem;
+        padding-top: 3rem;
+
+        .services-intro {
+
+            margin: 0.5rem 0 0 0;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+
+            @media (max-width: 640px) {
+                padding: 0 2rem;
+            }
+
+        }
+
+    }
+
+
+    & .services-detailed {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+
+        @media (max-width: 640px) {
+            font-size: 0.9rem;
+            padding: 1rem;
+
+            /* Override service-cta font size at mobile breakpoint */
+            .service-category .service-cards .service-detail-card .service-cta {
+                font-size: 0.85rem !important;
+            }
+        }
+
+        .service-category {
+            padding: 1rem;
+
+            &:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+
+            .category-title {
+                font-size: 2rem;
+                color: $nexora-accent;
+                margin: 2rem 0 1rem 0;
+                justify-content: center;
+                display: flex;
+
+                @media (max-width: 640px) {
+                    font-size: 1.25rem;
+                    margin: 1.5rem 0 0.75rem 0;
+                }
+            }
+
+            .category-description {
+                font-size: 1.1rem;
+                color: $nexora-light;
+                margin-bottom: 2rem;
+                display: flex;
+                justify-content: center;
+
+                @media (max-width: 640px) {
+                    font-size: 0.95rem;
+                    margin-bottom: 1.5rem;
+                }
+            }
+
+            .service-cards {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 2rem;
+
+                .service-detail-card {
+                    background: $nexora-light;
+                    padding: 2rem;
+                    border-radius: 12px;
+                    border: 2px solid $nexora-border;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        border-color: $nexora-primaryBG;
+                        box-shadow: 0 8px 20px rgba(26, 115, 232, 0.15);
+                    }
+
+                    // h5 {
+                    //     font-size: 1.25rem;
+                    //     color: $nexora-dark;
+                    //     margin: 0 0 0.5rem 0;
+                    // }
+
+                    .service-detail {
+                        margin-bottom: 1rem;
+
+                        strong {
+                            color: $nexora-primaryBG;
+                        }
+
+                        .capabilities-list {
+                            color: $nexora-btnPrim;
+                        }
+                    }
+
+                    .outcome {
+                        strong {
+                            color: $nexora-primaryBG;
+                        }
+
+                        // p {
+                        //     color: $nexora-dark;
+                        // }
+                    }
+
+                    .service-cta {
+                        display: inline-block;
+                        margin-top: 1rem;
+                        color: $nexora-accent;
+                        font-weight: 600;
+                        text-decoration: none;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+
+                    /* Mobile breakpoint - explicit override for service-cta */
+                    .demo-mode .services-detailed .service-category .service-cards .service-detail-card .service-cta {
+                        @media (max-width: 640px) {
+                            font-size: 0.85rem !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .block2 {
+        margin: 4rem 3rem !important;
+    }
+
+    & .services-cta {
+        background: $nexora-light;
+        color: $nexora-text;
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+        margin: 4rem auto 0 auto;
+        //max-width: 800px;
+
+        @media (max-width: 639px) {
+            padding: 0;
+        }
+
+        @media (min-width: 640px) and (max-width: 1000px) {}
+
+
+        .btn-primary {
+            background: $nexora-secondaryBG; // green
+            color: $nexora-light;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+
+            &:hover {
+                background: $nexora-btnPrim;
+                color: $nexora-light;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(31, 43, 55, 1);
+            }
+        }
+    }
+}
+
+/* Original file (commented out for reference)
+// Nexora services page styles placeholder
+.services-page {
+    background: linear-gradient(135deg, $nexora-primaryBG 0%, $nexora-secondaryBG 100%);
+    color: $nexora-light;
+    // padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 1.25rem;
+
+    & .services-header {
+        text-align: center;
+        //  max-width: 800px;
+        margin: 0 auto 1rem;
+        padding-top: 3rem;
+
+        .services-intro {
+
+            margin: 0.5rem 0 0 0;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+
+            @media (max-width: 640px) {
+                padding: 0 2rem;
+            }
+
+        }
+
+    }
+
+
+
+    & .services-detailed {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+
+        @media (max-width: 640px) {
+            font-size: 0.9rem;
+            padding: 1rem;
+
+            /* Override service-cta font size at mobile breakpoint */
+.service-category .service-cards .service-detail-card .service-cta {
+    font-size: 0.85rem !important;
+}
+}
+
+.service-category {
+    padding: 1rem;
+
+    &:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    .category-title {
+        font-size: 2rem;
+        color: $nexora-accent;
+        margin: 2rem 0 1rem 0;
+        justify-content: center;
+        display: flex;
+
+        @media (max-width: 640px) {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem 0;
+        }
+    }
+
+    .category-description {
+        font-size: 1.1rem;
+        color: $nexora-light;
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+
+        @media (max-width: 640px) {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    .service-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+
+        .service-detail-card {
+            background: $nexora-light;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid $nexora-border;
+            transition: all 0.3s ease;
+
+            &:hover {
+                border-color: $nexora-primaryBG;
+                box-shadow: 0 8px 20px rgba(26, 115, 232, 0.15);
+            }
+
+            // h5 {
+            //     font-size: 1.25rem;
+            //     color: $nexora-dark;
+            //     margin: 0 0 0.5rem 0;
+            // }
+
+            .service-detail {
+                margin-bottom: 1rem;
+
+                strong {
+                    color: $nexora-primaryBG;
+                }
+
+                .capabilities-list {
+                    color: $nexora-btnPrim;
+                }
+            }
+
+            .outcome {
+                strong {
+                    color: $nexora-primaryBG;
+                }
+
+                // p {
+                //     color: $nexora-dark;
+                // }
+            }
+
+            .service-cta {
+                display: inline-block;
+                margin-top: 1rem;
+                color: $nexora-accent;
+                font-weight: 600;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            /* Mobile breakpoint - explicit override for service-cta */
+            .demo-mode .services-detailed .service-category .service-cards .service-detail-card .service-cta {
+                @media (max-width: 640px) {
+                    font-size: 0.85rem !important;
+                }
+            }
+        }
+    }
+}
+}
+
+.block2 {
+    margin: 4rem 3rem !important;
+}
+
+& .services-cta {
+    background: $nexora-light;
+    color: $nexora-text;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin: 4rem auto 0 auto;
+    //max-width: 800px;
+
+    @media (max-width: 639px) {
+        padding: 0;
+    }
+
+    @media (min-width: 640px) and (max-width: 1000px) {}
+
+
+    .btn-primary {
+        background: $nexora-secondaryBG; // green
+        color: $nexora-light;
+        padding: 1rem 2.5rem;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s, transform 0.2s;
+
+        &:hover {
+            background: $nexora-btnPrim;
+            color: $nexora-light;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(31, 43, 55, 1);
+        }
+    }
+}
+}
+
+*/

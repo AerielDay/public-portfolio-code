@@ -1,0 +1,334 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Nexora case studies page styles placeholder
+case-studies-page {
+    background: $nex-prim-linBG;
+    //padding: 3rem 2rem;
+
+    .case-studies-header {
+        text-align: center;
+        // max-width: 800px;
+        margin: 0 auto 4rem;
+
+
+
+        .case-studies-intro {
+            color: $nexora-light;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+    }
+
+    .case-studies-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        padding: 3rem;
+
+        .case-study-card {
+            background: $nexora-light;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 2px solid $nexora-border;
+            transition: all 0.3s ease;
+
+            &:hover {
+                border-color: $nexora-primaryBG;
+                box-shadow: 0 8px 20px rgba(26, 115, 232, 0.15);
+            }
+
+            .case-study-header {
+                display: flex;
+                //justify-content: 
+                align-items: flex-start;
+                flex-direction: column;
+                // margin-bottom: 3.5rem;
+                flex-wrap: wrap;
+                //gap: 1rem;
+
+                h4 {
+
+                    color: $nexora-text;
+                    margin-bottom: 1rem;
+                }
+
+                .industry-tag {
+                    //background: $nexora-primaryBG;
+                    color: $nexora-accent;
+                    //padding: 0.5rem 1rem;
+                    border-radius: 20px;
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                }
+            }
+
+            .case-study-section {
+                margin-bottom: 2rem;
+
+                h5 {
+                    font-size: 1.1rem;
+                    margin-bottom: 0;
+
+                }
+
+                p {
+                    color: $nexora-text;
+                    line-height: 1.7;
+                    margin: 0;
+                }
+
+                &.results {
+                    ul {
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                        display: grid;
+                        gap: 0.75rem;
+
+                        li {
+                            padding-left: 1.5rem;
+                            position: relative;
+                            color: $nexora-text;
+                            line-height: 1.6;
+
+                            &::before {
+                                content: "✓";
+                                position: absolute;
+                                left: 0;
+                                color: $nexora-accent;
+                                font-weight: bold;
+                                font-size: 1.2rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .case-study-testimonial {
+                background: $nexora-light;
+                padding: 1.5rem;
+                border-left: 4px solid $nexora-accent;
+                border-radius: 8px;
+                margin: 0;
+
+                // p {
+                //     font-style: italic;
+                //     color: $nexora-text;
+                //     line-height: 1.7;
+                //     margin: 0 0 1rem 0;
+                // }
+
+                cite {
+                    color: $nexora-text-light;
+                    font-style: normal;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .case-studies-cta {
+        // text-align: center;
+        // // padding: 3rem 2rem;
+        // background: $nexora-light;
+        // border-radius: 12px;
+        // // max-width: 800px;
+        // margin: 3rem auto 0;
+
+        // h4 {
+        //     font-size: 2rem;
+        //     color: $nexora-dark;
+        //     margin: 0 0 1rem 0;
+        // }
+
+        // p {
+        //     font-size: 1.1rem;
+        //     color: $nexora-text-light;
+        //     margin-bottom: 2rem;
+        // }
+
+        .btn-primary {
+            padding: 1rem 2rem;
+            background: $nexora-primaryBG;
+            color: $nexora-light;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            display: inline-block;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: $nexora-secondaryBG;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+            }
+        }
+    }
+}
+
+.case-studies-page {
+    // padding: 3rem 2rem;
+    // background: $nex-prim-linBG;
+
+    .case-studies-header {
+        text-align: center;
+        // max-width: 800px;
+        margin: 0 auto 4rem;
+
+        @media (max-width: 768px) {
+            margin: 0;
+        }
+
+        & .case-studies-intro {
+            color: $nexora-light;
+            padding: 0 2rem;
+            //padding: 3rem 2rem;
+        }
+    }
+
+
+    .case-studies-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        gap: 3em;
+
+        .case-study-card {
+            background: $nexora-light;
+            padding: 2.5rem;
+            border-radius: 12px;
+            gap: 2px;
+            border: 2px solid $nexora-border;
+            transition: all 0.3s ease;
+
+            // h4 {
+            //     font-size: 2.5rem;
+            //     color: $nexora-dark;
+            //     margin: 0 0 1rem 0;
+            // }
+
+            .industry-tag {
+                font-size: 1.25rem;
+                color: $nexora-text-light;
+                line-height: 1.6;
+            }
+
+            .case-study-section {
+                // h5 {
+                //     color: $nexora-primaryBG;
+                //     font-size: 1.1rem;
+                //     margin: 0 0 0.75rem 0;
+                //     text-transform: uppercase;
+                //     letter-spacing: 0.5px;
+                // }
+
+                // p {
+                //     color: $nexora-text;
+                //     line-height: 1.7;
+                //     margin: 0;
+                // }
+
+                &.results {
+                    ul {
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                        display: grid;
+                        gap: 0.75rem;
+
+                        li {
+                            padding-left: 1.5rem;
+                            position: relative;
+                            color: $nexora-text;
+                            line-height: 1.6;
+
+                            &::before {
+                                content: "✓";
+                                position: absolute;
+                                left: 0;
+                                color: $nexora-accent;
+                                font-weight: bold;
+                                font-size: 1.2rem;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            .case-study-testimonial {
+                background: $nexora-light;
+                padding: 1.5rem;
+                border-left: 4px solid $nexora-accent;
+                border-radius: 8px;
+                margin: 0;
+
+                p {
+                    font-style: italic;
+                    color: #2c6b17;
+                    line-height: 1.7;
+                    margin: 0 0 1rem 0;
+                }
+
+                cite {
+                    color: #02306A;
+                    font-style: normal;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .case-studies-cta {
+        text-align: center;
+        padding: 3rem;
+        margin: 3rem auto 0;
+
+        @media (max-width: 768px) {
+            margin: 0;
+            padding: 1.5rem;
+
+            h4 {
+                padding: 0 0.5rem;
+            }
+        }
+
+        div {
+            background: $nexora-light;
+            border-radius: 12px;
+            padding: 1rem 0;
+        }
+
+        // h4 {
+        //     font-size: 2rem;
+        //     color: $nexora-accent;
+        //     margin: 0 0 1rem 0;
+        // }
+
+        // p {
+        //     font-size: 1.1rem;
+        //     color: $nexora-light;
+        //     margin-bottom: 2rem;
+        // }
+
+        .btn-primary {
+            padding: 1rem 2rem;
+            background: $nexora-btnPrim;
+            color: $nexora-light;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            display: inline-block;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: $nexora-secondaryBG;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+            }
+        }
+    }
+}

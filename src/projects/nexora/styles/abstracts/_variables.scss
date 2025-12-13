@@ -1,0 +1,34 @@
+// Nexora-specific variable overrides (optional)
+// Uncomment and override if Nexora branding differs from global
+// $nexora-primary: #1a73e8;
+// $nexora-secondary: #56d22d;
+
+$nexora-primaryBG: #1F2B37; // Deep blue-gray (main background/text)
+$nexora-secondaryBG: #01306B; // Navy blue (headings, links)
+$nexora-accent: #5076F6; // Blue accent (buttons, highlights)
+$nexora-btnHover: #003900; // Deep green (success, highlights)
+$nexora-light: #F9F9F9; // Light background (cards, sections)
+$nexora-border: #D1D5DB; // Muted border
+$nexora-text: #1F2B37; // Main text
+$nexora-btnPrim: #2c6b17; // Primary button color
+$nexora-text-light: #5076F6; // Accent text
+
+$nex-prim-linBG: linear-gradient(135deg, $nexora-primaryBG 0%, $nexora-secondaryBG 100%);
+$nex-prim-linFootBG: linear-gradient(to right, #142D4B, #02306A),
+    linear-gradient(to bottom, transparent 0%, transparent, #1e2b38 90%, #1e2b38 100%);
+
+
+        /*colors to use on a light background. 
+        $nexora-secondaryBGBGBG: #01306B; use for main headings and primary buttons
+        $nexora-accent: #5076F6; use for subheadings
+        $nexora-text: #1F2B37; use for main text
+        $nexora-btnPrim: #2c6b17; use for hover button color
+        */
+    
+        /*colors to use on a dark background.
+        $nexora-accent:#5076F6; use for main headings
+        $nexora-btnPrim:#2c6b17; use for primary button color
+        $nexora-btnPrim: #2c6b17; use darken effect for hover
+        $nexora-text-light:#F9F9F9; use for main text
+        $nexora-border:#D1D5DB; use for borders if needed
+        */
