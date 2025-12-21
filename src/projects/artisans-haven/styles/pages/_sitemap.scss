@@ -1,0 +1,47 @@
+// Artisan's Haven sitemap page styles
+@use "../abstracts/variables" as *;
+
+.ah-sitemap-page {
+    padding: $ah-spacing-2xl;
+    max-width: $ah-max-width;
+    margin: 0 auto;
+    color: var(--demo-text);
+
+    h1,
+    h2 {
+        color: var(--demo-heading);
+    }
+
+    p {
+        color: var(--demo-heading);
+        font-weight: $ah-font-weight-semibold;
+    }
+
+    a {
+        color: var(--demo-accent);
+        text-decoration: none;
+
+        &:hover {
+            color: var(--demo-accent-hover);
+            text-decoration: underline;
+        }
+    }
+
+    section {
+        margin-top: $ah-spacing-2xl;
+    }
+
+    a.active {
+        text-decoration: underline;
+        font-weight: $ah-font-weight-semibold;
+    }
+}
+
+/* ORIGINAL:
+.ah-sitemap-page {
+    a.active {
+        text-decoration: underline;
+        font-weight: 600;
+    }
+}
+*/
