@@ -1,0 +1,22 @@
+<!doctype html>
+<html ng-app="legacyApp">
+<head>
+  <meta charset="utf-8">
+  <title>Nexora Legacy Widget</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <style>body{font-family:Arial;padding:8px;background:#fff;color:#111}ul{margin:0;padding:0 0 0 1rem}</style>
+</head>
+<body>
+  <div ng-controller="LegacyCtrl as ctrl">
+    <h4>Legacy Testimonials (AngularJS)</h4>
+    <ul>
+      <li ng-repeat="t in ctrl.testimonials">"{{t}}"</li>
+    </ul>
+  </div>
+  <script>
+    angular.module('legacyApp',[]).controller('LegacyCtrl', function(){
+      this.testimonials = ['Great migration help','Improved performance by 30%','Accessible redesign'];
+    })
+  </script>
+</body>
+</html>

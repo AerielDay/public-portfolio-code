@@ -1,0 +1,31 @@
+/*
+	Nexora Styles Index
+	- Central entrypoint for Nexora project styles
+	- Uses the Sass module system (@use/@forward)
+	- Abstract tokens live in `abstracts/_variables.scss`
+	- When literals were migrated to variables the original values
+		were preserved as commented lines nearby for review.
+*/
+
+@forward 'abstracts/variables';
+@forward 'abstracts/mixins';
+
+// Project stylesheet index for Nexora.
+// Use this file to `@use` or `@forward` shared abstractions across Nexora partials.
+// Nexora project styles entry
+// Order: abstracts -> layout -> components -> pages
+
+// Layout (wrappers, sections)
+// container layout (pending)
+@forward 'layout/hero';
+
+// Components (Nexora-specific)
+@forward 'components/navbar';
+@forward 'components/cards';
+@forward 'components/breadcrumb';
+
+// Pages
+@forward 'pages/home';
+@forward 'pages/services';
+@forward 'pages/insights';
+@forward 'pages/contact';

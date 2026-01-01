@@ -1,0 +1,114 @@
+// =====================
+// Nexora Design Tokens
+// =====================
+
+@use 'sass:color' as color;
+
+// -------- Colors --------
+$nexora-primaryBG: #1F2B37; // Deep blue-gray (main background/text)
+$nexora-secondaryBG: #01306B; // Navy blue (headings, links)
+$nexora-accent: #5076F6; // Blue accent (buttons, highlights)
+$nexora-btnPrim: #2c6b17; // Primary button color
+$nexora-btnPrim-light: color.adjust($nexora-btnPrim, $lightness: +10%);
+$nexora-btnHover: #245a13; // Primary button hover
+$nexora-btnHoverDK: color.adjust($nexora-btnPrim, $lightness: -10%);
+$nexora-light: #F9F9F9; // Light background (cards, sections)
+$nexora-border: #D1D5DB; // Muted border
+$nexora-text: #1F2B37; // Main text
+
+// [OLD] $nexora-btnHover: #003900; // replaced by $nexora-btnHover above
+
+// Additional colors
+$nexora-green-dark: #215011; // deep forest green used in hero/footer
+$nexora-grad-top: #0a3267; // gradient top color
+$nexora-grad-bottom: #1e2b38; // gradient bottom color
+$nexora-ghost: #D6EFFF; // pale accent used in project details
+$nexora-black: #000;
+$nexora-gray-333: #333;
+$nexora-white: #ffffff;
+$nexora-foot-left: #192C42; // footer gradient left stop
+$nexora-foot-right: #02306A; // footer gradient right stop
+$nexora-dark-blue-left: #0E2E55;
+
+// -------- Gradients --------
+$nex-prim-linBG: linear-gradient(135deg, $nexora-primaryBG 0%, $nexora-secondaryBG 90%);
+$nex-prim-linFootBG: linear-gradient(to right, #142D4B, #02306A),
+    linear-gradient(to bottom, transparent 0%, transparent, #1e2b38 90%, #1e2b38 100%);
+
+// -------- Font Weights --------
+$nex-font-weight-normal: 400;
+$nex-font-weight-medium: 500;
+$nex-font-weight-semibold: 600;
+$nex-font-weight-bold: 700;
+
+// -------- Font Sizes --------
+$nex-font-size-xsm: 0.95rem;
+$nex-font-size-sm: 1rem;
+$nex-font-size-med: 1.25rem;
+$nex-font-size-lmed: 1.5rem;
+$nex-font-size-flatTitle: 2rem;
+$nex-font-size-secTitle: 2.25rem;
+$nex-font-size-lg: 2.5rem;
+$nex-font-size-xlg: 3rem;
+
+// [OLD] //stats words 1.1rem this is a paragraph size* // replaced by $nex-font-size-sm
+
+// -------- Breakpoints --------
+$nex-breakpoint-sm: 640px;
+$nex-breakpoint-lg: 1000px;
+// [OLD] //nex-breakpoint-md:default 1000px; // replaced by $nex-breakpoint-lg
+
+// -------- Spacing & Layout --------
+$nex-max-width: 1200px;
+$border-rad-sm: 6px;
+$border-rad-md: 8px;
+$border-rad-lg: 12px;
+
+$nex-head-padding: 1.5rem 2rem;
+$nex-head-returnBtn-pad: 0.5rem 1.25rem;
+$nex-sec-pad: 4rem 1rem;
+$nex-hero-pad: 5rem 2rem;
+$nex-infoC-pad: 2rem;
+$nex-link-pad: 0.75rem 1.5rem;
+$nex-btnPrim-pad: 1.25rem;
+
+$nex-gap-xsm: 0.5rem;
+$nex-gap-sm: 0.75rem;
+$nex-gap-base: 1rem;
+$nex-gap-med: 2rem;
+
+$nex-media-bcSM-pad: 0.75rem 1.25rem;
+$nex-media-phead-pad-sm: 1rem 1.25rem;
+$nex-media-med-pad: 2rem 1rem;
+$nex-media-lmed-pad: 3rem 1.5rem;
+$nex-media-sm-pad: 0 1rem;
+
+$margin-respon-base: 0 auto;
+$margin-flat: 0;
+$margin-sm: 0.5rem 0 0 0;
+$margin-top-base: 2rem;
+$margin-bottom-base: 2rem;
+$margin-bottom-lg: 0 0 3rem 0;
+$margin-top-msm: 1.5rem;
+$margin-resBase-hybrid: 0 auto 3rem;
+
+// -------- Shadows --------
+$cta-btn-hovShad: 0 8px 20px rgba(86, 210, 45, 0.4);
+$cta-hero-hovShad: 0 4px 12px rgba(44, 107, 23, 0.3);
+$info-card-shad: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+// -------- Comments for reviewer context --------
+/*
+colors to use on a light background:
+    $nexora-secondaryBGBGBG: #01306B; use for main headings and primary buttons
+    $nexora-accent: #5076F6; use for subheadings
+    $nexora-text: #1F2B37; use for main text
+    $nexora-btnPrim: #2c6b17; use for hover button color
+
+colors to use on a dark background:
+    $nexora-accent:#5076F6; use for main headings
+    $nexora-btnPrim:#2c6b17; use for primary button color
+    $nexora-btnPrim: #2c6b17; use darken effect for hover
+    $nexora-text-light:#F9F9F9; use for main text
+    $nexora-border:#D1D5DB; use for borders if needed
+*/

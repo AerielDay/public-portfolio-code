@@ -1,0 +1,155 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/*
+    Nexora footer styles
+    - Footer visuals use gradient tokens defined in `abstracts/_variables.scss`.
+    - Inline footer backgrounds that previously existed in TSX files were
+        consolidated into this partial; variants are kept as modifier classes.
+*/
+
+.nexora-footer {
+    /* original: background: linear-gradient(to right, #192C42, #02306A), linear-gradient(to bottom, transparent 0%, transparent, #1e2b38 90%, #1e2b38 100%); */
+    // background: $nex-prim-linFootBG; // replaced hard-coded gradient
+    @include footer_base($bg1: transparent, $bg2: transparent, $blend: normal);
+
+
+    .footer-branding {
+        text-align: center;
+        margin-bottom: 4.5rem;
+
+        h2 {
+            font-size: $nex-font-size-lg;
+            margin: 0;
+            color: $nexora-accent; // adjustment made for contrast and style design
+
+            // @media (max-width: 640px) {
+            //     font-size: 1.5rem;
+            // }
+        }
+
+        p {
+            margin: $margin-sm;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: $nex-font-size-sm;
+
+            // @media (max-width: 640px) {
+            //     font-size: 0.9rem;
+            // }
+        }
+    }
+
+    .footer-content {
+        max-width: $nex-max-width;
+        margin: 0 auto $margin-bottom-base;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: $nex-gap-med;
+        justify-items: center;
+        padding: 0 $nex-gap-xsm;
+
+        .footer-section {
+            text-align: center;
+            width: 100%;
+
+            h4 {
+                color: $nexora-accent;
+                font-size: $nex-font-size-med;
+
+                // @media (max-width: 640px) {
+                //     font-size: 1rem;
+                // }
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                li {
+                    margin-bottom: 0.75rem;
+
+                    a {
+                        color: rgba(255, 255, 255, 0.8);
+                        text-decoration: none;
+                        transition: color 0.3s ease;
+                        font-size: 1rem;
+
+                        // @media (max-width: 640px) {
+                        //     font-size: 0.9rem;
+                        // }
+
+                        &:hover {
+                            color: $nexora-light;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding-top: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 0.9rem;
+
+        p {
+            color: $nexora-light;
+        }
+
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            justify-content: center;
+
+            a {
+                color: rgba(255, 255, 255, 0.9);
+                text-decoration: none;
+                margin: 0 1rem;
+                font-size: 0.9rem;
+
+                // @media (max-width: 640px) {
+                //     font-size: 0.8rem;
+                //     margin: 0 0.5rem;
+                // }
+
+                &:hover {
+                    /* original: color: #ffffff; */
+                    // color: #ffffff;
+                    color: $nexora-white;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .demo-note {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+    }
+}
+
+/* Utility and overrides extracted from inline styles in TSX files */
+.nexora-footer.transparent {
+    background: transparent;
+    background-blend-mode: normal;
+}
+
+// .btn-primary--lift {
+//     transform: translateY(-2px);
+//     display: inline-block;
+// }
+
+.nexora-project-layout main {
+    padding: 1rem;
+}

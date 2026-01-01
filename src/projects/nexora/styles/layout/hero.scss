@@ -1,0 +1,120 @@
+// @use '../abstracts/variables' as *;
+// @use '../abstracts/mixins' as *;
+
+// .nexora-home {
+//     .hero-section {
+//         /*
+//           Nexora hero layout
+//           - Hero background and color stops use tokens from `abstracts/_variables.scss`.
+//           - When color functions like `color.adjust()` are used ensure `@use 'sass:color'` is present.
+//         */
+//         /* original: background: linear-gradient(135deg, $nexora-primary 0%, $nexora-secondary 100%); */
+//         // background: linear-gradient(135deg, $nexora-primary 0%, $nexora-secondary 100%);
+//         background: $nex-prim-linBG;
+//         color: $nexora-light;
+//         text-align: center;
+//         padding: 5rem 2rem !important;
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         gap: 2rem;
+
+//         @media (max-width: 768px) {
+//             padding: 3rem 1.5rem !important;
+//         }
+
+//         .hero-content {
+//             max-width: 800px;
+
+//             h1 {
+//                 font-size: 2.75rem;
+//                 margin: 0 0 1rem 0;
+//                 line-height: 1.2;
+//                 color: $nexora-accent;
+
+//                 @media (max-width: 768px) {
+//                     font-size: 2rem;
+//                 }
+//             }
+
+//             .hero-subtitle {
+//                 font-size: 1.25rem;
+//                 margin-bottom: 2rem;
+//                 opacity: 0.95;
+//                 line-height: 1.6;
+//                 color: $nexora-light;
+
+//                 @media (max-width: 768px) {
+//                     font-size: 1.1rem;
+//                 }
+//             }
+
+//             .hero-cta {
+//                 display: flex;
+//                 gap: 1rem;
+//                 justify-content: center;
+//                 flex-wrap: wrap;
+
+//                 .btn-primary.CTAbutton {
+//                     /* original: background: $nexora-primary-button; */
+//                     // background: $nexora-primary-button;
+//                     background: $nexora-btnPrim;
+//                     color: $nexora-light;
+
+//                     &:hover {
+//                         background: darken($nexora-btnPrim, 10%);
+//                         color: $nexora-light;
+//                         box-shadow: 0 8px 20px rgba(86, 210, 45, 0.4);
+//                     }
+//                 }
+
+//                 .btn-primary,
+//                 .btn-secondary {
+//                     padding: 1rem 2rem;
+//                     border-radius: 8px;
+//                     border: none;
+//                     text-decoration: none;
+//                     font-weight: 600;
+//                     font-size: 1.1rem;
+//                     transition: all 0.3s ease;
+//                     display: inline-block;
+//                     cursor: pointer;
+//                 }
+
+//                 .btn-primary {
+//                     /* original: background: $nexora-secondary; */
+//                     // background: $nexora-secondary;
+//                     background: $nexora-secondaryBG;
+//                     color: $nexora-light;
+
+//                     &:hover {
+//                         /* original: background: #245a13; */
+//                         // background: #245a13;
+//                         background: $nexora-forest-dark;
+//                         transform: translateY(-2px);
+//                         box-shadow: 0 4px 12px rgba(44, 107, 23, 0.3);
+//                     }
+//                 }
+
+//                 .btn-secondary {
+//                     background: $nexora-light;
+//                     color: $nexora-secondaryBG;
+
+//                     &:hover {
+//                         background: $nexora-light;
+//                         transform: translateY(-2px);
+//                         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+//                         color: $nexora-accent;
+//                     }
+//                 }
+//             }
+//         }
+
+//         .hero-preview {
+//             max-width: 900px;
+//             width: 100%;
+//             border-radius: 12px;
+//             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+//         }
+//     }
+// }

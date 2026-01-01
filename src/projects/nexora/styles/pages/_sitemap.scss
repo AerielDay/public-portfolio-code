@@ -1,0 +1,190 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/*
+    Nexora sitemap styles
+    - Added `.sitemap-sublist` to replace small inline margins used in TSX.
+    - Keep content layout tokens centralized in `abstracts/_variables.scss`.
+*/
+
+.nexora-sitemap {
+    background: $nexora-light;
+    min-height: 60vh;
+
+    .landing-breadcrumb-wrapper {
+        .breadcrumb {
+
+            span,
+            a {
+                color: $nexora-text;
+                font-size: 0.95rem;
+                font-weight: 600;
+            }
+
+        }
+    }
+
+    .sitemap-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+
+        h1 {
+            color: $nexora-accent;
+            font-size: 2.5rem;
+            margin: 0 0 1rem 0;
+            text-align: center;
+
+            // @media (max-width: 768px) {
+            //     font-size: 2rem;
+            // }
+        }
+
+        .sitemap-intro {
+            text-align: center;
+            color: $nexora-secondaryBG;
+            font-size: 1.1rem;
+            margin: 0 0 3rem 0;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+
+            // @media (max-width: 768px) {
+            //     grid-template-columns: 1fr;
+            //     gap: 2rem;
+            // }
+
+            .sitemap-section {
+                h2 {
+                    color: $nexora-primaryBG;
+                    font-size: 1.5rem;
+                    margin: 0 0 1.5rem 0;
+                    padding-bottom: 0.5rem;
+                    border-bottom: 2px solid $nexora-accent;
+                }
+
+                a.active {
+                    text-decoration: underline;
+                    font-weight: 600;
+                    color: $nexora-primaryBG;
+                }
+            }
+        }
+
+        // .sitemap-section {
+        //     h2 {
+        //         color: $nexora-primaryBG;
+        //         font-size: 1.5rem;
+        //         margin: 0 0 1.5rem 0;
+        //         padding-bottom: 0.5rem;
+        //         border-bottom: 2px solid $nexora-accent;
+        //     }
+
+
+        /* Demo-scoped typography overrides
+           Prevent the global typography rules from leaking into demo content
+           by providing equal-or-higher specificity rules inside the demo wrapper. */
+        // .demo-mode .nexora,
+        // .demo-mode .nexora,
+        // .nexora.demo-mode {
+        //     font-family: 'Inter', system-ui, sans-serif;
+        //     color: $nexora-text;
+        //     /* body text in demo uses Nexora text variable */
+        // }
+
+        /* Headings use Nexora heading/text-light colors */
+        // .demo-mode .nexora h1,
+        // .demo-mode .nexora h2,
+        // .demo-mode .nexora h3,
+        // .demo-mode .nexora h4,
+        // .demo-mode .nexora h5,
+        // .demo-mode .nexora h6 {
+        //     font-family: 'Montserrat', 'Inter', sans-serif;
+        //     color: $nexora-text-light;
+        //     line-height: 1.25;
+        //     font-weight: 700;
+        // }
+
+        // .demo-mode .nexora p {
+        //     color: $nexora-text;
+        //     margin-bottom: 1rem;
+        // }
+
+        /* Links and accents use Nexora accent colors */
+        // .demo-mode .nexora a {
+        //     color: $nexora-accent;
+        //     text-decoration: none;
+
+        //     &:hover {
+        //         color: $nexora-secondaryBG;
+        //     }
+        // }
+
+        // /* Quotes, taglines, and accent text */
+        // .demo-mode .nexora .tagline,
+        // .demo-mode .nexora blockquote,
+        // .demo-mode .nexora figcaption,
+        // .demo-mode .nexora em.accent {
+        //     font-family: 'Playfair Display', Georgia, serif;
+        //     font-style: italic;
+        //     color: $nexora-accent;
+        // }
+
+        // /* Buttons / nav links should use Nexora palette */
+        // .demo-mode .nexora button,
+        // .demo-mode .nexora .nav a {
+        //     font-family: var(--font-body);
+        //     font-weight: 600;
+        //     letter-spacing: 0.02em;
+        //     text-transform: none;
+        //     color: $nexora-light;
+        //     background: $nexora-primaryBG;
+        //     border: 1px solid rgba(255, 255, 255, 0.03);
+        // }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                margin-bottom: 1.5rem;
+
+                a {
+                    color: $nexora-secondaryBG;
+                    text-decoration: none;
+                    font-weight: 600;
+                    font-size: 1.05rem;
+                    transition: color 0.2s;
+
+                    &:hover {
+                        color: $nexora-accent;
+                        text-decoration: underline;
+                    }
+                }
+
+                p {
+                    margin: 0.25rem 0 0 0;
+                    color: rgba($nexora-secondaryBG, 0.7);
+                    font-size: 0.9rem;
+                    line-height: 1.5;
+                }
+            }
+        }
+
+        //}
+    }
+}
+
+/* Replaced inline styles in NexoraSitemap.tsx */
+.sitemap-sublist {
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+}

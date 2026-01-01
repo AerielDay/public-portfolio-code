@@ -1,0 +1,63 @@
+// =============================================
+// FILE: _fonts.scss
+// Purpose: Global font-face declarations (CSS output)
+// Note: Paths resolve to src/assets/global/fonts/*
+// =============================================
+@font-face {
+    font-family: 'Inter';
+    src: url('../assets/global/fonts/inter-font/Inter18pt-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../assets/global/fonts/inter-font/static/Inter_18pt-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/global/fonts/montserrat-font/static/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../assets/global/fonts/playfairDisplay-font/PlayfairDisplay-MediumItalic.woff2') format('woff2');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DM Serif Text';
+    src: url('../assets/global/fonts/dm-serif-text-font/DMSerifText-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Public copy (served from /asset/fonts) - used when fonts are placed in the public folder */
+@font-face {
+    font-family: 'DM Serif Text';
+    src: url('/asset/fonts/DM_Serif_text/DMSerifText-Regular.woff2') format('woff2'),
+        url('/asset/fonts/DM_Serif_text/DMSerifText-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DM Serif Text';
+    src: url('/asset/fonts/DM_Serif_text/DMSerifText-Italic.woff2') format('woff2'),
+        url('/asset/fonts/DM_Serif_text/DMSerifText-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
