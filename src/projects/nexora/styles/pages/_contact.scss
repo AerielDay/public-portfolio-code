@@ -1,0 +1,229 @@
+/*
+    Nexora Contact Page Styles
+    - Purpose: styles for the contact form and contact info page.
+    - Notes: background gradients and spacing tokens are defined in `abstracts/_variables.scss`.
+    - Migration: inline/background literals moved to variables where applicable; originals preserved as comments.
+*/
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.nexora-landing {
+    @include nexora-base;
+}
+.contact-page {
+    background: linear-gradient(135deg, $nexora-primaryBG 0%, $nexora-secondaryBG 100%);
+        color: $nexora-light;
+        padding: 0 2rem;
+        max-width: 1200px;
+    
+        .landing-breadcrumb-wrapper .breadcrumb {
+            margin-left: 0;
+    
+            @include xsm_media {
+                margin-left: 0;
+            }
+        }
+    .contact-container {
+        max-width: 1200px;
+        margin: 6rem auto 4rem auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        padding: 0 2rem;
+        gap: 3rem;
+
+        @include xsm_media{
+            padding:0rem;
+            margin-top:3rem;
+        };
+        @include sm_media{
+            padding:0rem;
+            margin-top:3rem;
+        };
+
+        // @media (max-width: 968px) {
+        //     grid-template-columns: 1fr;
+        //     gap: 3rem;
+        // }
+
+        // @media (max-width: 768px) {
+        //     margin: 0 auto 2rem auto;
+        // }
+
+        .contact-info {
+
+            h3{
+                font-size: $nex-font-size-lg;
+                color: $nexora-accent;
+                margin-bottom: 1rem;
+            }
+
+            .contact-intro {
+                font-size: $nex-font-size-med;
+                color: $nexora-light;
+                line-height: 1.7;
+                margin-bottom: 2rem;
+
+                @include xsm_media{
+                    font-size:$nex-font-size-xsm;
+                };
+                @include sm_media{
+                    font-size:$nex-font-size-sm;
+                };
+                //@include lg_media{};
+            }
+
+            &.contact-details,
+            .contact-details {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                color: $nexora-light;
+
+                .contact-item {
+                    h4 {
+                        font-size: 1rem;
+                        color: $nexora-accent;
+                        margin: 0 0 0.5rem 0;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                        text-align: left;
+                    }
+
+                    p {
+                        color: $nexora-light;
+                        line-height: 1.6;
+                        margin: 0;
+                        font-size: 1rem;
+
+                    }
+
+                    a {
+                        color: $nexora-light;
+                        text-decoration: none;
+                        transition: color 0.3s ease;
+
+                        &:hover {
+                            color: $nexora-btnPrim;
+                        }
+                    }
+                }
+            }
+        }
+
+        .contact-form-wrapper {
+            background: $nexora-light;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 2px solid $nexora-border;
+
+
+            .contact-form {
+                h4 {
+                    font-size: 1.75rem;
+                    color: $nexora-text;
+                    margin: 0 0 2rem 0;
+                    @include xsm_media{
+                    font-size:$nex-font-size-med!important;
+                };
+                }
+                
+               
+
+                &.form-group,
+                .form-group {
+                    margin-bottom: 1.5rem;
+
+                    label {
+                        display: block;
+                        color: $nexora-text;
+                        font-weight: 600;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    input,
+                    select,
+                    textarea {
+                        width: 100%;
+                        padding: 0.75rem;
+                        border: 2px solid $nexora-border;
+                        border-radius: 8px;
+                        font-size: 1rem;
+                        font-family: inherit;
+                        transition: border-color 0.3s ease;
+                        background: $nexora-light;
+
+                        &:focus {
+                            outline: none;
+                            border-color: $nexora-primaryBG;
+                        }
+                    }
+
+                    textarea {
+                        resize: vertical;
+                        min-height: 120px;
+                    }
+                }
+
+                .btn-submit {
+                    width: 100%;
+                    padding: 1rem 2rem;
+                    background: $nexora-secondaryBG;
+                    color: $nexora-light;
+                    border: none;
+                    border-radius: 8px;
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        background: $nexora-btnPrim;
+                        color: $nexora-light;
+                        transform: translateY(-2px);
+                        box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+                    }
+
+                    @include xsm_media{
+                        font-size:0.80rem;
+                        padding:.5rem 1rem;
+                    };
+                    @include sm_media{
+                        font-size:$nex-font-size-sm;
+                        padding:.75rem 1rem;
+                    };
+                    @include lg_media{
+                        font-size: $nex-font-size-sm;
+                        padding: 1rem 2rem;
+                    };
+
+
+                }
+
+                .privacy-note {
+                    text-align: center;
+                    font-size: 0.9rem;
+                    color: $nexora-accent;
+                    margin-top: 1rem;
+
+                    a {
+                        color: $nexora-accent;
+                        text-decoration: none;
+
+                        &:hover {
+                            text-decoration: underline;
+                            color: $nexora-btnPrim;
+                        }
+                    }
+                }
+            }
+        }
+    }
+.nexora-footer{
+    @include xsm_media{
+        background:transparent!important;
+        padding:0.5rem 2rem!important;
+    };
+}
+
+}

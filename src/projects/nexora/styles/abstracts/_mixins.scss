@@ -1,0 +1,924 @@
+// The following mixins can be replaced by the general-purpose responsive mixins above:
+
+/*
+	Nexora Mixins
+	- Purpose: project-scoped mixins useful for layout and small utilities.
+	- Notes: keep mixins small and composable; prefer using project variables from `_variables.scss`.
+	- Migration: avoid embedding hard-coded color/spacing literals inside mixins; reference tokens instead.
+*/
+@use 'sass:color' as color;
+@use "./_variables" as *;
+
+@mixin nex-serviceDetail-template($block1-bg: $nex-prim-linBG) {
+
+	// Shared Layout Logic
+	.block1 {
+		background: $block1-bg;
+		padding-bottom: 1rem;
+
+		.service-detail-header {
+			text-align: center;
+			padding: 5rem 2rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			max-width: 856px;
+			margin: 0 auto;
+
+			@include xsm_media{
+				padding:1.5rem 1rem;
+			};
+			@include sm_media{
+				padding: 1.75rem 1.25rem;
+			};
+
+			h1{
+				color:$nexora-accent;
+				@include xsm_media{
+					font-size:1.65rem;
+				};
+				@include sm_media{
+					font-size:1.85rem;
+				};
+			}
+
+			p {
+				color: $nexora-light;
+				margin-top: 0;
+			}
+		}
+
+		.service-overview {
+			padding: 0 2rem;
+			max-width:1000px;
+			margin: 0 auto;
+
+			h2 {
+				color: $nexora-btnPrim-light;
+				margin: 0;
+				font-size:$nex-font-size-flatTitle;
+
+				@include xsm_media{
+					font-size:1.5rem!important;
+				};
+				@include sm_media{
+					font-size:1.7rem;
+				};
+			}
+
+			p {
+				color: $nexora-light;
+				margin-top: 0;
+			}
+		}
+	}
+
+	.block2 {
+		background: $nexora-light;
+		padding: 2rem;
+		
+		h2{
+			color:$nexora-secondaryBG;
+			text-align:center;
+			font-size:$nex-font-size-secTitle;
+
+			@include xsm_media{
+				font-size:1.5rem!important;
+			};
+			@include sm_media{
+					font-size:1.7rem;
+				};
+		}
+
+		.highlights-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			max-width: 1200px;
+			margin: 0 auto;
+			gap: 2rem;
+			align-items: stretch;
+
+			@media (max-width: $nex-breakpoint-sm) {
+				grid-template-columns: 1fr;
+			}
+
+			.highlight-card {
+				background: $nexora-light;
+				padding: 2rem;
+				border-radius: 12px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+				transition: all 0.3s ease;
+
+				&:hover {
+					transform: translateY(-8px);
+					box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+				}
+				h3{
+					color:$nexora-accent;
+				}
+				p{
+					color: $nexora-text;
+				}
+			}
+		}
+	}
+
+	.block3 {
+		background: linear-gradient(180deg, $nexora-light 40%, $nexora-secondaryBG 100%);
+		padding: 4rem;
+		@include xsm_media{
+			padding:2rem;
+		};
+		@include sm_media{
+			padding-top: 2rem;
+			padding-bottom:1rem;
+		};
+
+		h2{
+			color:$nexora-secondaryBG;
+			text-align:center;
+			font-size:$nex-font-size-secTitle;
+
+			@include xsm_media{
+				font-size: 1.5rem;
+				text-align:left;
+			};
+			@include sm_media{
+					font-size:1.7rem;
+				};
+		}
+		h3{
+			color:$nexora-primaryBG;
+			@include xsm_media{
+				margin-bottom:$margin-flat;
+			};
+			@include sm_media{
+				margin-bottom:$margin-flat;
+			};
+		}
+		p{
+			color:$nexora-btnPrim;
+
+			@include xsm_media{
+				margin-top:$margin-flat;
+				margin-bottom:$margin-bottom-base;
+			};
+			@include sm_media{
+				margin-top:$margin-flat;
+				margin-bottom:$margin-bottom-base;
+			};
+		}
+		.service-meta{
+			color:$nexora-light;
+		}
+		.digital-cta, .modern-cta, .data-cta, .security-cta {
+			margin: 3rem auto;
+			background: $nexora-light;
+				padding: 2rem;
+				max-width:85%;
+				border-radius: 12px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+				transition: all 0.3s ease;
+
+				&:hover {
+					transform: translateY(-8px);
+					// box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+				}
+				@include xsm_media{
+					margin:1.5rem auto;
+				};
+				h2{
+					color:$nexora-accent;
+					margin:$margin-flat;
+					@include xsm_media{
+						font-size: 1.25rem!important;
+					};
+				}
+				p{
+					color: $nexora-text;
+					font-size: 1.05rem;
+					margin: 0 auto;
+					max-width:560px;
+					text-align:center;
+
+					@include xsm_media{
+						text-align:left;
+						font-size:.95rem;
+					};
+					@include sm_media{
+						font-size: .95rem;
+					};
+				}
+				.btn-primary-large{
+					@include xsm_media{
+						margin-top:1rem;
+					};
+				}
+			
+			// text-align: center;
+			// padding: 5rem 2rem 0;
+			// display: flex;
+			// flex-direction: column;
+			// align-items: center;
+			// max-width: 856px;
+			// margin: 0 auto;
+			// //border:2px solid cyan;
+			// background:$nexora-light;
+
+			// h2 {
+			// 	color: $nexora-btnHoverDK;
+			// 	margin: 0;
+			// }
+
+			// p {
+			// 	color: $nexora-light;
+				
+			// }
+		}
+	}
+
+	.nexora-footer{
+		background:linear-gradient(180deg, #01306b, #1f2b37 100%)!important;
+	@include xsm_media{
+		padding:1rem;
+	};
+	@include sm_media{
+		padding:1rem;
+	};
+	
+	}
+}
+
+// @mixin nex-serviceDetail-template($block1-bg: $nex-prim-linBG,
+// 	$showBlock1: true,
+// 	$showBlock2: true,
+// 	$showBlock3: true) {
+// 	@if $showBlock1 {
+// 		.block1 {
+// 			background: $block1-bg;
+// 			padding-bottom: 1rem;
+
+// 			.service-detail-header {
+// 				text-align: center;
+// 				padding: 5rem 2rem;
+// 				display: flex;
+// 				flex-direction: column;
+// 				align-items: center;
+// 				max-width: 856px;
+// 				margin: 0 auto;
+
+// 				p {
+// 					color: $nexora-light;
+// 					margin-top: 0;
+// 				}
+// 			}
+
+// 			.service-overview {
+// 				padding: 0 3rem;
+
+// 				h2 {
+// 					color: $nexora-btnPrim;
+// 					margin: 0;
+// 				}
+
+// 				p {
+// 					color: $nexora-light;
+// 					margin-top: 0;
+// 				}
+// 			}
+// 		}
+// 	}
+
+// 	@if $showBlock2 {
+// 		.block2 {
+// 			background: $nexora-light;
+// 			padding: 2rem;
+
+// 			.highlights-grid {
+// 				display: grid;
+// 				grid-template-columns: repeat(2, 1fr);
+// 				max-width: 1200px;
+// 				margin: 0 auto;
+// 				gap: 2rem;
+
+// 				@media (max-width: $nex-breakpoint-sm) {
+// 					grid-template-columns: 1fr;
+// 				}
+
+// 				.highlight-card {
+// 					background: $nexora-light;
+// 					padding: 2rem;
+// 					border-radius: 12px;
+// 					box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+// 					transition: all 0.3s ease;
+// 				}
+// 			}
+// 		}
+// 	}
+
+// 	@if $showBlock3 {
+// 		.block3 {
+// 			background: linear-gradient(180deg, $nexora-light 40%, $nexora-secondaryBG 100%);
+// 			padding: 2rem;
+
+// 			.data-cta {
+// 				@include flex-center-col($padding: 5rem 2rem 0 2rem);
+
+// 				h2 {
+// 					color: $nexora-green-dark;
+// 					margin: 0;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
+
+// General-purpose media query mixins using @content
+@mixin xsm_media {
+	@media (max-width: 640px) {
+		@content;
+	}
+}
+
+@mixin sm_media {
+	@media (min-width: 641px) {
+		@content;
+	}
+}
+
+@mixin med_media {
+	@media (min-width: 900px) {
+		@content;
+	}
+}
+
+@mixin lg_media {
+	@media (min-width: 1130px) {
+		@content;
+	}
+}
+
+// Example usage:
+// @include med_media { font-size: 0.85rem; padding: 0.75rem; }
+
+// General-purpose responsive mixins
+// Old single-property mixins below are replaced by the new general-purpose media mixins above.
+// @mixin sm_spacing($property, $value) { ... } // replaced by @include xsm_media { ... }
+// @mixin sm_font_size($value) { ... } // replaced by @include xsm_media { font-size: ...; }
+// @mixin xsm_property($property, $value) { ... } // replaced by @include xsm_media { ... }
+// @mixin sm_property($property, $value) { ... } // replaced by @include sm_media { ... }
+// @mixin med_property($property, $value) { ... } // replaced by @include med_media { ... }
+// @mixin lg_property($property, $value) { ... } // replaced by @include lg_media { ... }
+@mixin multi_property {
+	@media (max-width: 900px) {
+		@content;
+	}
+}
+
+// Repeated section layouts: 
+//.hero-section,
+// .services-overview,
+// .trust-section,
+// .value-section,
+// .cta-section all use similar flex/grid, padding, alignment patterns. 
+//Button styles: 
+//.btn-primary, .btn-secondary, .btn-primary-large, .btn-ghost,
+// .btn-primary
+//.CTAbutton share padding, border-radius, font-weight, and transition rules. 
+//Card styles: 
+//.service-card, .testimonial, .value-item, .case-study-card,
+// use similar background, border-radius, box-shadow.
+// Responsive media queries: @media (max-width: 768px),
+// @media (max-width: 640px), are repeated for padding/font-size adjustments.
+
+/*
+.88b  d88. d88888b d8888b. d888888b  .d8b.                 
+88'YbdP`88 88'     88  `8D   `88'   d8' `8b                
+88  88  88 88ooooo 88   88    88    88ooo88                
+88  88  88 88~~~~~ 88   88    88    88~~~88                
+88  88  88 88.     88  .8D   .88.   88   88                
+YP  YP  YP Y88888P Y8888D' Y888888P YP   YP                
+                                                           
+                                                           
+ .d88b.  db    db d88888b d8888b. d888888b d88888b .d8888. 
+.8P  Y8. 88    88 88'     88  `8D   `88'   88'     88'  YP 
+88    88 88    88 88ooooo 88oobY'    88    88ooooo `8bo.   
+88    88 88    88 88~~~~~ 88`8b      88    88~~~~~   `Y8b. 
+`8P  d8' 88b  d88 88.     88 `88.   .88.   88.     db   8D 
+ `Y88'Y8 ~Y8888P' Y88888P 88   YD Y888888P Y88888P `8888Y' 
+                                                           
+                                                           
+*/
+
+
+// [REFACTORED] Use @include xsm_media { padding: $nex-media-phead-pad-sm; gap: $nex-gap-sm; } instead
+// @mixin proj_head_sm {
+//     @media (max-width:$nex-breakpoint-sm) {
+//         padding: $nex-media-phead-pad-sm;
+//         gap: $nex-gap-sm;
+//     }
+// }
+
+// [REFACTORED] Use @include xsm_media { padding: $nex-media-bcSM-pad; font-size: 0.9rem; } instead
+// @mixin breadcrumb-sm {
+//     @media (max-width:$nex-breakpoint-sm) {
+//         padding: $nex-media-bcSM-pad;
+//         font-size: 0.9rem;
+//     }
+// }
+
+// [REFACTORED] Use @include xsm_media { font-size: $nex-font-size-med; } instead
+// @mixin proj_name_sm {
+//     @media (max-width:$nex-breakpoint-sm) {
+//         font-size: $nex-font-size-med;
+//     }
+// }
+
+// @mixin sm_padding($nex-padding-val) {
+// 	@media (max-width: 640px) {
+// 		padding: $nex-padding-val;
+// 	}
+
+// 	@media (min-width: 641px) {
+// 		padding: 2rem 1rem;
+// 	}
+// }
+
+@mixin smBranding {
+	@media (max-width: 640px) {
+		font-size: $nex-font-size-sm;
+	}
+}
+
+// [REFACTORED] Use @include xsm_media { gap: $nex-gap-sm; padding: $nex-media-phead-pad-sm; } instead
+// @mixin navbarBase_sm {
+//     @media (max-width: 640px) {
+//         gap: 1rem;
+//         padding: 1rem 1.5rem;
+//     }
+// }
+
+// @mixin navbarBase_lg {
+// 	@media (min-width: 1000px) {
+// 		padding: 1.5rem 2rem;
+// 	}
+// }
+
+@mixin brand_link_sm {
+	@media (max-width: 640px) {
+		font-size: 1rem;
+	}
+}
+
+// @mixin overflow-navbar_sm {
+// 	@media(max-width: 640px) {
+// 		font-size: 1.75rem;
+// 	}
+// }
+
+@mixin btn_sm {
+	@media (max-width: 640px) {
+		padding: 0.85rem 1.25rem;
+		font-size: 0.75rem;
+	}
+}
+
+@mixin heroContent_sm {
+	// @media (max-width: 640px) {
+	// 	//font-size: 1.5rem;
+	// 	padding: 0 1rem 2rem;
+	// 	//@include sm_font_size($nex-font-size-sm);
+	// }
+
+	// @include xsm_media{font-size: $nex-font-size-med;};
+}
+
+@mixin heroSubtitle_sm {
+	@media (max-width: 640px) {
+		font-size: $nex-font-size-xsm;
+	}
+}
+
+@mixin btm_margin_sm {
+	@media (max-width: 640px) {
+		margin-bottom: 1.5rem;
+	}
+}
+
+// // [REPLACEABLE] Use @include sm_spacing or sm_property instead
+// @mixin add-margin-sm($margin-val) {
+// 	@media (max-width: 640px) {
+// 		margin: $margin-val;
+// 	}
+// }
+
+// // [REPLACEABLE] Use @include sm_spacing or sm_property instead
+// @mixin reduce-margin-sm($margin-val) {
+// 	@media (max-width: 640px) {
+// 		margin: $margin-val;
+// 	}
+// }
+
+// // [REPLACEABLE] Use @include sm_property instead
+// @mixin add-margin-top-sm($margin-top-val) {
+// 	@media (max-width: 640px) {
+// 		margin-top: $margin-top-val;
+// 	}
+// }
+
+// // [REPLACEABLE] Use @include sm_spacing or sm_property instead
+// @mixin add-padding-sm($padding-val) {
+// 	@media (max-width: 640px) {
+// 		padding: $padding-val;
+// 	}
+// }
+
+// // [REPLACEABLE] Use @include sm_property instead
+// @mixin add-padding-top-sm($padding-top-val) {
+// 	@media (max-width: 640px) {
+// 		padding-top: $padding-top-val;
+// 	}
+// }
+
+// // [REPLACEABLE] Use @include sm_property instead
+// @mixin add-padding-bottom-sm($padding-bottom-val) {
+// 	@media (max-width: 640px) {
+// 		padding-bottom: $padding-bottom-val;
+// 	}
+// }
+
+// // [REPLACEABLE] Use @include sm_spacing or sm_property instead
+// @mixin reduce-padding-sm($padding-val) {
+// 	@media (max-width: 640px) {
+// 		padding: $padding-val;
+// 	}
+// }
+
+// // [REPLACEABLE] Use @include sm_font_size instead
+// @mixin reduce-font-sm($font-size-val) {
+// 	@media (max-width: 640px) {
+// 		font-size: $font-size-val;
+// 	}
+
+// 	@media (min-width: 641px) {
+// 		font-size: $font-size-val + 0.15rem;
+// 	}
+// }
+
+// // [REPLACEABLE] Use @include sm_property instead
+// @mixin change-text-place-sm($text-place) {
+// 	@media (max-width: 640px) {
+// 		text-align: $text-place;
+// 	}
+// }
+
+// // [REPLACEABLE] Use @include sm_property instead
+// @mixin align-text-sm($align-val) {
+// 	@media (max-width: 640px) {
+// 		align-items: $align-val;
+// 	}
+// }
+
+@mixin min-width-sm {
+	@media(max-width: 640px) {
+		min-width: 40%;
+		// display: flex;
+		// flex: 1;
+		// justify-content: center;
+		// align-items: center;
+	}
+}
+
+@mixin serviceGrid_special {
+	@media (max-width: 640px) {
+		grid-template-columns: 1fr;
+		width: 100%;
+		padding: $nex-media-sm-pad;
+	}
+
+	@media (min-width: 640px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (min-width:900px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media (min-width: 1130px) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@mixin navbar-change($property, $value) {
+	@media (max-width: 1025px) {
+		#{$property}: #{$value};
+	}
+}
+
+@mixin gap-addition-navbar($gab-value) {
+	@media (min-width: 1026px) {
+		gap: $gab-value;
+	}
+}
+
+/*
+d8b   db  .d88b.  d8b   db        .88b  d88. d88888b d8888b. d888888b  .d8b.  
+888o  88 .8P  Y8. 888o  88        88'YbdP`88 88'     88  `8D   `88'   d8' `8b 
+88V8o 88 88    88 88V8o 88        88  88  88 88ooooo 88   88    88    88ooo88 
+88 V8o88 88    88 88 V8o88 C8888D 88  88  88 88~~~~~ 88   88    88    88~~~88 
+88  V888 `8b  d8' 88  V888        88  88  88 88.     88  .8D   .88.   88   88 
+VP   V8P  `Y88P'  VP   V8P        YP  YP  YP Y88888P Y8888D' Y888888P YP   YP 
+                                                                              
+                                                                              
+ .d88b.  db    db d88888b d8888b. d888888b d88888b .d8888.                    
+.8P  Y8. 88    88 88'     88  `8D   `88'   88'     88'  YP                    
+88    88 88    88 88ooooo 88oobY'    88    88ooooo `8bo.                      
+88    88 88    88 88~~~~~ 88`8b      88    88~~~~~   `Y8b.                    
+`8P  d8' 88b  d88 88.     88 `88.   .88.   88.     db   8D                    
+ `Y88'Y8 ~Y8888P' Y88888P 88   YD Y888888P Y88888P `8888Y'                    
+                                                                              
+                                                                              
+*/
+
+
+@mixin project_name {
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: $nex-font-size-lmed;
+	font-weight: 700;
+	margin: $margin-flat;
+	color: $nexora-secondaryBG;
+
+	// Responsive project name styles
+	@include xsm_media {
+		font-size: $nex-font-size-med;
+	}
+}
+
+@mixin project_header {
+	display: flex;
+	flex-direction: column;
+	gap: $nex-gap-base;
+	padding: $nex-head-padding;
+	background: $nexora-light;
+	border-bottom: 2px solid $nexora-border;
+
+	// Responsive project header styles
+	@include xsm_media {
+		padding: $nex-media-phead-pad-sm;
+		gap: $nex-gap-sm;
+	}
+}
+
+@mixin project_rtnBtn {
+	padding: $nex-head-returnBtn-pad;
+	min-height: 44px;
+	background: $nexora-secondaryBG;
+	color: $nexora-light;
+	text-decoration: none;
+	border-radius: $border-rad-sm;
+	font-weight: 600;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	transition: background-color 0.2s ease;
+	align-self: flex-start;
+	display: inline-flex;
+	align-items: center;
+	width: fit-content;
+
+	@include rtnBtn_hover;
+	@include visible-focus;
+}
+
+@mixin rtnBtn_hover {
+	&:hover {
+		background: $nexora-btnPrim;
+		color: $nexora-light;
+	}
+}
+
+@mixin visible-focus {
+	&:focus-visible {
+		outline: 3px solid $nexora-accent;
+		outline-offset: 2px;
+	}
+}
+
+@mixin breadcrumbs {
+	display: flex;
+	gap: $nex-gap-xsm;
+	align-items: center;
+	font-size: $nex-font-size-xsm;
+	background: transparent;
+	margin-left: 2rem;
+	padding-top: 2rem;
+	color: $nexora-light;
+}
+
+@mixin breadcrumb-link {
+	color: $nexora-light;
+	text-decoration: none;
+	transition: color 0.2s ease;
+
+	&:hover {
+		color: $nexora-accent;
+		text-decoration: underline;
+	}
+}
+
+@mixin btn_base {
+	padding: $nex-btnPrim-pad;
+	border-radius: $border-rad-md;
+	text-decoration: none;
+	font-weight: 600;
+	transition: all 0.3s ease;
+	display: flex;
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	font-size: $nex-font-size-xsm;
+	min-width: 200px;
+	text-align: center;
+	@include btn_sm;
+}
+
+@mixin footer_base ($bg1: linear-gradient(to right, $nexora-foot-left, $nexora-foot-right), $bg2: linear-gradient(to bottom, transparent 0%, transparent, $nexora-grad-bottom 90%, $nexora-grad-bottom 100%), $blend: multiply) {
+	background: $bg1, $bg2;
+	background-blend-mode: $blend;
+	color: $nexora-light;
+	max-width: 1200px;
+	position: relative;
+	padding: 3rem 2rem 1.5rem;
+	margin: 0 auto;
+}
+
+@mixin nexora-base {
+	max-width: $nex-max-width;
+	margin: $margin-respon-base;
+
+	//font-family: $nex-alt-font;
+
+	/* Project Header */
+	.nexora-project-header {
+		@include project_header;
+
+		.project-name {
+			@include project_name;
+		}
+
+		.return-btn {
+			@include project_rtnBtn;
+
+		}
+	}
+
+	// .nexora-navbar {
+	// 	@include navbar_base;
+	// 	//@include reduce-font-sm(0.25rem);
+	// }
+
+	/* Breadcrumb Navigation */
+	.breadcrumb {
+		@include breadcrumbs;
+
+		a {
+			@include breadcrumb-link;
+		}
+
+		span {
+			color: $nexora-light;
+		}
+	}
+
+	.nexora-footer {
+		@include footer_base;
+
+	}
+}
+
+// @mixin navbar_base {
+// 	display: flex;
+// 	justify-content: space-around;
+// 	align-items: center;
+// 	gap: 2rem;
+// 	padding: 1.5rem 2rem;
+// 	background: $nexora-light;
+// 	border-bottom: 2px solid $nexora-border;
+// 	margin: 0;
+// 	top: 0;
+// 	z-index: 100;
+// 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+// }
+
+@mixin brand_link_base {
+	color: $nexora-primaryBG;
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 1.5rem;
+	transition: color 0.2s;
+
+	&:hover {
+		color: $nexora-accent;
+	}
+}
+
+
+@mixin card-grid-base {
+	display: grid;
+	/* 4 equal columns on wide screens, responsive down to 2/1 */
+	grid-template-columns: repeat(4, 1fr);
+	max-width: 1200px;
+	margin: $margin-respon-base;
+	gap: $nex-gap-sm;
+	border-radius: $border-rad-lg;
+	width: fit-content;
+	align-items: stretch;
+}
+
+@mixin card-base {
+	background: $nexora-light;
+	padding: $nex-infoC-pad;
+	min-width: 16.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	margin-top: auto;
+	height: 100%;
+	//border-radius: $border-rad-lg;
+	box-shadow: $info-card-shad;
+	transition: all 0.3s ease;
+
+
+	h3 {
+		font-size: $nex-font-size-lmed;
+		color: $nexora-accent;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+	}
+
+	p {
+		color: $nexora-text;
+		line-height: 1.6;
+		text-align: center;
+		//margin: auto 0 0 0;
+		font-weight: $nex-font-weight-normal;
+	}
+}
+
+@mixin btn-primaryLG($bg: $nexora-btnPrim, $color: $nexora-light, $bgHover: $nexora-btnHoverDK, $mobile-margin-top: null) {
+	padding: $nex-btnPrim-pad;
+	background: $bg;
+	color: $color;
+	margin-top: $margin-top-base;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: $nex-font-size-sm;
+	border-radius: $border-rad-md;
+	display: inline-block;
+	transition: all 0.3s ease;
+	text-align: center;
+
+	&:hover {
+		background: $bgHover;
+		transform: translateY(-2px);
+		box-shadow: $cta-btn-hovShad;
+	}
+
+	// Optional mobile override: pass `$mobile-margin-top: 0` to remove margin on small viewports
+	@media (max-width: $nex-breakpoint-sm) {
+		@if $mobile-margin-top !=null {
+			margin-top: $mobile-margin-top;
+		}
+	}
+}
+
+@mixin hero-section-base($bg: transparent) {
+	background: $bg;
+	color: $nexora-accent;
+	text-align: center;
+	padding: $nex-hero-pad;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: $nex-gap-med;
+	font-size: $nex-font-size-lg;
+}
+
+@mixin hero-content {
+
+	font-size: 1.05rem;
+	margin-bottom: $margin-bottom-base;
+	opacity: 0.95;
+	line-height: 1.6;
+	color: $nexora-light;
+
+	@include heroSubtitle_sm;
+}
+
+
+/*
+less than 1130 to be flex layout. otherwise grid layout. 
+*/

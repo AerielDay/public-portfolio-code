@@ -1,0 +1,720 @@
+// =============================================
+// GLOBAL IMPORTS & PROJECT ENTRYPOINTS
+// Purpose: Provide portfolio-wide variables, mixins, and typography.
+// Note: Legacy @import calls remain below for compatibility.
+// =============================================
+// Global SCSS imports (placeholders; no code moved)
+@use "./_variables" as *;
+@use "./_mixins" as *;
+@use "./_typography" as *;
+@use "./_fonts" as *;
+@use "./_demo-placeholder" as *;
+// Project-level entry forwards (optional; safe no-ops until populated)
+@forward "../projects/nexora/styles/_nexora";
+@forward "../projects/artisans-haven/_artisans";
+
+// =============================================
+// IMPORTS (Legacy Sass @import) — MIGRATION COMPLETE
+// All legacy @import calls have been replaced with @use/@forward above.
+// These commented lines are kept for reference only; can be deleted once fully confident.
+// =============================================
+// @import './variables';
+// @import './fonts';
+// @import './typography';
+// @import './demo-placeholder';
+// @import '../projects/artisans-haven/_artisans.scss';
+// @import '../projects/taskflow/styles/_taskflow.scss';
+// @import '../projects/nexora/styles/_nexora.scss';
+
+// =============================================
+// SECTION: Projects Index (src/pages/Projects/ProjectsIndex.tsx)
+// Scope: Portfolio landing list of projects and overview cards.
+// =============================================
+/* Projects Index Page Styles */
+// BLOCK: Projects Index Page container
+.projects-index-page {
+    /* Pattern extracted to _mixins.scss - Use: @include content-container; */
+    @include content-container;
+}
+
+// BLOCK: Projects Index Heading
+.projects-title {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+// SUBSECTION: Projects Intro (index route)
+// Container for intro blurb and quick links list.
+/* Projects Intro (index route) */
+/* Pattern extracted to _mixins.scss - Use: @include content-container; */
+// BLOCK: Projects Intro container
+.projects-index-intro {
+    @include content-container;
+}
+
+// BLOCK: Projects Intro title
+.projects-index-title {
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+// BLOCK: Projects Intro subtitle
+.projects-index-subtitle {
+    text-align: center;
+    color: #D6EFFF;
+    margin-bottom: 2rem;
+}
+
+// BLOCK: Projects Intro list grid
+.projects-intro-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+// BLOCK: Projects Intro card (pattern: project-intro-card)
+/* Pattern extracted to _mixins.scss - Use: @include project-intro-card; */
+.projects-intro-card {
+    @include project-intro-card;
+}
+
+// BLOCK: Projects Intro card content
+.projects-intro-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+// ELEMENT: Projects Intro link
+.projects-intro-link {
+    font-weight: 700;
+    color: #2d3a5a;
+    text-decoration: none;
+}
+
+// ELEMENT: Projects Intro description
+.projects-intro-desc {
+    margin-top: 6px;
+    color: #444;
+}
+
+// ELEMENT: Projects Intro thumbnail image (pattern: thumbnail-image)
+/* Pattern extracted to _mixins.scss - Use: @include thumbnail-image; */
+.projects-intro-thumb img {
+    @include thumbnail-image;
+}
+
+// RESPONSIVE: Projects Intro (<=700px)
+/* Media queries for intro card/thumb now handled by mixins
+   - @include project-intro-card (adjusts grid/padding)
+   - @include thumbnail-image (adjusts sizing)
+*/
+
+// SUBSECTION: Projects List
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+// BLOCK: Project Card (pattern: project-card)
+/* Pattern extracted to _mixins.scss - Use: @include project-card; */
+.project-card {
+    @include project-card;
+}
+
+// BLOCK: Project Info column
+.project-info {
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+// ELEMENT: Project Info title
+.project-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+// ELEMENT: Project Info description
+.project-info p {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    color: #444;
+}
+
+// BLOCK: Project action links
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+// ELEMENT: Portfolio Theme Button (pattern: portfolio-button)
+/* Portfolio Theme Button */
+/* Pattern extracted to _mixins.scss - Use: @include portfolio-button; */
+.portfolio-btn {
+    @include portfolio-button;
+}
+
+// BLOCK: Project Preview column
+.project-preview {
+    flex: 0 0 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+// ELEMENT: Project preview image
+.project-img-thumb {
+    width: 200px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.09);
+    margin-bottom: 0.5rem;
+}
+
+// ELEMENT: Project image caption
+.img-caption {
+    font-size: 0.95rem;
+    color: #888;
+}
+
+// =============================================
+// SECTION: Modal (global preview modal)
+// Files: Components opening modal vary; styles centralized here.
+/* Modal Styles */
+/* Patterns extracted to _mixins.scss - Use: @include modal-overlay; @include modal-content; */
+// BLOCK: Modal overlay (pattern: modal-overlay)
+.modal-overlay {
+    @include modal-overlay;
+}
+
+// BLOCK: Modal content panel (pattern: modal-content)
+.modal-content {
+    @include modal-content;
+}
+
+.modal-img {
+    max-width: min(600px, 90vw);
+    max-height: 70vh;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.13);
+    object-fit: contain;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+}
+
+// RESPONSIVE: Project Card & Preview (<=700px)
+@media (max-width: 700px) {
+
+    /* project-card responsive handled by @include project-card */
+    .project-preview {
+        align-items: flex-start;
+    }
+
+    /* project-img-thumb sizing handled by @include thumbnail-image */
+}
+
+// =============================================
+// RESPONSIVE: Portfolio (<=768px)
+// Purpose: Reduce spacing/typography for tighter layout on mobile.
+/* Mobile spacing reductions for portfolio */
+@media (max-width: 768px) {
+
+    /* projects-index-intro spacing handled by @include content-container */
+    .projects-index-page {
+        margin: 1rem auto;
+        padding: 0 0.75rem;
+    }
+
+    .projects-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .projects-index-subtitle {
+        margin-bottom: 1.5rem;
+    }
+
+    .projects-intro-list {
+        gap: 0.75rem;
+    }
+
+    /* projects-intro-card padding handled by @include project-intro-card */
+
+    .projects-list {
+        gap: 1.5rem;
+    }
+
+    /* project-card padding handled by @include project-card */
+
+    .project-info h2 {
+        font-size: 1.2rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .project-info p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .project-links {
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    .portfolio-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .project-preview {
+        flex: 0 0 auto;
+    }
+
+    .modal-content {
+        padding: 1rem;
+        max-width: 95vw;
+        max-height: 80vh;
+    }
+
+    .modal-img {
+        max-width: min(90vw, 100%);
+        max-height: 65vh;
+    }
+}
+
+// (imports moved to top)
+
+/* Global breadcrumb styling - demo mode only */
+.demo-mode .breadcrumb {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.95rem;
+    // margin-bottom: 0.6rem;
+
+    a {
+        color: var(--text-primary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    // a:hover {
+    //     color: var(--accent-hover);
+    // }
+
+    .sep {
+        color: #666;
+        margin: 0 0.25rem;
+    }
+}
+
+// @import './global';
+// :root {
+//     --accent: #6C5CE7;
+//     --bg: #0b1020;
+//     --text: #e6eef6
+// }
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body,
+#root {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    padding-top: 80px;
+    color: var(--text-color)
+}
+
+html {
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+}
+
+a {
+    color: var(--accent-color)
+}
+
+// TBD: Potentially unused `.card` selector — commented for review.
+// No JSX usage found in current codebase; delete if not needed.
+/*
+.card {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 0.5rem 0
+}
+*/
+
+.site-header {
+    //border: 2px solid red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 3em;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    z-index: 9997;
+    background: linear-gradient(180deg, #0E3D59 0%, #0E3D59 100%);
+    //padding-right:3.5em;
+}
+
+.siteNav {
+    //border: 2px solid blue;
+    min-height: 3em;
+    display: flex;
+    // justify-content: space-around;
+    align-items: center;
+    margin-top: auto;
+    width: 100%;
+    margin-bottom: auto;
+    // gap:0.5em;
+}
+
+
+
+/* Cart Drawer Overlay */
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: flex-end;
+    z-index: 9999;
+}
+
+/* Drawer Panel */
+.cart-drawer {
+    background: #0E3D59;
+    /* your blue background */
+    color: #d6efff;
+    width: 340px;
+    max-width: 90%;
+    height: 100%;
+    padding: 1rem;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+
+    /* Slide-in animation */
+    transform: translateX(100%);
+    animation: slideIn 0.28s ease-out forwards;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Header */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #d6efff;
+    cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.25rem;
+
+    &:hover {
+        color: #fff;
+    }
+
+    &:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 2px;
+    }
+}
+
+/* Items */
+.cart-items {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-top: 1rem;
+}
+
+.cart-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    .cart-item-image {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 6px;
+        flex-shrink: 0;
+    }
+
+    .info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .info h3 {
+        margin: 0 0 0.25rem;
+        font-size: 1rem;
+    }
+
+    .info p {
+        margin: 0;
+        font-size: 0.9rem;
+        opacity: 0.85;
+    }
+
+    .controls {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-end;
+    }
+
+    .qty-controls {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        button {
+            // min-width: 44px;
+            // min-height: 44px;
+            // padding: 0.5rem;
+            // //background: rgba(255, 255, 255, 0.1);
+            // border: 1px solid rgba(255, 255, 255, 0.2);
+            // color: #333;
+            // border-radius: 4px;
+            // cursor: pointer;
+            // font-size: 1.25rem;
+            // line-height: 1;
+            // // transition: background-color 0.2s ease;
+            // // background-color: #d9d8d5;
+
+            min-width: 44px;
+            min-height: 44px;
+            background-color: #d9d8d5;
+            color: #333;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+
+            &:active{
+                background-color: #bcbbb8;
+            }
+            &:hover {
+                // background: rgba(255, 255, 255, 0.15);
+                background-color:#e2e1de;
+            }
+
+            &:focus-visible {
+                // outline: 3px solid var(--accent);
+                // outline-offset: 2px;
+                background-color:#d9d8d5;
+                color: #333;
+            }
+        }
+
+        span {
+            min-width: 2rem;
+            text-align: center;
+        }
+    }
+}
+
+.remove-btn {
+    background: none;
+    color: #ffb3b3;
+    border: none;
+    cursor: pointer;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem;
+
+    &:focus-visible {
+        outline: 3px solid #ffb3b3;
+        outline-offset: 2px;
+    }
+}
+
+.empty {
+    opacity: 0.75;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* Footer */
+.cart-footer {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.total {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.checkout-btn {
+    display: block;
+    background: var(--accent);
+    text-align: center;
+    padding: 0.75rem;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.checkout-btn:hover {
+    background: var(--accent-hover);
+}
+
+/* Demo-specific cart drawer styling */
+.demo-landing~.cart-overlay .cart-drawer,
+.demo-landing .cart-drawer {
+    background: var(--demo-surface, #FCFAF4);
+    color: var(--demo-text, #383837);
+
+    h2 {
+        font-family: Georgia, 'Times New Roman', serif;
+        color: var(--demo-heading, #383837);
+    }
+
+    .close-btn {
+        color: var(--demo-text, #383837);
+    }
+
+    .cart-item {
+        border-bottom: 1px solid var(--demo-border, rgba(56, 56, 55, 0.1));
+
+        .info h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--demo-heading, #383837);
+        }
+    }
+
+    .remove-btn {
+        color: var(--demo-accent, #8DB8B8);
+    }
+
+    .cart-footer {
+        border-top: 1px solid var(--demo-border, rgba(56, 56, 55, 0.1));
+
+        .total {
+            color: var(--demo-heading, #383837);
+        }
+
+        .checkout-btn {
+            background: var(--demo-accent, #8DB8B8);
+            color: #fff;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        .checkout-btn:hover {
+            background: var(--demo-accent-hover, #6A9999);
+            color: #fff;
+        }
+    }
+}
+.titlesForHome{
+font-family:$font-heading;
+margin-left: 2rem;
+margin-right: 2rem;
+}
+
+.portIntro, .ongoingNote, .myIntro{
+font-size: 1rem;
+color: var(--text-color); 
+margin-left: 2.5rem;
+margin-right: 2rem;
+font-family:$font-body; 
+
+@include xsm_media{
+    font-size: 0.90rem;
+};
+}
+// .myIntro{
+// font-size: 1rem;
+// font-family:$font-body;
+// color: var(--text-color);
+//     @include xsm_media{
+//         font-size: 0.90rem;
+//     };
+// }
+
+.home-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    padding: 3rem 2rem;
+}
+
+.home-text {
+    flex: 1 1 300px;
+    min-width: 220px;
+    font-family: var(--font-heading);
+
+}
+
+.home-image {
+    flex: 0 0 260px;
+    max-width: 320px;
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+}
+
+@media (max-width: 768px) {
+    .home-section {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap:0rem;
+        padding:1.5rem 2rem;
+    }
+
+    .home-image {
+        margin: 0 auto 1.5rem auto;
+        max-width: 80vw;
+    }
+}

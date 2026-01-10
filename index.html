@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aeriel Day | Front-End Developer Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Aeriel Day - Front-End Developer specializing in React, TypeScript, and accessible web applications. View projects including e-commerce demos, consulting websites, and task management apps." />
+  <meta name="keywords"
+    content="Aeriel Day, Front-End Developer, React Developer, TypeScript, Web Developer, Portfolio, WCAG Accessibility" />
+  <meta name="author" content="Aeriel Day" />
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Aeriel Day | Front-End Developer Portfolio" />
+  <meta property="og:description" content="Explore React/TypeScript projects with WCAG 2.2 accessibility compliance" />
+  <meta property="og:url" content="https://aerielday.com" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://aerielday.com" />
+
+  <!-- GitHub Pages SPA redirect hack -->
+  <script type="text/javascript">
+    (function (l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search.slice(1).split('&').map(function (s) {
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+          l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    }(window.location))
+  </script>
+</head>
+
+<body>
+  <script>
+    (function () {
+      // Ensure deep links work on GitHub Pages by converting paths to hash
+      var path = window.location.pathname;
+      var isRoot = path === '/' || path === '';
+      var hasHash = window.location.hash && window.location.hash.length > 1;
+      if (!isRoot && !hasHash) {
+        var newUrl = window.location.origin + '/#' + path + (window.location.search || '');
+        window.location.replace(newUrl);
+      }
+    })();
+  </script>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>

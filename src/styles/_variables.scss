@@ -1,0 +1,88 @@
+// =============================================
+// FILE: _variables.scss
+// Purpose: Global SCSS design tokens for portfolio (colors, fonts, sizes)
+// Exposes CSS custom properties in :root and Sass variables for mixins
+// =============================================
+/* SCSS Variables - Global & Project-Specific */
+
+/* === Typography Variables (extracted from _typography.scss) === */
+// Fonts, sizes, weights, line-heights
+
+// Font families
+$font-body: 'Inter', system-ui, sans-serif;
+$font-heading: 'Montserrat', 'Inter', sans-serif;
+$font-accent: 'Playfair Display', 'Georgia', serif;
+
+// Font sizes
+$font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.1rem);
+$font-size-base-mobile: 0.85rem;
+
+// Heading sizes (desktop)
+$font-size-h1: clamp(2rem, 1.2rem + 2vw, 3.2rem);
+$font-size-h2: clamp(1.75rem, 1.1rem + 1.5vw, 2.6rem);
+$font-size-h3: clamp(1.5rem, 1rem + 1vw, 2rem);
+$font-size-h4: 1.25rem;
+$font-size-h5: 1.125rem;
+$font-size-h6: 1rem;
+
+// Heading sizes (mobile)
+$font-size-h1-mobile: clamp(1.2rem, 0.8rem + 1.2vw, 2rem);
+$font-size-h2-mobile: clamp(1.1rem, 0.75rem + 0.9vw, 1.6rem);
+$font-size-h3-mobile: clamp(0.95rem, 0.7rem + 0.6vw, 1.3rem);
+$font-size-h4-mobile: 0.95rem;
+$font-size-h5-mobile: 0.9rem;
+$font-size-h6-mobile: 0.85rem;
+
+// Line heights
+$line-height-base: 1.6;
+$line-height-heading: 1.25;
+
+// Font weights
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+/* === Color Variables === */
+// Portfolio colors used across non-demo styles
+
+// Portfolio colors
+$text-color: #D6EFFF;
+$heading-color: #D95E32;
+$accent-color: #732D46;
+$bg-color: #0E3D59;
+$bg-gradient: linear-gradient(180deg, #0E3D59 0%, #732D46 100%);
+
+/* === Navbar Variables (extracted from _navbar.scss) === */
+
+// Navbar colors (note: some overlap with portfolio colors above)
+$blue-bg: #0E3d59; // main page blue
+$orange-header: #D95E32; // header/orange text
+$accent-red: #732D46; // reddish accent
+$white: #D6EFFF;
+
+// Navbar UI
+$btn-radius: 6px;
+$focus-outline: 3px solid #ffd966; // high-visibility focus
+
+/* Root CSS Variables (for projects that use them) */
+// Exposed as CSS variables for components that rely on var(--token)
+:root {
+    --surface: rgba(255, 255, 255, 0.02);
+    --card: rgba(255, 255, 255, 0.04);
+    --text-primary: #d6efff;
+    --text-secondary: rgba(214, 239, 255, 0.8);
+    --accent: #953b5b;
+    --accent-hover: #732d46;
+    --heading-color: #D95E32;
+    --bg-gradient: linear-gradient(180deg, #0E3D59 0%, #732D46 100%);
+    --bg: #0E3D59;
+    --text-color: #D6EFFF;
+    --accent-color: #732D46;
+
+    // Typography CSS custom properties
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-heading: 'Montserrat', 'Inter', sans-serif;
+    --font-accent: 'Playfair Display', 'Georgia', serif;
+    --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.1rem);
+    --line-height-base: 1.6;
+}

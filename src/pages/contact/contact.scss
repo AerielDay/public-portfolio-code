@@ -1,0 +1,126 @@
+// :root {
+//     --surface: rgba(255, 255, 255, 0.02);
+//     --card: rgba(255, 255, 255, 0.04);
+//     --text-primary: #d6efff;
+//     --text-secondary: rgba(214, 239, 255, 0.8);
+//     --accent: #953b5b;
+//     --accent-hover: #732d46;
+//     // --accent-hover: #bf4e29;
+//     --heading-color: #D95E32;
+// }
+
+
+
+// .contact-me {
+//     padding: 3rem 2rem 5rem;
+    
+// }
+
+// .contact-container {
+//     max-width: 1200px;
+//     margin: 0 auto;
+//     display: grid;
+//     grid-template-columns: 1fr 1.5fr;
+//     gap: 4rem;
+//     padding:3rem 2rem;
+//     background: var(--card);
+// }
+
+// @media (max-width: 968px) {
+//     .contact-container {
+//         grid-template-columns: 1fr;
+//         gap: 3rem;
+//     }
+// }
+
+// .contact-info {
+//     color: #F9F9F9;
+// }
+
+// .contact-details {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 2rem;
+// }
+
+// .contact-item h4 {
+//     font-size: 1.1rem;
+//     color: var(--heading-color);
+//     margin: 0 0 0.5rem 0;
+// }
+
+// .contact-item p,
+// .contact-item a {
+//     color: #F9F9F9;
+//     line-height: 1.7;
+//     margin-bottom: 2rem;
+
+//     &:hover {
+//             color: var(--accent);
+//         }
+
+// }
+
+// .contact-form-wrapper {
+//     background: #F9F9F9;
+//     padding: 2.5rem;
+//     border-radius: 12px;
+//     border: 2px solid #D1D5DB;
+// }
+
+// .contact-form h4 {
+//     font-size: 1.75rem;
+//     color: #1F2B37;
+//     margin: 0 0 2rem 0;
+// }
+
+// .form-group {
+//     margin-bottom: 1.5rem;
+// }
+
+// .form-group label {
+//     display: block;
+//     color: #1F2B37;
+//     font-weight: 600;
+//     margin-bottom: 0.5rem;
+// }
+
+// .form-group input,
+// .form-group select,
+// .form-group textarea {
+//     width: 100%;
+//     padding: 0.75rem;
+//     border: 2px solid #D1D5DB;
+//     border-radius: 8px;
+//     font-size: 1rem;
+//     font-family: inherit;
+//     transition: border-color 0.3s ease;
+//     background: #F9F9F9;
+// }
+
+// .form-group input:focus,
+// .form-group select:focus,
+// .form-group textarea:focus {
+//     outline: none;
+//     border-color: #1F2B37;
+// }
+
+// .btn-submit {
+//     width: 100%;
+//     padding: 1rem 2rem;
+//     background: var(--accent);
+//     color: #F9F9F9;
+//     border: none;
+//     border-radius: 8px;
+//     font-size: 1.1rem;
+//     font-weight: 600;
+//     cursor: pointer;
+//     transition: all 0.3s ease;
+// }
+
+// .btn-submit:hover {
+//     background: var(--accent-hover);
+//     transform: translateY(-2px);
+//     box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+// }
+

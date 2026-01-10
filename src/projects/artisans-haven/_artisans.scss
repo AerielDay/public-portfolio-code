@@ -1,0 +1,19 @@
+/* src/projects/artisans-haven/_artisans.scss
+ * Entry point for Artisan's Haven demo project styles.
+ * Aggregates page-specific and component styles via @forward.
+ */
+
+// Import variables and mixins for use in this module
+@use "./styles/abstracts/variables" as *;
+@use "./styles/abstracts/mixins" as *;
+
+// Re-export page-specific styles
+@forward "./styles/pages/home";
+@forward "./styles/pages/products";
+@forward "./styles/pages/blog";
+@forward "./styles/pages/checkout";
+@forward "./styles/pages/project-details";
+@forward "./styles/pages/videos";
+@forward "./styles/pages/navbar";
+@forward "./styles/pages/sitemap";
+@forward "./styles/pages/footer";

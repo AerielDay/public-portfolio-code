@@ -1,0 +1,384 @@
+/*
+    Nexora About Page Styles
+    - Purpose: About and team page visuals for Nexora.
+    - Notes: Uses light background token `$nexora-light` for team cards.
+    - Migration: original literal backgrounds preserved as comments near replacements.
+*/
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Nexora about page styles placeholder
+// About Page (block2 - team section)
+
+.nexora-landing {
+    @include nexora-base;
+
+    .nexora-footer .footer-branding h2 {
+        @include xsm_media {
+            font-size: 1.5rem;
+        }
+
+        ;
+
+        @include sm_media {
+            font-size: 1.75rem;
+        }
+
+        ;
+
+        @include lg_media {
+            font-size: 2.5rem;
+        }
+
+        ;
+    }
+}
+
+.about-page {
+    background: transparent;
+
+    section {
+        padding: 1rem;
+    }
+
+    .block1 {
+        background: $nex-prim-linBG
+    }
+
+    .about-hero-section {
+        @include hero-section-base;
+
+        @include xsm_media {
+            padding: 2rem;
+        }
+
+        ;
+
+        @include sm_media {
+            padding: $nex-media-lmed-pad;
+            font-size: $nex-font-size-med;
+        }
+
+        ;
+
+        .about-content {
+            max-width: 800px;
+            //  @include hero-content;
+
+            @include xsm_media {
+                padding: $nex-media-sm-pad;
+            }
+
+            ;
+
+            .hero-content h1 {
+                @include xsm_media {
+                    font-size: $nex-font-size-sm;
+                }
+
+                ;
+
+                @include sm_media {
+                    font-size: $nex-font-size-secTitle;
+                }
+
+                ;
+            }
+
+            &.about-story p,
+            .about-story p {
+                @include hero-content;
+            }
+
+        }
+
+        // .landing-breadcrumb-wrapper{
+        //     text-align:left;
+
+        //     .breadcrumb{
+        //         padding-top:0;
+        //     }
+        // }
+        // .block1 {
+        //     text-align:center;
+        //     display:flex;
+        //     flex-direction: column;
+        //     align-items: center;
+
+        //     @include xsm_media {
+        //         padding: 2rem;
+        //     }
+
+        //     ;
+
+        //     @include sm_media {
+        //         padding: $nex-media-lmed-pad;
+        //         font-size: $nex-font-size-med;
+        //     }
+
+        //     ;
+
+        //     .block1.landing-breadcrumb-wrapper {
+        //         text-align: left !important;
+        //     }
+
+        //     .about-intro {
+        //         max-width: 800px;
+        //         // text-align:center;
+        //         @include hero-content;
+
+        //         @include xsm_media {
+        //             padding: $nex-media-sm-pad;
+        //         }
+
+        //         ;
+
+        //         .about-intro h3,
+        //         .about-intro about-story p {
+        //             @include xsm_media {
+        //                 font-size: $nex-font-size-sm;
+        //             }
+
+        //             ;
+
+        //             @include sm_media {
+        //                 font-size: $nex-font-size-med;
+        //             }
+
+        //             ;
+        //         }
+        //     }
+        // }
+    }
+
+
+    .about-team {
+        /* original: background-color: #F9F9F9; */
+        // background-color: #F9F9F9;
+        background-color: $nexora-light;
+        padding: 1rem;
+
+        h4 {
+            padding: 2rem 0;
+            color: $nexora-secondaryBG;
+            font-size: $nex-font-size-secTitle;
+            text-align: center;
+            margin: $margin-flat;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+
+            // @media (max-width: 640px) {
+            //     grid-template-columns: 1fr;
+            //     gap: 1.5rem;
+            // }
+
+            .team-member {
+                background: $nexora-light;
+                padding: 2rem;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                text-align: center;
+               // margin: 0 auto 4rem;
+                background-color: white;
+
+                h5 {
+                    color: $nexora-text;
+                }
+
+                .member-photo,
+                .member-photo-placeholder {
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    margin: 0 auto 1rem;
+                    display: block;
+                    border: 3px solid $nexora-accent;
+                    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+                }
+
+                .role {
+                    color: $nexora-accent;
+                    font-weight: 600;
+                    font-size: 1.25rem;
+                    margin-bottom: 1rem;
+                }
+
+                .bio {
+                    font-style: italic;
+                    font-size: 1rem;
+                    color: $nexora-btnPrim;
+                    line-height: 1.6;
+                }
+            }
+        }
+
+        // @media (max-width: 768px) {
+        //     //padding: 1rem;
+
+        //     .team-grid {
+        //         grid-template-columns: 1fr;
+        //         gap: 1.5rem;
+        //     }
+
+        //     .team-member {
+        //         padding: 1.5rem;
+        //         margin: 0 auto 2rem;
+        //     }
+        // }
+    }
+
+    .about-values {
+        background: $nexora-light;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+
+        h4 {
+            padding: 2rem 0;
+            color: $nexora-secondaryBG;
+            font-size: $nex-font-size-secTitle;
+            text-align: center;
+            margin: $margin-flat;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding-bottom: 4.5rem;
+
+            .value-card {
+
+                background: $nexora-light;
+                padding: 2rem;
+                border-radius: 12px;
+                border-left: 4px solid $nexora-accent;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+
+                h5 {
+                    color: $nexora-text;
+                    font-size: $nex-font-size-lmed
+                }
+
+                p {
+                    margin-top: $nex-gap-sm;
+                    color: $nexora-btnPrim;
+                    font-size: $nex-font-size-sm;
+                }
+            }
+        }
+    }
+
+}
+
+// About Values (block3 - separate section)
+
+/* Original file (commented out for reference)
+// Nexora about page styles placeholder
+// About Page (block2 - team section)
+// .about-page {
+//     background: $nexora-primaryBG;
+//     max-width: 1200px;
+//     margin: 0 auto;
+//     //padding: 0 1rem;
+//
+//     .about-team {
+//         background-color: #F9F9F9;
+//         padding: 1rem;
+//
+//         h4 {
+//             padding-top: 2rem;
+//         }
+//
+//         .team-grid {
+//             display: grid;
+//             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//             gap: 2rem;
+//
+//             @media (max-width: 640px) {
+//                 grid-template-columns: 1fr;
+//                 gap: 1.5rem;
+//             }
+//
+//             .team-member {
+//                 background: $nexora-light;
+//                 padding: 2rem;
+//                 border-radius: 12px;
+//                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+//                 text-align: center;
+//                 margin: 0 auto 4rem;
+//                 background-color: white;
+//
+//                 .member-photo,
+//                 .member-photo-placeholder {
+//                     width: 120px;
+//                     height: 120px;
+//                     border-radius: 50%;
+//                     object-fit: cover;
+//                     margin: 0 auto 1rem;
+//                     display: block;
+//                     border: 3px solid $nexora-accent;
+//                     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+//                 }
+//
+//                 .role {
+//                     color: $nexora-accent;
+//                     font-weight: 600;
+//                     font-size: 1.25rem;
+//                     margin-bottom: 1rem;
+//                 }
+//
+//                 .bio {
+//                     font-style: italic;
+//                     font-size: 1rem;
+//                     color: $nexora-btnPrim;
+//                     line-height: 1.6;
+//                 }
+//             }
+//         }
+//
+//         @media (max-width: 768px) {
+//             //padding: 1rem;
+//
+//             .team-grid {
+//                 grid-template-columns: 1fr;
+//                 gap: 1.5rem;
+//             }
+//
+//             .team-member {
+//                 padding: 1.5rem;
+//                 margin: 0 auto 2rem;
+//             }
+//         }
+//     }
+// }
+//
+// About Values (block3 - separate section)
+*/
+
+
+// .about-intro {
+//     padding: 3.5rem 2rem;
+//     text-align: center;
+//     //margin-bottom: 4rem;
+//     color: $nexora-accent;
+//     //margin: 0 0 1rem 0;
+
+//     .about-story {
+//         max-width: 1200px;
+//         margin: 0 auto;
+//         padding: 2rem;
+
+//         p {
+//             color: $nexora-light;
+//             text-align: left;
+//             font-size: 0.95rem;
+//         }
+//     }
+// }

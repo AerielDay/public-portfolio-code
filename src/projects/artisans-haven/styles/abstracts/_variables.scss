@@ -1,0 +1,109 @@
+// Artisan's Haven Sass Variables
+// ========================================
+
+// Colors (align with global naming)
+$white-100: #fff;
+$neutral-900: #383837;
+$surface-cream: #FFFEFA;
+$bg-color: #0E3D59;
+$text-color: #D6EFFF;
+
+// AH Demo-specific colors
+$ah-demo-bg: #FFFEFA;
+$ah-demo-text: #383837;
+$ah-demo-accent: #8DB8B8;
+$ah-demo-accent-hover: #6A9999;
+$ah-demo-heading: #383837;
+$ah-demo-surface: #FCFAF4;
+$ah-demo-border: rgba(56, 56, 55, 0.25);
+$ah-demo-video-bg: #000000;
+
+// Additional neutrals/surfaces
+$ah-surface-100: #f9fafb;
+$ah-surface-200: #f7f8fa;
+$ah-gray-700: #444444;
+$ah-gray-500: #999999;
+$ah-neutral-880: #383937;
+$ah-error: #d32f2f;
+
+// Spacing scale (values appearing 2+ times)
+$ah-spacing-xs: 0.5rem;
+$ah-spacing-sm: 0.75rem;
+$ah-spacing-md: 1rem;
+$ah-spacing-lg: 1.25rem;
+$ah-spacing-xl: 1.5rem;
+$ah-spacing-2xl: 2rem;
+$ah-spacing-3xl: 3rem;
+
+// Typography
+$ah-font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$ah-font-serif: Georgia, 'Times New Roman', serif;
+$ah-font-size-xs: 0.75rem;
+$ah-font-size-sm: 0.875rem;
+$ah-font-size-base: 1rem;
+$ah-font-size-lg: 1.25rem;
+$ah-font-size-xl: 1.5rem;
+$ah-font-weight-semibold: 600;
+$ah-font-weight-bold: 700;
+$ah-line-height-base: 1.6;
+
+// Layout & Components
+$ah-border-radius-sm: 6px;
+$ah-border-radius-md: 8px;
+$ah-border-radius-lg: 10px;
+$ah-border-radius-xl: 12px;
+$ah-min-touch-target: 44px;
+$ah-min-touch-target-lg: 48px;
+$ah-max-width: 1200px;
+$ah-border-thin: 1px;
+$ah-border-medium: 2px;
+$ah-border-thick: 3px;
+
+// Transitions
+$ah-transition-fast: 0.2s ease;
+
+// Breakpoints (mobile-first)
+$ah-breakpoint-mobile: 480px;
+$ah-breakpoint-tablet: 768px;
+$ah-breakpoint-desktop: 900px;
+
+// CSS Custom Properties (demo mode)
+.demo-landing {
+    --demo-bg: #{$ah-demo-bg};
+    --demo-text: #{$ah-demo-text};
+    --demo-accent: #{$ah-demo-accent};
+    --demo-accent-hover: #{$ah-demo-accent-hover};
+    --demo-heading: #{$ah-demo-heading};
+    --demo-surface: #{$ah-demo-surface};
+    --demo-border: #{$ah-demo-border};
+
+    // Provide hard fallbacks and CSS variable usage for resiliency
+    background: $ah-demo-bg;
+    background: var(--demo-bg, $ah-demo-bg);
+    color: $ah-demo-text;
+    color: var(--demo-text, $ah-demo-text);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: Georgia, 'Times New Roman', serif;
+        color: var(--demo-heading);
+    }
+
+    a {
+        color: $ah-demo-accent;
+        color: var(--demo-accent, $ah-demo-accent);
+    }
+
+    a:hover {
+        color: $ah-demo-accent-hover;
+        color: var(--demo-accent-hover, $ah-demo-accent-hover);
+    }
+}

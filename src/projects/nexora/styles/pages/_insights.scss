@@ -1,0 +1,373 @@
+/*
+    Nexora Insights Styles
+    - Purpose: styles for the Insights / blog listing pages.
+    - Notes: pulls color and spacing tokens from `abstracts/_variables.scss`.
+    - Migration: where colors or sizes were extracted they are documented nearby as comments.
+*/
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Nexora insights page styles placeholder
+.nexora-landing {
+    @include nexora-base;
+}
+
+.insights-page {
+    background: linear-gradient(135deg, $nexora-primaryBG 0%, $nexora-secondaryBG 100%);
+    color: $nexora-light;
+    padding: 0 2rem;
+    max-width: 1200px;
+
+    .landing-breadcrumb-wrapper .breadcrumb {
+        margin-left: 0;
+
+        @include xsm_media {
+            margin-left: 0;
+        }
+    }
+
+    .insights-header {
+        text-align: center;
+        //  max-width: 800px;
+        margin: 0 auto 1rem;
+        padding-top: 1rem;
+
+        @include xsm_media{
+            padding-top:1.75rem;
+        };
+
+        h1 {
+            @include xsm_media {
+                font-size: $nex-font-size-sm;
+                margin-bottom:$margin-flat;
+            };
+
+            @include sm_media {
+                font-size: $nex-font-size-lmed;
+            };
+
+            @include lg_media {
+                font-size: $nex-font-size-lg;
+            };
+        }
+
+        p {
+            @include xsm_media {
+                font-size: $nex-font-size-xsm;
+                margin-top:0.5rem;
+            };
+
+            @include sm_media {
+                font-size: $nex-font-size-xsm;
+            };
+        }
+    }
+
+    // .block1 {
+    //     min-height: 334px;
+
+    //     // @media (max-width: 768px) {
+    //     //     min-height: 212px;
+    //     // }
+    // }
+
+    .block2 {
+        padding: 3rem;
+
+        @include xsm_media{
+            padding: 0rem;
+        };
+
+        // @media (max-width: 768px) {
+        //     padding: 1rem;
+        // }
+    }
+
+    // .insights-header {
+    //     max-width: 1200px;
+    //     margin: 0 auto;
+    //     text-align: center;
+    //     padding-bottom: 4rem;
+
+    //     // @media (max-width: 768px) {
+    //     //     padding-bottom: 0;
+    //     // }
+
+    //     .insights-subtitle {
+    //         font-size: 1.1rem;
+    //         color: $nexora-light;
+    //         text-align: center;
+    //         line-height: 1.6;
+    //         padding: 0 1rem;
+
+    //         // @media (max-width: 768px) {
+    //         //     padding: 0 1rem 1rem 1rem;
+    //         // }
+    //     }
+
+    // }
+
+    .insights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+        gap: 2rem;
+        @include xsm_media{
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        };
+
+        // @media (max-width: 768px) {
+        //     grid-template-columns: 1fr;
+        // }
+
+        .insights-card {
+            background: $nexora-light;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid $nexora-border;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+
+            &:hover {
+                border-color: $nexora-primaryBG;
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(26, 115, 232, 0.15);
+            }
+
+            .insights-category {
+                display: inline-block;
+                background: $nexora-primaryBG;
+                color: $nexora-light;
+                padding: 0.4rem 0.8rem;
+                border-radius: 4px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
+                align-self: flex-start;
+
+
+            }
+
+            h4 {
+                font-size: 1rem;
+                color: $nexora-accent;
+                text-align: left;
+                margin: 0 0 1rem 0;
+                line-height: 1.3;
+            }
+
+
+            .insights-meta {
+                display: flex;
+                gap: 1rem;
+                color: $nexora-text;
+                font-size: 0.8rem;
+                margin-bottom: 1rem;
+
+                time {
+                    font-weight: 500;
+                }
+
+                .read-time {
+                    &::before {
+                        content: "•";
+                        margin-right: 0.5rem;
+                    }
+                }
+            }
+
+            .insights-excerpt {
+                color: $nexora-text;
+                line-height: 1.7;
+                margin-bottom: auto;
+                padding-bottom: 1rem;
+                font-size: $nex-font-size-sm;
+            }
+
+            .insights-link {
+                color: $nexora-btnPrim;
+                text-decoration: none;
+                font-weight: 600;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                transition: gap 0.3s ease;
+                align-self: flex-start;
+
+                &:hover {
+                    gap: 0.75rem;
+                    text-decoration: underline;
+                    color: $nexora-text;
+                }
+            }
+        }
+    }
+
+    .nexora-footer {
+        @include footer_base;
+
+        @include xsm_media {
+            background: transparent!important;
+        };
+
+        @include sm_media {
+            background: transparent!important;
+        };
+
+        @include lg_media {
+            background: transparent !important;
+        };
+
+    }
+}
+
+
+
+
+
+
+
+
+// .insights-page {
+//     // padding: 3rem 2rem;
+//     background: $nex-prim-linBG;
+//     //padding: 1rem;
+
+//     .block1 {
+//         min-height: 334px;
+
+//         // @media (max-width: 768px) {
+//         //     min-height: 212px;
+//         // }
+//     }
+
+//     .block2 {
+//         padding: 3rem;
+
+//         // @media (max-width: 768px) {
+//         //     padding: 1rem;
+//         // }
+//     }
+
+//     .insights-header {
+//         max-width: 1200px;
+//         margin: 0 auto;
+//         text-align: center;
+//         padding-bottom: 4rem;
+
+//         // @media (max-width: 768px) {
+//         //     padding-bottom: 0;
+//         // }
+
+//         .insights-subtitle {
+//             font-size: 1.1rem;
+//             color: $nexora-light;
+//             text-align: center;
+//             line-height: 1.6;
+//             padding: 0 1rem;
+
+//             // @media (max-width: 768px) {
+//             //     padding: 0 1rem 1rem 1rem;
+//             // }
+//         }
+
+//     }
+
+//     .insights-grid {
+//         display: grid;
+//         grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+//         gap: 2rem;
+
+//         // @media (max-width: 768px) {
+//         //     grid-template-columns: 1fr;
+//         // }
+
+//         .insights-card {
+//             background: $nexora-light;
+//             padding: 2rem;
+//             border-radius: 12px;
+//             border: 2px solid $nexora-border;
+//             transition: all 0.3s ease;
+//             display: flex;
+//             flex-direction: column;
+
+//             &:hover {
+//                 border-color: $nexora-primaryBG;
+//                 transform: translateY(-5px);
+//                 box-shadow: 0 8px 20px rgba(26, 115, 232, 0.15);
+//             }
+
+//             .insights-category {
+//                 display: inline-block;
+//                 background: $nexora-primaryBG;
+//                 color: $nexora-light;
+//                 padding: 0.4rem 0.8rem;
+//                 border-radius: 4px;
+//                 font-size: 0.85rem;
+//                 font-weight: 600;
+//                 margin-bottom: 1rem;
+//                 align-self: flex-start;
+
+
+//             }
+
+//             h4 {
+//                 font-size: 1rem;
+//                 text-align: left;
+//                 margin: 0 0 1rem 0;
+//                 line-height: 1.3;
+//             }
+
+//             // h4 {
+//             //     font-size: 1.5rem;
+//             //     color: $nexora-dark;
+//             //     margin: 0 0 1rem 0;
+//             //     line-height: 1.3;
+//             // }
+
+//             .insights-meta {
+//                 display: flex;
+//                 gap: 1rem;
+//                 color: $nexora-text;
+//                 font-size: 0.9rem;
+//                 margin-bottom: 1rem;
+
+//                 time {
+//                     font-weight: 500;
+//                 }
+
+//                 .read-time {
+//                     &::before {
+//                         content: "•";
+//                         margin-right: 0.5rem;
+//                     }
+//                 }
+//             }
+
+//             .insights-excerpt {
+//                 color: $nexora-btnPrim;
+//                 line-height: 1.7;
+//                 margin-bottom: 1.5rem;
+//                 flex-grow: 1;
+//             }
+
+//             .insights-link {
+//                 color: $nexora-accent;
+//                 text-decoration: none;
+//                 font-weight: 600;
+//                 display: inline-flex;
+//                 align-items: center;
+//                 gap: 0.5rem;
+//                 transition: gap 0.3s ease;
+//                 align-self: flex-start;
+
+//                 &:hover {
+//                     gap: 0.75rem;
+//                     text-decoration: underline;
+//                     color: $nexora-text;
+//                 }
+//             }
+//         }
+//     }
+// }

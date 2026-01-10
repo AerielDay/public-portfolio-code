@@ -1,0 +1,247 @@
+// =============================================
+// FILE: _typography.scss
+// Purpose: Global portfolio typography rules (CSS output)
+// Note: Variables moved to _variables.scss; media kept near affected blocks
+// Fonts: Inter, Montserrat, Playfair Display Italic
+// =============================================
+/* ================================
+    TYPOGRAPHY SETUP
+    ================================ */
+
+/* === Theme Variables === */
+// Source of variables: src/styles/_variables.scss
+// Use @use './variables' as *; to access tokens in SCSS contexts
+/* NOTE: Variables extracted to src/styles/_variables.scss */
+/* Use @use '../variables' as *; to access these tokens */
+
+/* Commented out - now defined in _variables.scss:
+:root {
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-heading: 'Montserrat', 'Inter', sans-serif;
+    --font-accent: 'Playfair Display', 'Georgia', serif;
+
+    --text-color: #D6EFFF;
+    --heading-color: #D95E32;
+    --accent-color: #732D46;
+    --bg-gradient: linear-gradient(180deg, #0E3D59 0%, #732D46 100%);
+    --bg: #0E3D59;
+
+    --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.1rem);
+    --line-height-base: 1.6;
+}
+*/
+
+// RESPONSIVE: Base font size (<=768px)
+/* Mobile font size reduction */
+@media (max-width: 768px) {
+    :root {
+        --font-size-base: 0.85rem;
+    }
+
+    body {
+        font-size: 0.85rem;
+    }
+}
+
+[data-theme='dark'] {
+    --text-color: #e8e8e8;
+    --heading-color: #ffffff;
+    --accent-color: #d8b4fe;
+}
+
+/* === Base Typography === */
+// BLOCK: Base document type defaults
+body {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+}
+
+/* === Headings === */
+// BLOCK: h1–h6 scales
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//     font-family: var(--font-heading);
+//     color: var(--heading-color);
+//     line-height: 1.25;
+//     font-weight: 700;
+//     margin: 0 0 0.5em;
+// }
+
+// h1 {
+//     font-size: clamp(2rem, 1.2rem + 2vw, 3.2rem);
+// }
+
+// h2 {
+//     font-size: clamp(1.75rem, 1.1rem + 1.5vw, 2.6rem);
+// }
+
+// h3 {
+//     font-size: clamp(1.5rem, 1rem + 1vw, 2rem);
+// }
+
+// h4 {
+//     font-size: 1.25rem;
+// }
+
+// h5 {
+//     font-size: 1.125rem;
+// }
+
+// h6 {
+//     font-size: 1rem;
+// }
+
+// RESPONSIVE: Headings (<=768px)
+/* Mobile heading size reduction */
+@media (max-width: 768px) {
+    h1 {
+        font-size: clamp(1.2rem, 0.8rem + 1.2vw, 2rem);
+    }
+
+    h2 {
+        font-size: clamp(1.1rem, 0.75rem + 0.9vw, 1.6rem);
+    }
+
+    h3 {
+        font-size: clamp(0.95rem, 0.7rem + 0.6vw, 1.3rem);
+    }
+
+    h4 {
+        font-size: 0.95rem;
+    }
+
+    h5 {
+        font-size: 0.9rem;
+    }
+
+    h6 {
+        font-size: 0.85rem;
+    }
+}
+
+/* === Accents === */
+// BLOCK: accent font usage
+.tagline,
+blockquote,
+figcaption,
+em.accent {
+    font-family: var(--font-accent);
+    font-style: italic;
+    color: var(--accent-color);
+}
+
+/* === Other Elements === */
+// BLOCK: paragraph spacing
+p {
+    margin-bottom: 1em;
+}
+
+// RESPONSIVE: Paragraph (<=768px)
+/* Mobile margin/padding reduction */
+@media (max-width: 768px) {
+    p {
+        margin-bottom: 0.75em;
+    }
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: var(--heading-color);
+    }
+}
+
+button,
+.nav a {
+    font-family: var(--font-body);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Mobile button styling */
+@media (max-width: 768px) {
+
+    // button,
+    // .btn,
+    // [role="button"] {
+    //     font-size: 0.8rem;
+    //     padding: 0.5rem 1rem;
+    // }
+
+    /* Apply font-size reduction demo-wide (both Nexora and Artisan's Haven) */
+    .demo-mode,
+    .demo-landing {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-bottom: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        h1 {
+            font-size: clamp(1.2rem, 0.8rem + 1.2vw, 2rem) ;
+        }
+
+        h2 {
+            font-size: clamp(1.1rem, 0.75rem + 0.9vw, 1.6rem) ;
+        }
+
+        h3 {
+            font-size: clamp(0.95rem, 0.7rem + 0.6vw, 1.3rem) ;
+        }
+
+        h4 {
+            font-size: 0.95rem ;
+        }
+
+        h5 {
+            font-size: 0.9rem ;
+        }
+
+        h6 {
+            font-size: 0.85rem ;
+        }
+
+        p {
+            font-size: 0.85rem ;
+            margin-bottom: 0.75rem;
+        }
+
+        // button,
+        // .btn,
+        // [role="button"] {
+        //     font-size: 0.8rem ;
+        // }
+    }
+}
+
+/* === Utilities === */
+// BLOCK: text alignment + accent utility
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-accent {
+    font-family: var(--font-accent);
+    font-style: italic;
+}

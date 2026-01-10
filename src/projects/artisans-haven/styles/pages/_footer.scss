@@ -1,0 +1,78 @@
+// Artisan's Haven footer (demo disclaimer)
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.demo-landing .demo-disclaimer {
+    max-width: $ah-max-width;
+    margin: $ah-spacing-3xl auto 0;
+    padding: $ah-spacing-xl $ah-spacing-2xl;
+    background: var(--demo-surface);
+    border-top: $ah-border-thick solid var(--demo-accent);
+    border-radius: $ah-border-radius-md;
+
+    @include xsm_media {
+        padding: $ah-spacing-lg $ah-spacing-md;
+        margin: $ah-spacing-2xl auto 0;
+    }
+
+    p {
+        margin: 0;
+        color: var(--demo-text);
+        font-size: $ah-font-size-sm;
+        line-height: $ah-line-height-base;
+        text-align: center;
+
+        @include xsm_media {
+            font-size: 0.8rem;
+        }
+
+        strong {
+            color: var(--demo-heading);
+            font-weight: $ah-font-weight-bold;
+        }
+    }
+
+    .demo-sitemap-link {
+        color: var(--demo-accent);
+        text-decoration: none;
+        white-space: nowrap;
+
+        &:hover {
+            color: var(--demo-accent-hover);
+            text-decoration: underline;
+        }
+    }
+}
+
+/* ORIGINAL:
+.demo-landing .demo-disclaimer {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    padding: 1.5rem 2rem;
+    background: var(--demo-surface);
+    border-top: 3px solid var(--demo-accent);
+    border-radius: 8px;
+
+    @media (max-width: 480px) {
+        padding: 1.25rem 1rem;
+        margin: 2rem auto 0;
+    }
+
+    p {
+        margin: 0;
+        color: var(--demo-text);
+        font-size: 0.875rem;
+        line-height: 1.6;
+        text-align: center;
+
+        @media (max-width: 480px) {
+            font-size: 0.8rem;
+        }
+
+        strong {
+            color: var(--demo-heading);
+            font-weight: 700;
+        }
+    }
+}
+*/

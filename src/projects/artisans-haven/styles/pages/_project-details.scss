@@ -1,0 +1,390 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+
+
+.artisan-haven {
+   // padding: 2rem;
+    border-radius: 1.25rem;
+    margin: 0 auto;
+   padding: 2rem 2rem 4rem 2rem; 
+
+   
+    // @include xsm_media{
+    //     padding: 0.75rem;
+    // };
+    // @include sm_media{
+    //     padding: 0.75rem;
+    // }
+
+    .hero {
+        &.hero-layout .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr;
+            /* full width hero copy */
+            gap: 1.5rem;
+            align-items: start;
+
+            // @include med_media {
+            grid-template-columns: 1fr;
+
+            .hero-screen {
+                justify-self: center;
+                justify-content: center;
+            }
+
+            // }
+
+            .hero-copy {
+                .project-title {
+                    font-family: $ah-font-serif;
+                    font-size: clamp(2rem, 2.4rem + 1vw, 3rem);
+                    margin: 0 0 0.5rem;
+                    color: var(--heading-color);
+                }
+
+                .project-subtitle {
+                    color: var(--demo-text);
+                    opacity: 0.85;
+                    margin-bottom: 1rem;
+                    max-width: 60ch;
+                }
+
+                .hero-ctas {
+                     display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 0.75rem;
+                     max-width:500px;
+                    margin-left:0;
+                    margin-right:auto;
+                    margin-top: 1rem;
+
+                    .btn {
+                         width:100%;
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                        white-space:nowrap;
+                        text-decoration: none;
+                        font-family: $ah-font-sans;
+                        font-weight: $ah-font-weight-semibold;
+                    }
+
+                    .btn-primary {
+                        background: var(--accent);
+                        color: $text-color;
+                        text-align:center;
+                        padding: $ah-spacing-sm $ah-spacing-lg;
+                        border-radius: $ah-border-radius-md;
+                        display: inline-block;
+                        transition: background-color $ah-transition-fast;
+                    }
+
+                    .btn-primary:hover {
+                        background: var(--accent-hover);
+                    }
+
+                    .btn-ghost {
+                        background: transparent;
+                        color: var(--text-primary);
+                        text-align: center;
+                        padding: $ah-spacing-sm $ah-spacing-lg;
+                        border-radius: $ah-border-radius-md;
+                        border: $ah-border-thin solid rgba(255, 255, 255, 0.2);
+                        display: inline-block;
+                        transition: all $ah-transition-fast;
+                    }
+
+                    .btn-ghost:hover {
+                        background: rgba(255, 255, 255, 0.05);
+                        border-color: rgba(255, 255, 255, 0.3);
+                    }
+                }
+            }
+        }
+    }
+    /* side-by-side interface rows */
+    .interface-rows {
+        margin-top: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2.25rem;
+
+         @include xsm_media {
+            margin-top: 1.5rem;
+            gap: 1rem;
+        }
+    }
+
+    .interface-row {
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 2rem;
+        align-items: start;
+        
+          @include xsm_media {
+            display:flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+
+        .feature-explainer {
+            background: var(--card);
+            padding: 1.25rem 1.25rem 1rem;
+            border-radius: .85rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .22);
+
+            h3 {
+                // margin: 0 0 .6rem;
+                // color: var(--heading-color);
+                // font-size: 1.3rem;
+                margin-top:0;
+                @include xsm_media{
+                    margin-top:0;
+                }
+            }
+
+            // p {
+            //     margin: 0 0 .75rem;
+            //     color: var(--text-secondary);
+            //     font-size: .95rem;
+            //     line-height: 1.4;
+            // }
+
+            // .btn-link {
+            //     text-decoration: none;
+            //     font-weight: 600;
+            //     color: var(--accent);
+            // }
+
+            // .btn-link:hover {
+            //     text-decoration: underline;
+            // }
+        }
+
+        /* Interface row screen cards */
+        .screen-card {
+            background: var(--card);
+            padding: 1rem;
+            border-radius: .75rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .12);
+
+                @include xsm_media {
+                padding: 0.75rem;
+                width:100%;
+            }
+
+            .screen-header {
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+
+
+                .expanded-btn {
+                    background: transparent;
+                    border: $ah-border-thin solid rgba(255, 255, 255, 0.04);
+                    color: var(--text-primary);
+                    border-radius: $ah-border-radius-md;
+                    padding: 0.65rem 0.85rem;
+                    cursor: pointer;
+                    flex: 1;
+                    text-align: left;
+                    font-weight: $ah-font-weight-semibold;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-size: 1.1rem;
+                    transition: background-color $ah-transition-fast;
+
+                        .expand-label {
+                            @include xsm_media {
+                                font-size: 0.75rem;
+                                //padding: 0.5rem 0.65rem;
+                            }
+                        }
+
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.02);
+                    }
+
+                    &:focus-visible {
+                        background: rgba(255, 255, 255, 0.02);
+                        outline: 3px solid var(--accent);
+                        outline-offset: 2px;
+                    }
+                }
+
+                .view-btn {
+                    background: var(--accent);
+                    color: $white-100;
+                    border: none;
+                    font-size: 1rem;
+                    padding: 0.65rem 0.85rem;
+                    border-radius: $ah-border-radius-md;
+                    cursor: pointer;
+                    font-weight: $ah-font-weight-semibold;
+                    transition: background-color $ah-transition-fast;
+
+                      @include xsm_media {
+                        font-size: 0.85rem;
+                        padding: 0.5rem 0.65rem;
+                    }
+                    &:hover {
+                        background: var(--accent-hover);
+                    }
+                }
+            }
+
+            /* full-width dropped panel */
+            /* remove full-width panel; ensure container still constrained */
+            // .artisan-haven {
+            //     max-width: $ah-max-width;
+            //     margin: 0 auto;
+            //     overflow-x: hidden;
+            // }
+
+            .screen-panel {
+                margin-top: .6rem;
+                background: rgba(255, 255, 255, 0.03);
+                padding: .75rem .85rem .7rem;
+                border-radius: .6rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
+                animation: fadeInPanel 160ms ease;
+
+                //  overflow: visible;
+                // display: flex;
+                //  flex-direction: column;
+                // align-items: center;
+                img {
+                    width: 100%;
+                    max-height: 160px;
+                    object-fit: cover;
+                    border-radius: .5rem;
+                    box-shadow: 0 2px 12px rgba(0, 0, 0, .35);
+                    margin-bottom: .5rem;
+                    display: block;
+                }
+
+            }
+        }
+    }
+
+    @keyframes fadeInPanel {
+        from {
+            opacity: 0;
+            transform: translateY(-4px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* lightbox for artisan preview (inline with page styles) */
+    .lightbox {
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        // top: 3.883rem; // offset under navbar
+        //bottom: 0;
+        // max-height: calc(100% - 3.883rem);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(2, 6, 23, 0.9);
+        z-index: 1200;
+        padding: calc(56px + 2rem) 2rem 2rem 2rem;
+
+        .lightbox-close {
+            position: absolute;
+            right: 1.5rem;
+            width: 44px;
+            height: 44px;
+            top: calc(56px + 1rem);
+            background: $neutral-900;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            color: $surface-cream;
+            font-size: 1.5rem;
+            //padding: 8px 14px;
+            border-radius: 50%;
+            cursor: pointer;
+            min-width: 44px;
+            min-height: 44px;
+            z-index: 1300;
+
+            &:hover {
+                background: $ah-demo-accent-hover;
+                border-color: rgba(0, 0, 0, 0.3);
+                transform: scale(1.1);
+            }
+        }
+
+        // .lightbox-inner {
+        //     // background: transparent;
+        //     // padding: 1rem;
+        //     // border-radius: 8px;
+        //     position: relative;
+        //     max-width: 100%;
+        //     max-height: calc(100vh - 56px - 4rem);
+        //     // overflow: auto;
+        //     display: flex;
+        //     // flex-direction: column;
+        //     justify-content: center;
+        //     align-items: center;
+
+        //     img {
+        //         max-width: 100%;
+        //         max-height: calc(100vh - 56px - 6rem);
+        //         height: auto;
+        //         width: auto;
+        //         display: block;
+        //         border-radius: 8px;
+        //         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+        //         object-fit: contain;
+        //     }
+        // }
+
+.lightbox-inner {
+position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   // max-width: 100%;
+    max-height: calc(100vh - 56px - 4rem);    
+    // We give the container a specific fixed size relative to the viewport
+   max-width:100%;
+   // height: calc(100vh - 56px - 4rem); 
+
+    img {
+        // Change from 'auto' to '100%' to force small images to grow
+        width: 100%;
+        height: 100%;
+        
+        // This is the magic: it grows the image to fill the 100% width/height
+        // but keeps the correct aspect ratio without distorting.
+        object-fit: contain; 
+        
+        border-radius: 8px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+        display: block;
+    }
+}
+
+
+
+         @media (max-width: 768px) {
+        padding: calc(56px + 1rem) 1rem 1rem 1rem;
+
+        .lightbox-close {
+            top: calc(56px + 0.5rem);
+            right: 0.5rem;
+        }
+    }
+
+    }
+}

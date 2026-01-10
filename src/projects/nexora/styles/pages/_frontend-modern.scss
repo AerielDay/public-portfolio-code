@@ -1,0 +1,511 @@
+// /*
+//     Nexora Front-End Modernization Styles
+//     - Purpose: page styles for the Front-End Modernization service detail.
+//     - Notes: uses `sass:color` where color manipulation is required; ensure `@use 'sass:color'` stays present when using `color.adjust()`.
+//     - Migration: original color literals preserved as comments when replaced by variables.
+// */
+
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.nexora-landing {
+    @include nexora-base;
+}
+
+.service-detail-page{
+    @include nex-serviceDetail-template;
+}
+
+// // Nexora frontend modernization page styles placeholder
+// .service-detail-page {
+//     .block1 {
+//         background: $nex-prim-linBG;
+//         padding-bottom: 1rem;
+
+//         .service-detail-header {
+//             text-align: center;
+//             padding: 5rem 2rem ;
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             //gap: 2rem;
+//             max-width: 856px;
+//             margin: 0 auto;
+
+//             p {
+//                 color: $nexora-light;
+//                 margin-top: 0;
+//             }
+//         }
+
+//         .service-overview {
+//             padding: 0 3rem;
+
+//             h2 {
+//                 color: $nexora-btnPrim;
+//                 margin: 0;
+//             }
+
+//             p {
+//                 color: $nexora-light;
+//                 margin-top: 0;
+//             }
+//         }
+//     }
+
+//     .block2 {
+//         background: $nexora-light;
+//         padding-bottom: 1rem;
+//         padding: 2rem;
+
+
+//         .highlights-grid {
+//             display: grid;
+//             /* 2 equal columns on wide screens, responsive down to 1 */
+//             grid-template-columns: repeat(2, 1fr);
+//             max-width: 1200px;
+//             margin: 0 auto;
+//             gap: 2rem;
+//             align-items: stretch;
+
+//             // @media (max-width: 900px) {
+//             //     grid-template-columns: 1fr;
+//             // }
+
+//             // @media (max-width: 640px) {
+//             //     grid-template-columns: 1fr;
+//             // }
+
+//             .highlight-card {
+//                 background: $nexora-light;
+//                 padding: 2rem;
+//                 min-width: 16.5rem;
+//                 width: 100%;
+//                 border-radius: 12px;
+//                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+//                 transition: all 0.3s ease;
+
+//                 // &:hover {
+//                 //     transform: translateY(-8px);
+//                 //     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+//                 // }
+//             }
+//         }
+//     }
+
+//     .block3 {
+//         background: linear-gradient(180deg, $nexora-light 40%, $nexora-secondaryBG 100%);
+//         padding: 2rem;
+
+//         .modern-cta {
+//             text-align: center;
+//             padding: 5rem 2rem 0 2rem ;
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             //gap: 2rem;
+//             max-width: 856px;
+//             margin: 0 auto;
+
+//             h2 {
+//                 /* original: color: #215011; */
+//                 // color: #215011;
+//                 color: $nexora-green-dark;
+//                 margin: 0;
+//             }
+
+//             p {
+//                 color: $nexora-light;
+//             }
+//         }
+
+//         .services-more {
+//             display: flex;
+//             justify-content: center;
+
+//             .btn-primary-large {
+//                 padding: 1.25rem 3rem;
+//                 background: $nexora-btnPrim;
+//                 color: $nexora-light;
+//                 text-decoration: none;
+//                 font-weight: 600;
+//                 font-size: 1.25rem;
+//                 border-radius: 8px;
+//                 display: inline-block;
+//                 transition: all 0.3s ease;
+
+//                 &:hover {
+//                     background: color.adjust($nexora-btnPrim, $lightness: -10%);
+//                     transform: translateY(-2px);
+//                     box-shadow: 0 8px 20px rgba(86, 210, 45, 0.5);
+//                 }
+//             }
+//         }
+//     }
+
+//     .nexora-footer {
+//         padding: 5rem 2rem 1.5rem;
+//         /* original: background: linear-gradient(to bottom, #0a3267, #1e2b38) */
+//         // background: linear-gradient(to bottom, #0a3267, #1e2b38)
+//         background: linear-gradient(to bottom, $nexora-grad-top, $nexora-grad-bottom)
+//     }
+// }
+
+// /* Original file (commented out for reference)
+// ```scss
+// // Nexora frontend modernization page styles placeholder
+// .service-detail-page {
+//     .block1 {
+//         background: $nex-prim-linBG;
+//         padding-bottom: 1rem;
+
+//         .service-detail-header {
+//             text-align: center;
+//             padding: 5rem 2rem ;
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             //gap: 2rem;
+//             max-width: 856px;
+//             margin: 0 auto;
+
+//             p {
+//                 color: $nexora-light;
+//                 margin-top: 0;
+//             }
+//         }
+
+//         .service-overview {
+//             padding: 0 3rem;
+
+//             h2 {
+//                 color: $nexora-btnPrim;
+//                 margin: 0;
+//             }
+
+//             p {
+//                 color: $nexora-light;
+//                 margin-top: 0;
+//             }
+//         }
+//     }
+
+//     .block2 {
+//         background: $nexora-light;
+//         padding-bottom: 1rem;
+//         padding: 2rem;
+
+//         .highlights-grid {
+//             display: grid;
+//             /* 2 equal columns on wide screens, responsive down to 1 *
+// // grid-template-columns: repeat(2, 1fr);
+// // max-width: 1200px;
+// // margin: 0 auto;
+// // gap: 2rem;
+// // align-items: stretch;
+
+// @media (max-width: 900px) {
+//     grid-template-columns: 1fr;
+// }
+
+// @media (max-width: 640px) {
+//     grid-template-columns: 1fr;
+// }
+
+// .highlight-card {
+//     background: $nexora-light;
+//     padding: 2rem;
+//     min-width: 16.5rem;
+//     width: 100%;
+//     border-radius: 12px;
+//     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+//     transition: all 0.3s ease;
+
+//     // &:hover {
+//     //     transform: translateY(-8px);
+//     //     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+//     // }
+// }
+// }
+// }
+
+// .block3 {
+//     background: linear-gradient(180deg, $nexora-light 40%, $nexora-secondaryBG 100%);
+//     padding: 2rem;
+
+//     .modern-cta {
+//         text-align: center;
+//         padding: 5rem 2rem 0 2rem ;
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         //gap: 2rem;
+//         max-width: 856px;
+//         margin: 0 auto;
+
+//         h2 {
+//             /* original: color: #215011; */
+// // color: #215011;
+// // color: $nexora-green-dark;
+// // margin: 0;
+// // }
+
+// // p {
+// //     color: $nexora-light;
+// // }
+// // }
+
+// // .services-more {
+// //     display: flex;
+// //     justify-content: center;
+
+// //     .btn-primary-large {
+// //         padding: 1.25rem 3rem;
+// //         background: $nexora-btnPrim;
+// //         color: $nexora-light;
+// //         text-decoration: none;
+// //         font-weight: 600;
+// //         font-size: 1.25rem;
+// //         border-radius: 8px;
+// //         display: inline-block;
+// //         transition: all 0.3s ease;
+
+// //         &:hover {
+// //             background: color.adjust($nexora-btnPrim, $lightness: -10%);
+// //             transform: translateY(-2px);
+// //             box-shadow: 0 8px 20px rgba(86, 210, 45, 0.5);
+// //         }
+// //     }
+// // }
+// // }
+
+// // .nexora-footer {
+// //     padding: 5rem 2rem 1.5rem;
+// //     /* original: background: linear-gradient(to bottom, #0a3267, #1e2b38) */
+// //     // background: linear-gradient(to bottom, #0a3267, #1e2b38)
+// //     background: linear-gradient(to bottom, $nexora-grad-top, $nexora-grad-bottom)
+// // }
+// // }
+
+// // ``` * // Nexora frontend modernization page styles placeholder
+
+// // .service-detail-page {
+// //     .block1 {
+// //         background: $nex-prim-linBG;
+// //         padding-bottom: 1rem;
+
+// //         .service-detail-header {
+// //             text-align: center;
+// //             padding: 5rem 2rem ;
+// //             display: flex;
+// //             flex-direction: column;
+// //             align-items: center;
+// //             //gap: 2rem;
+// //             max-width: 856px;
+// //             margin: 0 auto;
+
+// //             p {
+// //                 color: $nexora-light;
+// //                 margin-top: 0;
+// //             }
+// //         }
+
+// //         .service-overview {
+// //             padding: 0 3rem;
+
+// //             h2 {
+// //                 color: $nexora-btnPrim;
+// //                 margin: 0;
+// //             }
+
+// //             p {
+// //                 color: $nexora-light;
+// //                 margin-top: 0;
+// //             }
+// //         }
+// //     }
+
+// //     .block2 {
+// //         background: $nexora-light;
+// //         padding-bottom: 1rem;
+// //         padding: 2rem;
+
+
+// //         .highlights-grid {
+// //             display: grid;
+// //             /* 2 equal columns on wide screens, responsive down to 1 *
+// //             grid-template-columns: repeat(2, 1fr);
+// //             max-width: 1200px;
+// //             margin: 0 auto;
+// //             gap: 2rem;
+// //             align-items: stretch;
+
+// //             @media (max-width: 900px) {
+// //                 grid-template-columns: 1fr;
+// //             }
+
+// //             @media (max-width: 640px) {
+// //                 grid-template-columns: 1fr;
+// //             }
+
+// //             .highlight-card {
+// //                 background: $nexora-light;
+// //                 padding: 2rem;
+// //                 min-width: 16.5rem;
+// //                 width: 100%;
+// //                 border-radius: 12px;
+// //                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+// //                 transition: all 0.3s ease;
+
+
+// //                 // &:hover {
+// //                 //     transform: translateY(-8px);
+// //                 //     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+// //                 // }
+
+// //             }
+// //         }
+
+
+// //     }
+
+// //     .block3 {
+
+// //         background: linear-gradient(180deg, $nexora-light 40%, $nexora-secondaryBG 100%);
+// //         padding: 2rem;
+
+// //         .modern-cta {
+// //             text-align: center;
+// //             padding: 5rem 2rem 0 2rem ;
+// //             display: flex;
+// //             flex-direction: column;
+// //             align-items: center;
+// //             //gap: 2rem;
+// //             max-width: 856px;
+// //             margin: 0 auto;
+
+// //             h2 {
+// //                 /* original: color: #215011; */
+// //             // color: #215011;
+// //             color: $nexora-green-dark;
+// //             margin: 0;
+// //         }
+
+// //         p {
+// //             color: $nexora-light;
+// //         }
+// //     }
+
+// //     .services-more {
+
+// //         display: flex;
+// //         justify-content: center;
+
+// //         .btn-primary-large {
+// //             padding: 1.25rem 3rem;
+// //             background: $nexora-btnPrim;
+// //             color: $nexora-light;
+// //             text-decoration: none;
+// //             font-weight: 600;
+// //             font-size: 1.25rem;
+// //             border-radius: 8px;
+// //             display: inline-block;
+// //             transition: all 0.3s ease;
+// //             //margin-top: 2rem;
+
+// //             &:hover {
+// //                 background: color.adjust($nexora-btnPrim, $lightness: -10%);
+// //                 transform: translateY(-2px);
+// //                 box-shadow: 0 8px 20px rgba(86, 210, 45, 0.5);
+// //             }
+// //         }
+// //     }
+// // }
+
+
+
+
+
+// // //position: relative;
+// // // background: linear-gradient(to bottom, $nexora-light, $nexora-light 25%, transparent 100%),
+// // //     linear-gradient(to bottom right, transparent 0%, #1f2b37 30%, #01306b 100%);
+
+// // // &::after {
+// // //     content: "";
+// // //     //position: absolute;
+// // //     bottom: 0;
+// // //     left: 0;
+// // //     width: 100%;
+// // //     height: 200px; // adjust for smoother fade
+// // //     pointer-events: none;
+
+// // //     // transitional gradient
+// // //     background: linear-gradient(135deg,
+// // //             #f9f9f9 0%,
+// // //             #1F2B37 60%,
+// // //             #01306b 100%);
+// // // }
+
+
+
+// // //          .block3 {
+// // //              //         // background: linear-gradient(135deg, $nexora-primaryBG 0%, $nexora-secondaryBG 100%);
+// // //              //        // background: linear-gradient(135deg, rgba(31, 43, 55, 1) 0%, rgba(1, 48, 107, 1) 100%);
+// // //              background: $nex-prim-linBG;
+
+// // //              padding: 2rem;
+// // //              .modern-cta{
+// // //  text-align: center;
+// // //      padding: 5rem 2rem 0 2rem ;
+// // //      display: flex;
+// // //      flex-direction: column;
+// // //      align-items: center;
+// // //      //gap: 2rem;
+// // //       max-width: 856px;
+// // //      margin: 0 auto;
+
+// // //          h2{
+// // //              color:$nexora-accent;
+// // //              margin:0;
+// // //          }
+// // //          p{
+// // //              color:$nexora-light;
+// // //          }
+// // //  }
+
+// // //          .services-more{
+
+// // //              display:flex;
+// // //              justify-content:center;
+
+// // //          .btn-primary-large {
+// // //              padding: 1.25rem 3rem;
+// // //              background: $nexora-btnPrim;
+// // //              color: $nexora-light;
+// // //              text-decoration: none;
+// // //              font-weight: 600;
+// // //              font-size: 1.25rem;
+// // //              border-radius: 8px;
+// // //              display: inline-block;
+// // //              transition: all 0.3s ease;
+// // //              //margin-top: 2rem;
+
+// // //              &:hover {
+// // //                  background: darken($nexora-btnPrim, 10%);
+// // //                  transform: translateY(-2px);
+// // //                  box-shadow: 0 8px 20px rgba(86, 210, 45, 0.5);
+// // //              }
+// // //          }
+// // //      }
+// // //      }
+
+// // .nexora-footer {
+// //     padding: 5rem 2rem 1.5rem;
+// //     /* original: background: linear-gradient(to bottom, #0a3267, #1e2b38) */
+// //     // background: linear-gradient(to bottom, #0a3267, #1e2b38)
+// //     background: linear-gradient(to bottom, $nexora-grad-top, $nexora-grad-bottom)
+// // }
+// // }
+
+// // */

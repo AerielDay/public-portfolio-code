@@ -1,0 +1,431 @@
+/*
+    Nexora Project Details Styles
+    - Purpose: styling for individual Nexora project detail pages.
+    - Notes: references variables and mixins from `abstracts/`.
+    - Migration: color/spacing literals replaced with tokens where possible; originals are retained as comments near replacements.
+*/
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.nexora-tech-project {
+    padding: 2rem 2rem 4rem 2rem;
+    border-radius: 1.25rem;
+    //max-width: 1200px;
+    margin: 0 auto;
+
+    .hero {
+        &.hero-layout .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            align-items: start;
+
+            // @media (max-width: 900px) {
+            //     grid-template-columns: 1fr;
+            // }
+
+            .hero-copy {
+                .project-title {
+                    font-family: Georgia, 'Times New Roman', serif;
+                    font-size: clamp(2rem, 2.4rem + 1vw, 3rem);
+                    margin: 0 0 0.5rem;
+                    color: var(--heading-color);
+                }
+
+                .project-subtitle {
+                    color: var(--text-secondary);
+                    opacity: 0.85;
+                    margin-bottom: 1rem;
+                    max-width: 60ch;
+                }
+
+                .hero-ctas {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 0.75rem;
+                    max-width:500px;
+                    margin-left:0;
+                    margin-right:auto;
+                    margin-top: 1rem;
+
+                    .btn {
+                        width:100%;
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                        white-space:nowrap;
+                        text-decoration: none;
+                        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                        font-weight: 600;
+                    }
+
+                    .btn-primary {
+                        background: var(--accent);
+                        text-align:center;
+                        /* original: color: #D6EFFF; */
+                        // color: #D6EFFF;
+                        color: $nexora-ghost;
+                        padding: 0.75rem 1.25rem;
+                        border-radius: 8px;
+                        display: inline-block;
+                        transition: background-color 0.2s ease;
+                    }
+
+                    .btn-primary:hover {
+                        background: var(--accent-hover);
+                    }
+
+                    .btn-ghost {
+                        text-align:center;
+                        background: transparent;
+                        color: var(--text-primary);
+                        padding: 0.75rem 1.25rem;
+                        border-radius: 8px;
+                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        display: inline-block;
+                        transition: all 0.2s ease;
+                    }
+
+                    .btn-ghost:hover {
+                        background: rgba(255, 255, 255, 0.05);
+                        border-color: rgba(255, 255, 255, 0.3);
+                    }
+                }
+            }
+        }
+    }
+
+    /* side-by-side interface rows */
+    .interface-rows {
+        margin-top: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2.25rem;
+
+        @include xsm_media {
+            margin-top: 1.5rem;
+            gap: 1rem;
+        }
+    }
+
+    .interface-row {
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 2rem;
+        align-items: start;
+
+        @include xsm_media {
+            display:flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .feature-explainer {
+            background: var(--card);
+            padding: 1.25rem 1.25rem 1rem;
+            border-radius: .85rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .22);
+            
+            h3{
+                margin-top:0;
+                @include xsm_media {
+                    margin-top:0;
+                }
+            }
+        }
+
+        .screen-card {
+            background: var(--card);
+            padding: 1rem;
+            border-radius: .75rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .12);
+
+            @include xsm_media {
+                padding: 0.75rem;
+                width:100%;
+            }
+
+            .screen-header {
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+
+                .expanded-btn {
+                    background: transparent;
+                    border: 1px solid rgba(255, 255, 255, 0.04);
+                    color: var(--text-primary);
+                    border-radius: 8px;
+                    padding: 0.65rem 0.85rem;
+                    cursor: pointer;
+                    flex: 1;
+                    text-align: left;
+                    font-weight: 600;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-size: 1.1rem;
+                    transition: background-color 0.2s ease;
+
+                    .expand-label {
+                            @include xsm_media {
+                                font-size: 0.75rem;
+                                //padding: 0.5rem 0.65rem;
+                            }
+                        }
+                
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.02);
+                    }
+
+                    &:focus-visible {
+                        background: rgba(255, 255, 255, 0.02);
+                        outline: 3px solid var(--accent);
+                        outline-offset: 2px;
+                    }
+                }
+
+                .view-btn {
+                    background: var(--accent);
+                    /* original: color: #fff; */
+                    // color: #fff;
+                    color: $nexora-white;
+                    border: none;
+                    font-size: 1rem;
+                    padding: 0.65rem 0.85rem;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-weight: 600;
+                    transition: background-color 0.2s ease;
+
+                    @include xsm_media {
+                        font-size: 0.85rem;
+                        padding: 0.5rem 0.65rem;
+                    }
+                    &:hover {
+                        background: var(--accent-hover);
+                    }
+                }
+
+                // @media (max-width: 768px) {
+                //     gap: 0.35rem;
+
+                //     .expanded-btn {
+                //         font-size: 0.85rem;
+                //         padding: 0.5rem 0.65rem;
+                //     }
+
+                //     .view-btn {
+                //         font-size: 0.85rem;
+                //         padding: 0.5rem 0.65rem;
+                //     }
+                // }
+            }
+
+            .screen-panel {
+                margin-top: .6rem;
+                background: rgba(255, 255, 255, 0.03);
+                padding: .75rem .85rem .7rem;
+                border-radius: .6rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
+                animation: fadeInPanel 160ms ease;
+
+                img {
+                    width: 100%;
+                    max-height: 160px;
+                    object-fit: cover;
+                    border-radius: .5rem;
+                    box-shadow: 0 2px 12px rgba(0, 0, 0, .35);
+                    margin-bottom: .5rem;
+                    display: block;
+                }
+
+
+            }
+        }
+    }
+
+    @keyframes fadeInPanel {
+        from {
+            opacity: 0;
+            transform: translateY(-4px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* lightbox for preview */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center; // Vertically center within the remaining space
+    justify-content: center;
+    background: rgba(2, 6, 23, 0.9);
+    z-index: 1200;
+
+    // This padding-top ensures nothing goes behind your 56px nav
+    padding: calc(56px + 2rem) 2rem 2rem 2rem;
+
+    .lightbox-close {
+        position: absolute;
+        // Positioned relative to the whole screen, but clearing the nav
+        top: calc(56px + 1rem);
+        right: 1.5rem;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #383837;
+        border: 2px solid $nexora-light;
+        color: $nexora-white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1300;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: $nexora-gray-333;
+            transform: scale(1.1);
+            border-color: $nexora-white;
+        }
+    }
+
+    .lightbox-inner {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+        // Image height = Total Screen - Nav Height - Padding
+        max-height: calc(100vh - 56px - 4rem);
+
+        img {
+            max-width: 100%;
+            max-height: calc(100vh - 56px - 6rem); // Extra breathing room
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            display: block;
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: calc(56px + 1rem) 1rem 1rem 1rem;
+
+        .lightbox-close {
+            top: calc(56px + 0.5rem);
+            right: 0.5rem;
+        }
+    }
+}
+
+    //original code
+    // .lightbox {
+    //     position: fixed;
+    //     top: 0;
+    //     left: 0;
+    //     width:100%;
+    //     height:100%;
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     background: rgba(2, 6, 23, 0.8);
+    //     z-index: 1200;
+    //     padding:2rem;
+    //     //overflow-y: auto;
+
+    //     .lightbox-close {
+    //         position: fixed;
+    //         right: 20px;
+    //         top: 90px;
+    //         /* original: background: #000; */
+    //         // background: #000;
+    //         background: $nexora-black;
+    //         /* original: border: 2px solid #fff; */
+    //         // border: 2px solid #fff;
+    //         border: 2px solid $nexora-light;
+    //         /* original: color: #fff; */
+    //         // color: #fff;
+    //         color: $nexora-white;
+    //         font-size: 1.5rem;
+    //         padding: 8px 14px;
+    //         border-radius: 6px;
+    //         cursor: pointer;
+    //         min-width: 44px;
+    //         min-height: 44px;
+    //         z-index: 1300;
+    //         font-weight: bold;
+
+    //         &:hover {
+    //             /* original: background: #333; */
+    //             // background: #333;
+    //             background: $nexora-gray-333;
+    //             /* original: border-color: #fff; */
+    //             // border-color: #fff;
+    //             border-color: $nexora-light;
+    //         }
+    //     }
+
+    //     .lightbox-inner {
+    //         background: transparent;
+    //         padding: 1rem;
+    //         border-radius: 8px;
+    //         max-width: 90vw;
+    //         max-height: 85vh;
+    //         overflow-y: auto;
+    //         overflow-x: hidden;
+    //         position: relative;
+    //         display: flex;
+    //         flex-direction: column;
+    //         align-items: flex-start;
+    //         justify-content: flex-start;
+
+    //         .lightbox-inner img {
+    //             max-width: 100%;
+    //             max-height: 100%;
+    //             width: auto;
+    //             height: auto;
+    //             object-fit: contain;
+    //            // overflow:unset!important;
+    //             //display: flex;
+    //             border-radius: 6px;
+    //             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    //         }
+    //     }
+
+    //     // @media (max-width: 768px) {
+    //     //     .lightbox-close {
+    //     //         top: 85px;
+    //     //         right: 15px;
+    //     //         font-size: 1.5rem;
+    //     //         padding: 8px 12px;
+    //     //     }
+
+    //     //     .lightbox-inner {
+    //     //         width: auto;
+    //     //         max-width: 90vw;
+    //     //         max-height: 70vh;
+    //     //         padding: 0.5rem;
+    //     //         overflow-x: hidden;
+    //     //         box-sizing: border-box;
+
+    //     //         .lightbox-inner img {
+    //     //             max-height: 65vh;
+    //     //             max-width: 85vw;
+    //     //             width: auto;
+    //     //         }
+    //     //     }
+    //     // }
+    // }
+}

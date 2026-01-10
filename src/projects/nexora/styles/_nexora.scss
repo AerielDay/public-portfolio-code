@@ -1,0 +1,5194 @@
+// // SCSS module imports for Nexora (placeholders; no code moved)
+@use "sass:color";
+@use "./abstracts/variables" as *;
+@use "./abstracts/mixins" as *;
+// Optional: include page partials when ready
+@forward "./pages/_home";
+@forward "./pages/_services";
+@forward "./pages/_about";
+@forward "./pages/_contact";
+@forward "./pages/_case-studies";
+@forward "./pages/_insights";
+@forward "./pages/_cybersecurity";
+@forward "./pages/_digital-transform";
+@forward "./pages/_data-analytics";
+@forward "./pages/_frontend-modern";
+@use "./pages/_home";
+@use "./components/_footer";
+@use "./components/_navbar";
+@use "./pages/_project-details";
+@use "./pages/_cybersecurity";
+@use "./pages/_digital-transform";
+@use "./pages/_data-analytics";
+@use "./pages/_frontend-modern";
+@use "./pages/_sitemap";
+
+// /*
+//   Tiny Sass module system examples (non-executing; safe examples)
+
+//   1) @use with namespace:
+//       // @use "./abstracts/variables" as vars;
+//       // .example { color: vars.$nexora-accent; }
+
+//   2) @use as * (no namespace):
+//       // @use "./abstracts/mixins" as *;
+//       // .btn { @include button-base; }
+
+//   3) Configure defaults with `with`:
+//       // @use "./abstracts/variables" with (
+//       //   $nexora-accent: #4e6af0,
+//       //   $nexora-primaryBG: #203040
+//       // );
+
+//   4) Re-export a curated API with @forward show/hide:
+//       // @forward "./abstracts/mixins" show button-base, card-surface;
+//       // @forward "./abstracts/variables" hide $debug, $experimental-flag;
+// */
+
+// /*
+//     Try-it (copy/paste when ready):
+//     - Shows a variable usage, a mixin include, and a page partial being available via the entry.
+
+//     .nexora .demo-tryit {
+//         // uses a token from variables
+//         color: $nexora-accent;
+
+//         // applies a shared mixin from abstracts
+//         @include button-base;
+
+//         // simple demo styles (safe to keep commented)
+//         padding: 0.5rem 0.75rem;
+//         border-radius: 6px;
+//     }
+// */
+
+// // :root {
+// //     //this is the color scheme for the portfolio outside of demo modes
+// //     --surface: rgba(255, 255, 255, 0.02);
+// //     --card: rgba(255, 255, 255, 0.04);
+// //     --text-primary: #d6efff;
+// //     --text-secondary: rgba(214, 239, 255, 0.8);
+// //     --accent: #953b5b;
+// //     --accent-hover: #732d46;
+// //     --heading-color: #D95E32;
+// // }
+
+// // Nexora color palette (user-provided)
+
+
+
+
+
+
+
+
+// // .nexora-base-theme {
+// //     max-width: 1200px;
+// //     margin: 0 auto;
+
+// //     h1 {
+// //        // font-size: 2.75rem;
+// //         margin: 0 0 1rem 0;
+// //         line-height: 1.2;
+// //         color: $nexora-accent;
+// //     }
+
+// //     h2 {
+// //         text-align: center;
+// //        // font-size: 2.5rem;
+// //         color: $nexora-secondaryBG;
+// //         margin: 0 0 3rem 0;
+
+// //     }
+
+// //     h3 {
+// //         color: $nexora-accent;
+// //         text-align: center;
+// //         margin: 0 0 1rem 0;
+// //        // font-size: 2rem;
+
+
+// //     }
+
+// //     h4 {
+// //        // font-size: 1.5rem;
+// //         margin-bottom: 2rem;
+// //         color: $nexora-accent;
+// //         text-align: center;
+// //         text-transform: uppercase;
+// //         letter-spacing: 0.5px;
+// //         line-height: 1.3;
+
+
+// //     }
+
+// //     h5 {
+// //        // font-size: 1.30rem;
+// //         color: $nexora-text;
+// //         margin: 0 0 0.75rem 0;
+// //         text-transform: uppercase;
+// //         letter-spacing: 0.5px;
+// //     }
+
+// //     h6 {
+// //        // font-size: 1rem;
+// //         color: $nexora-accent;
+// //     }
+
+// //     p {
+// //         color: $nexora-text;
+// //         line-height: 1.6;
+// //         margin-bottom: 1.5rem;
+// //        // font-size: 1.1rem;
+// //         opacity: 0.95;
+// //     }
+
+// // }
+
+// /*                                                                                                                        
+// d88888b  .d88b.  db    db d8b   db d8888b.  .d8b.  d888888b d888888b  .d88b.  d8b   db  .d8b.  db      
+// 88'     .8P  Y8. 88    88 888o  88 88  `8D d8' `8b `~~88~~'   `88'   .8P  Y8. 888o  88 d8' `8b 88      
+// 88ooo   88    88 88    88 88V8o 88 88   88 88ooo88    88       88    88    88 88V8o 88 88ooo88 88      
+// 88~~~   88    88 88    88 88 V8o88 88   88 88~~~88    88       88    88    88 88 V8o88 88~~~88 88      
+// 88      `8b  d8' 88b  d88 88  V888 88  .8D 88   88    88      .88.   `8b  d8' 88  V888 88   88 88booo. 
+// YP       `Y88P'  ~Y8888P' VP   V8P Y8888D' YP   YP    YP    Y888888P  `Y88P'  VP   V8P YP   YP Y88888P 
+                                                                                                       
+                                                                                                       
+// .d8888. d888888b db    db db      d88888b .d8888.                                                      
+// 88'  YP `~~88~~' `8b  d8' 88      88'     88'  YP                                                      
+// `8bo.      88     `8bd8'  88      88ooooo `8bo.                                                        
+//   `Y8b.    88       88    88      88~~~~~   `Y8b.                                                      
+// db   8D    88       88    88booo. 88.     db   8D                                                      
+// `8888Y'    YP       YP    Y88888P Y88888P `8888Y'                                                      
+                                                                                                                                                                                                                                                                                                       
+//    */
+
+// /*
+// d888888b .88b  d88. d8888b.  .d88b.  d8888b. d888888b  .d8b.  d8b   db d888888b 
+//   `88'   88'YbdP`88 88  `8D .8P  Y8. 88  `8D `~~88~~' d8' `8b 888o  88 `~~88~~' 
+//    88    88  88  88 88oodD' 88    88 88oobY'    88    88ooo88 88V8o 88    88    
+//    88    88  88  88 88~~~   88    88 88`8b      88    88~~~88 88 V8o88    88    
+//   .88.   88  88  88 88      `8b  d8' 88 `88.    88    88   88 88  V888    88    
+// Y888888P YP  YP  YP 88       `Y88P'  88   YD    YP    YP   YP VP   V8P    YP    
+                                                                                
+                                                                                
+// d8888b. d888888b d88888b  .o88b. d88888b .d8888.                                
+// 88  `8D   `88'   88'     d8P  Y8 88'     88'  YP                                
+// 88oodD'    88    88ooooo 8P      88ooooo `8bo.                                  
+// 88~~~      88    88~~~~~ 8b      88~~~~~   `Y8b.                                
+// 88        .88.   88.     Y8b  d8 88.     db   8D                                
+// 88      Y888888P Y88888P  `Y88P' Y88888P `8888Y'                                
+                                                                                
+                                                                                
+// */
+
+// /* Footer - Tech Consulting standard */
+// // .nexora-footer {
+// //     background: linear-gradient(to right, #192C42, #02306A),
+// //         linear-gradient(to bottom, transparent 0%, transparent, #1e2b38 90%, #1e2b38 100%);
+
+// //     background-blend-mode: multiply;
+// //     color: $nexora-light;
+// //     max-width: 1200px;
+// //     position: relative;
+// //     padding: 3rem 2rem 1.5rem;
+// //     margin: 0 auto;
+
+
+// //     .footer-branding {
+// //         text-align: center;
+// //         margin-bottom: 4.5rem;
+
+// //         h2 {
+// //             font-size: 2.5rem;
+// //             margin: 0;
+// //             color: $nexora-accent; // adjustment made for contrast and style design
+
+// //             @media (max-width: 640px) {
+// //                 font-size: 1.5rem;
+// //             }
+// //         }
+
+// //         p {
+// //             margin: 0.5rem 0 0 0;
+// //             color: rgba(255, 255, 255, 0.8);
+// //             font-size: 1rem;
+
+// //             @media (max-width: 640px) {
+// //                 font-size: 0.9rem;
+// //             }
+// //         }
+// //     }
+
+// //     .footer-content {
+// //         max-width: 1200px;
+// //         margin: 0 auto 2rem;
+// //         display: grid;
+// //         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+// //         gap: 2rem;
+// //         justify-items: center;
+// //         padding: 0 0.5rem;
+
+// //         .footer-section {
+// //             text-align: center;
+// //             width: 100%;
+
+// //             h4 {
+// //                 color: $nexora-accent;
+// //                 font-size: 1.25rem;
+
+// //                 @media (max-width: 640px) {
+// //                     font-size: 1rem;
+// //                 }
+// //             }
+
+// //             ul {
+// //                 list-style: none;
+// //                 padding: 0;
+// //                 margin: 0;
+// //                 display: flex;
+// //                 flex-direction: column;
+// //                 align-items: center;
+
+// //                 li {
+// //                     margin-bottom: 0.75rem;
+
+// //                     a {
+// //                         color: rgba(255, 255, 255, 0.8);
+// //                         text-decoration: none;
+// //                         transition: color 0.3s ease;
+// //                         font-size: 1rem;
+
+// //                         @media (max-width: 640px) {
+// //                             font-size: 0.9rem;
+// //                         }
+
+// //                         &:hover {
+// //                             color: $nexora-light;
+// //                             text-decoration: underline;
+// //                         }
+// //                     }
+// //                 }
+// //             }
+// //         }
+// //     }
+
+// //     .footer-bottom {
+// //         border-top: 1px solid rgba(255, 255, 255, 0.2);
+// //         padding-top: 2rem;
+// //         max-width: 1200px;
+// //         margin: 0 auto;
+// //         text-align: center;
+// //         font-size: 0.9rem;
+
+// //         p {
+// //             color: $nexora-light;
+// //         }
+
+
+// //         .footer-links {
+// //             display: flex;
+// //             flex-wrap: wrap;
+// //             gap: .5rem;
+// //             justify-content: center;
+
+// //             a {
+// //                 color: rgba(255, 255, 255, 0.9);
+// //                 text-decoration: none;
+// //                 margin: 0 1rem;
+// //                 font-size: 0.9rem;
+
+// //                 @media (max-width: 640px) {
+// //                     font-size: 0.8rem;
+// //                     margin: 0 0.5rem;
+// //                 }
+
+// //                 &:hover {
+// //                     color: #ffffff;
+// //                     text-decoration: underline;
+// //                 }
+// //             }
+// //         }
+
+// //         .demo-note {
+// //             color: rgba(255, 255, 255, 0.5);
+// //             font-size: 0.85rem;
+// //             font-style: italic;
+// //         }
+// //     }
+// // }
+
+// // .nexora-sitemap {
+// //     background: $nexora-light;
+// //     min-height: 60vh;
+
+// //     .landing-breadcrumb-wrapper {
+// //         .breadcrumb {
+
+// //             span,
+// //             a {
+// //                 color: $nexora-text;
+// //                 font-size: 0.95rem;
+// //                 font-weight: 600;
+// //             }
+
+// //         }
+// //     }
+
+// //     .sitemap-container {
+// //         max-width: 1200px;
+// //         margin: 0 auto;
+// //         padding: 4rem 2rem;
+
+// //         h1 {
+// //             color: $nexora-accent;
+// //             font-size: 2.5rem;
+// //             margin: 0 0 1rem 0;
+// //             text-align: center;
+
+// //             @media (max-width: 768px) {
+// //                 font-size: 2rem;
+// //             }
+// //         }
+
+// //         .sitemap-intro {
+// //             text-align: center;
+// //             color: $nexora-secondaryBG;
+// //             font-size: 1.1rem;
+// //             margin: 0 0 3rem 0;
+// //             max-width: 700px;
+// //             margin-left: auto;
+// //             margin-right: auto;
+// //         }
+
+// //         .sitemap-grid {
+// //             display: grid;
+// //             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+// //             gap: 3rem;
+// //             margin-top: 3rem;
+
+// //             @media (max-width: 768px) {
+// //                 grid-template-columns: 1fr;
+// //                 gap: 2rem;
+// //             }
+
+// //             .sitemap-section {
+// //                 h2 {
+// //                     color: $nexora-primaryBG;
+// //                     font-size: 1.5rem;
+// //                     margin: 0 0 1.5rem 0;
+// //                     padding-bottom: 0.5rem;
+// //                     border-bottom: 2px solid $nexora-accent;
+// //                 }
+
+// //                 a.active {
+// //                     text-decoration: underline;
+// //                     font-weight: 600;
+// //                     color: $nexora-primaryBG;
+// //                 }
+// //             }
+// //         }
+
+// //         // .sitemap-section {
+// //         //     h2 {
+// //         //         color: $nexora-primaryBG;
+// //         //         font-size: 1.5rem;
+// //         //         margin: 0 0 1.5rem 0;
+// //         //         padding-bottom: 0.5rem;
+// //         //         border-bottom: 2px solid $nexora-accent;
+// //         //     }
+
+
+// //         /* Demo-scoped typography overrides
+// //            Prevent the global typography rules from leaking into demo content
+// //            by providing equal-or-higher specificity rules inside the demo wrapper. */
+// //         // .demo-mode .nexora,
+// //         // .demo-mode .nexora,
+// //         // .nexora.demo-mode {
+// //         //     font-family: 'Inter', system-ui, sans-serif;
+// //         //     color: $nexora-text;
+// //         //     /* body text in demo uses Nexora text variable */
+// //         // }
+
+// //         /* Headings use Nexora heading/text-light colors */
+// //         // .demo-mode .nexora h1,
+// //         // .demo-mode .nexora h2,
+// //         // .demo-mode .nexora h3,
+// //         // .demo-mode .nexora h4,
+// //         // .demo-mode .nexora h5,
+// //         // .demo-mode .nexora h6 {
+// //         //     font-family: 'Montserrat', 'Inter', sans-serif;
+// //         //     color: $nexora-text-light;
+// //         //     line-height: 1.25;
+// //         //     font-weight: 700;
+// //         // }
+
+// //         // .demo-mode .nexora p {
+// //         //     color: $nexora-text;
+// //         //     margin-bottom: 1rem;
+// //         // }
+
+// //         /* Links and accents use Nexora accent colors */
+// //         // .demo-mode .nexora a {
+// //         //     color: $nexora-accent;
+// //         //     text-decoration: none;
+
+// //         //     &:hover {
+// //         //         color: $nexora-secondaryBG;
+// //         //     }
+// //         // }
+
+// //         // /* Quotes, taglines, and accent text */
+// //         // .demo-mode .nexora .tagline,
+// //         // .demo-mode .nexora blockquote,
+// //         // .demo-mode .nexora figcaption,
+// //         // .demo-mode .nexora em.accent {
+// //         //     font-family: 'Playfair Display', Georgia, serif;
+// //         //     font-style: italic;
+// //         //     color: $nexora-accent;
+// //         // }
+
+// //         // /* Buttons / nav links should use Nexora palette */
+// //         // .demo-mode .nexora button,
+// //         // .demo-mode .nexora .nav a {
+// //         //     font-family: var(--font-body);
+// //         //     font-weight: 600;
+// //         //     letter-spacing: 0.02em;
+// //         //     text-transform: none;
+// //         //     color: $nexora-light;
+// //         //     background: $nexora-primaryBG;
+// //         //     border: 1px solid rgba(255, 255, 255, 0.03);
+// //         // }
+
+// //         ul {
+// //             list-style: none;
+// //             padding: 0;
+// //             margin: 0;
+
+// //             li {
+// //                 margin-bottom: 1.5rem;
+
+// //                 a {
+// //                     color: $nexora-secondaryBG;
+// //                     text-decoration: none;
+// //                     font-weight: 600;
+// //                     font-size: 1.05rem;
+// //                     transition: color 0.2s;
+
+// //                     &:hover {
+// //                         color: $nexora-accent;
+// //                         text-decoration: underline;
+// //                     }
+// //                 }
+
+// //                 p {
+// //                     margin: 0.25rem 0 0 0;
+// //                     color: rgba($nexora-secondaryBG, 0.7);
+// //                     font-size: 0.9rem;
+// //                     line-height: 1.5;
+// //                 }
+// //             }
+// //         }
+
+// //         //}
+// //     }
+// // }
+
+// // .nexora-navbar {
+// //     display: flex;
+// //     justify-content: space-between;
+// //     align-items: center;
+// //     gap: 2rem;
+// //     padding: 1.5rem 2rem;
+// //     background: $nexora-light;
+// //     border-bottom: 2px solid $nexora-border;
+// //     margin: 0;
+// //     top: 0;
+// //     z-index: 100;
+// //     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+// //     @media (max-width: 768px) {
+// //         gap: 1rem;
+// //         padding: 1rem 1.5rem;
+// //     }
+
+// //     // Desktop layout - contain within max-width and center nav
+// //     @media (min-width: 769px) {
+// //         // Create inner container to respect max-width
+// //         justify-content: center;
+
+// //         // Wrapper to constrain content
+// //         &::before {
+// //             content: '';
+// //             position: absolute;
+// //             left: 0;
+// //             right: 0;
+// //             top: 0;
+// //             bottom: 0;
+// //             max-width: 1200px;
+// //             margin: 0 auto;
+// //             pointer-events: none;
+// //         }
+
+// //         .navbar-brand {
+// //             position: absolute;
+// //             left: 50%;
+// //             transform: translateX(calc(-600px + 2rem)); // Half of 1200px max-width + padding
+// //         }
+
+// //         // Center the nav links
+// //         .all-links {
+// //             margin: 0 auto;
+// //         }
+// //     }
+
+// //     .navbar-brand {
+// //         flex-shrink: 0;
+
+// //         .brand-link {
+// //             color: $nexora-primaryBG;
+// //             text-decoration: none;
+// //             font-weight: 700;
+// //             font-size: 1.5rem;
+// //             transition: color 0.2s;
+
+// //             &:hover {
+// //                 color: $nexora-accent;
+// //             }
+
+// //             // .brand-text {
+// //             //     display: inline-block;
+// //             // }
+// //         }
+// //     }
+
+// //     .navbar-links {
+// //         display: flex;
+// //         gap: 2rem;
+// //         list-style: none;
+// //         margin: 0;
+// //         padding: 0;
+// //         align-items: center;
+
+// //         @media (max-width: 768px) {
+// //             gap: 1rem;
+// //         }
+
+// //         li {
+// //             white-space: nowrap;
+// //         }
+
+// //         a {
+// //             color: $nexora-secondaryBG;
+// //             text-decoration: none;
+// //             font-weight: 600;
+// //             font-size: 1rem;
+// //             transition: color 0.2s;
+
+// //             &:hover,
+// //             &.active {
+// //                 color: $nexora-accent;
+// //                 text-decoration: underline;
+// //             }
+// //         }
+
+// //         &.priority-links {
+
+// //             // Mobile: compact spacing
+// //             @media (max-width: 768px) {
+// //                 gap: 0.75rem;
+
+// //                 a {
+// //                     font-size: 0.9rem;
+// //                 }
+// //             }
+// //         }
+
+// //         // Desktop: show all links horizontally
+// //         &.all-links {
+// //             @media (min-width: 769px) {
+// //                 display: flex;
+// //             }
+
+// //             @media (max-width: 768px) {
+// //                 display: none;
+// //             }
+// //         }
+// //     }
+
+// //     // Hide priority links on desktop (use all-links instead)
+// //     .priority-links {
+// //         @media (min-width: 769px) {
+// //             display: none;
+// //         }
+// //     }
+
+// //     // Overflow menu container
+// //     .navbar-overflow {
+// //         position: relative;
+// //         display: flex;
+// //         align-items: center;
+
+// //         // Hide overflow menu on desktop
+// //         @media (min-width: 769px) {
+// //             display: none;
+// //         }
+
+// //         .overflow-toggle {
+// //             background: transparent;
+// //             border: none;
+// //             color: $nexora-secondaryBG;
+// //             font-size: 1.75rem;
+// //             font-weight: 700;
+// //             cursor: pointer;
+// //             padding: 0.25rem 0.5rem;
+// //             line-height: 1;
+// //             transition: color 0.2s;
+
+// //             &:hover {
+// //                 color: $nexora-accent;
+// //             }
+
+// //             &:focus {
+// //                 outline: 2px solid $nexora-accent;
+// //                 outline-offset: 2px;
+// //             }
+
+// //             @media (max-width: 768px) {
+// //                 font-size: 1.5rem;
+// //             }
+// //         }
+
+// //         .overflow-menu {
+// //             position: absolute;
+// //             top: calc(100% + 0.5rem);
+// //             right: 0;
+// //             background: $nexora-light;
+// //             border: 2px solid $nexora-border;
+// //             border-radius: 8px;
+// //             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+// //             list-style: none;
+// //             margin: 0;
+// //             padding: 0.5rem 0;
+// //             min-width: 180px;
+// //             z-index: 1000;
+
+// //             li {
+// //                 margin: 0;
+// //                 padding: 0;
+
+// //                 &.active a {
+// //                     background: rgba($nexora-accent, 0.1);
+// //                 }
+
+// //                 a {
+// //                     display: block;
+// //                     padding: 0.75rem 1.25rem;
+// //                     color: $nexora-secondaryBG;
+// //                     text-decoration: none;
+// //                     font-weight: 600;
+// //                     font-size: 0.95rem;
+// //                     transition: background 0.2s, color 0.2s;
+
+// //                     &:hover {
+// //                         background: rgba($nexora-accent, 0.15);
+// //                         color: $nexora-accent;
+// //                         text-decoration: none;
+// //                     }
+// //                 }
+// //             }
+// //         }
+// //     }
+// // }
+
+
+
+// /*
+// d8888b. d8888b.  .d88b.     d88b d88888b  .o88b. d888888b 
+// 88  `8D 88  `8D .8P  Y8.    `8P' 88'     d8P  Y8 `~~88~~' 
+// 88oodD' 88oobY' 88    88     88  88ooooo 8P         88    
+// 88~~~   88`8b   88    88     88  88~~~~~ 8b         88    
+// 88      88 `88. `8b  d8' db. 88  88.     Y8b  d8    88    
+// 88      88   YD  `Y88P'  Y8888P  Y88888P  `Y88P'    YP    
+                                                          
+                                                          
+// d8888b. d88888b d888888b  .d8b.  d888888b db      .d8888. 
+// 88  `8D 88'     `~~88~~' d8' `8b   `88'   88      88'  YP 
+// 88   88 88ooooo    88    88ooo88    88    88      `8bo.   
+// 88   88 88~~~~~    88    88~~~88    88    88        `Y8b. 
+// 88  .8D 88.        88    88   88   .88.   88booo. db   8D 
+// Y8888D' Y88888P    YP    YP   YP Y888888P Y88888P `8888Y' 
+                                                          
+                                                          
+// */
+// /* Nexora Tech Project Details Page Styling (matching Artisan's Haven layout) */
+// //  .nexora-tech-project {
+// //      padding: 2rem;
+// //      border-radius: 1.25rem;
+// //      //max-width: 1200px;
+// //      margin: 0 auto;
+
+// //      .hero {
+// //          &.hero-layout .hero-inner {
+// //              display: grid;
+// //              grid-template-columns: 1fr;
+// //              gap: 1.5rem;
+// //              align-items: start;
+
+// //             @media (max-width: 900px) {
+// //                 grid-template-columns: 1fr;
+// //             }
+
+// //             .hero-copy {
+// //                 .project-title {
+// //                     font-family: Georgia, 'Times New Roman', serif;
+// //                     font-size: clamp(2rem, 2.4rem + 1vw, 3rem);
+// //                     margin: 0 0 0.5rem;
+// //                     color: var(--heading-color);
+// //                 }
+
+// //                 .project-subtitle {
+// //                     color: var(--text-secondary);
+// //                     opacity: 0.85;
+// //                     margin-bottom: 1rem;
+// //                     max-width: 60ch;
+// //                 }
+
+// //                 .hero-ctas {
+// //                     display: flex;
+// //                     gap: 0.75rem;
+// //                     margin-top: 1rem;
+
+// //                     .btn {
+// //                         text-decoration: none;
+// //                         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+// //                         font-weight: 600;
+// //                     }
+
+// //                     .btn-primary {
+// //                         background: var(--accent);
+// //                         color: #D6EFFF;
+// //                         padding: 0.75rem 1.25rem;
+// //                         border-radius: 8px;
+// //                         display: inline-block;
+// //                         transition: background-color 0.2s ease;
+// //                     }
+
+// //                     .btn-primary:hover {
+// //                         background: var(--accent-hover);
+// //                     }
+
+// //                     .btn-ghost {
+// //                         background: transparent;
+// //                         color: var(--text-primary);
+// //                         padding: 0.75rem 1.25rem;
+// //                         border-radius: 8px;
+// //                         border: 1px solid rgba(255, 255, 255, 0.2);
+// //                         display: inline-block;
+// //                         transition: all 0.2s ease;
+// //                     }
+
+// //                     .btn-ghost:hover {
+// //                         background: rgba(255, 255, 255, 0.05);
+// //                         border-color: rgba(255, 255, 255, 0.3);
+// //                     }
+// //                 }
+// //             }
+// //         }
+// //     }
+
+// //     /* side-by-side interface rows */
+// //     .interface-rows {
+// //         margin-top: 2.5rem;
+// //         display: flex;
+// //         flex-direction: column;
+// //         gap: 2.25rem;
+// //     }
+
+// //     .interface-row {
+// //         display: grid;
+// //         grid-template-columns: 1fr 400px;
+// //         gap: 2rem;
+// //         align-items: start;
+
+// //         @media (max-width: 900px) {
+// //             grid-template-columns: 1fr;
+// //         }
+
+// //         .feature-explainer {
+// //             background: var(--card);
+// //             padding: 1.25rem 1.25rem 1rem;
+// //             border-radius: .85rem;
+// //             box-shadow: 0 2px 8px rgba(0, 0, 0, .22);
+
+
+// //         }
+
+// //         .screen-card {
+// //             background: var(--card);
+// //             padding: 1rem;
+// //             border-radius: .75rem;
+// //             box-shadow: 0 2px 10px rgba(0, 0, 0, .12);
+
+// //             .screen-header {
+// //                 display: flex;
+// //                 align-items: center;
+// //                 gap: .5rem;
+
+// //                 .expanded-btn {
+// //                     background: transparent;
+// //                     border: 1px solid rgba(255, 255, 255, 0.04);
+// //                     color: var(--text-primary);
+// //                     border-radius: 8px;
+// //                     padding: 0.65rem 0.85rem;
+// //                     cursor: pointer;
+// //                     flex: 1;
+// //                     text-align: left;
+// //                     font-weight: 600;
+// //                     display: flex;
+// //                     justify-content: space-between;
+// //                     align-items: center;
+// //                     font-size: 1.1rem;
+// //                     transition: background-color 0.2s ease;
+
+// //                     &:hover {
+// //                         background: rgba(255, 255, 255, 0.02);
+// //                     }
+
+// //                     &:focus-visible {
+// //                         background: rgba(255, 255, 255, 0.02);
+// //                         outline: 3px solid var(--accent);
+// //                         outline-offset: 2px;
+// //                     }
+// //                 }
+
+// //                 .view-btn {
+// //                     background: var(--accent);
+// //                     color: #fff;
+// //                     border: none;
+// //                     font-size: 1rem;
+// //                     padding: 0.65rem 0.85rem;
+// //                     border-radius: 8px;
+// //                     cursor: pointer;
+// //                     font-weight: 600;
+// //                     transition: background-color 0.2s ease;
+
+// //                     &:hover {
+// //                         background: var(--accent-hover);
+// //                     }
+// //                 }
+
+// //                 @media (max-width: 768px) {
+// //                     gap: 0.35rem;
+
+// //                     .expanded-btn {
+// //                         font-size: 0.85rem;
+// //                         padding: 0.5rem 0.65rem;
+// //                     }
+
+// //                     .view-btn {
+// //                         font-size: 0.85rem;
+// //                         padding: 0.5rem 0.65rem;
+// //                     }
+// //                 }
+// //             }
+
+// //             .screen-panel {
+// //                 margin-top: .6rem;
+// //                 background: rgba(255, 255, 255, 0.03);
+// //                 padding: .75rem .85rem .7rem;
+// //                 border-radius: .6rem;
+// //                 box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
+// //                 animation: fadeInPanel 160ms ease;
+
+// //                 img {
+// //                     width: 100%;
+// //                     max-height: 160px;
+// //                     object-fit: cover;
+// //                     border-radius: .5rem;
+// //                     box-shadow: 0 2px 12px rgba(0, 0, 0, .35);
+// //                     margin-bottom: .5rem;
+// //                     display: block;
+// //                 }
+
+
+// //             }
+// //         }
+// //     }
+
+// //     @keyframes fadeInPanel {
+// //         from {
+// //             opacity: 0;
+// //             transform: translateY(-4px);
+// //         }
+
+// //         to {
+// //             opacity: 1;
+// //             transform: translateY(0);
+// //         }
+// //     }
+
+// //     /* lightbox for preview */
+// //     .lightbox {
+// //         position: fixed;
+// //         inset: 0;
+// //         display: flex;
+// //         align-items: center;
+// //         justify-content: center;
+// //         background: rgba(2, 6, 23, 0.8);
+// //         z-index: 1200;
+// //         overflow-y: auto;
+
+// //         .lightbox-close {
+// //             position: fixed;
+// //             right: 20px;
+// //             top: 90px;
+// //             background: #000;
+// //             border: 2px solid #fff;
+// //             color: #fff;
+// //             font-size: 1.5rem;
+// //             padding: 8px 14px;
+// //             border-radius: 6px;
+// //             cursor: pointer;
+// //             min-width: 44px;
+// //             min-height: 44px;
+// //             z-index: 1300;
+// //             font-weight: bold;
+
+// //             &:hover {
+// //                 background: #333;
+// //                 border-color: #fff;
+// //             }
+// //         }
+
+// //         .lightbox-inner {
+// //             background: transparent;
+// //             padding: 1rem;
+// //             border-radius: 8px;
+// //             max-width: 95vw;
+// //             max-height: 95vh;
+// //             overflow-y: auto;
+// //             overflow-x: hidden;
+// //             position: relative;
+// //             display: flex;
+// //             flex-direction: column;
+// //             align-items: flex-start;
+// //             justify-content: flex-start;
+
+// //             .lightbox-inner img {
+// //                 max-width: 100%;
+// //                 height: auto;
+// //                 display: block;
+// //                 border-radius: 6px;
+// //                 box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+// //             }
+// //         }
+
+// //         @media (max-width: 768px) {
+// //             .lightbox-close {
+// //                 top: 85px;
+// //                 right: 15px;
+// //                 font-size: 1.5rem;
+// //                 padding: 8px 12px;
+// //             }
+
+// //             .lightbox-inner {
+// //                 width: auto;
+// //                 max-width: 90vw;
+// //                 max-height: 70vh;
+// //                 padding: 0.5rem;
+// //                 overflow-x: hidden;
+// //                 box-sizing: border-box;
+
+// //                 .lightbox-inner img {
+// //                     max-height: 65vh;
+// //                     max-width: 85vw;
+// //                     width: auto;
+// //                 }
+// //             }
+// //         }
+// //     }
+// // }
+
+
+// /*
+// d8888b. d88888b .88b  d88.  .d88b.  
+// 88  `8D 88'     88'YbdP`88 .8P  Y8. 
+// 88   88 88ooooo 88  88  88 88    88 
+// 88   88 88~~~~~ 88  88  88 88    88 
+// 88  .8D 88.     88  88  88 `8b  d8' 
+// Y8888D' Y88888P YP  YP  YP  `Y88P'  
+                                    
+                                    
+// .88b  d88.  .d88b.  d8888b. d88888b 
+// 88'YbdP`88 .8P  Y8. 88  `8D 88'     
+// 88  88  88 88    88 88   88 88ooooo 
+// 88  88  88 88    88 88   88 88~~~~~ 
+// 88  88  88 `8b  d8' 88  .8D 88.     
+// YP  YP  YP  `Y88P'  Y8888D' Y88888P 
+                                    
+                                    
+// */
+// /*
+// db   db  .d88b.  .88b  d88. d88888b      d8888b.  .d8b.   d888b  d88888b 
+// 88   88 .8P  Y8. 88'YbdP`88 88'          88  `8D d8' `8b 88' Y8b 88'     
+// 88ooo88 88    88 88  88  88 88ooooo      88oodD' 88ooo88 88      88ooooo 
+// 88~~~88 88    88 88  88  88 88~~~~~      88~~~   88~~~88 88  ooo 88~~~~~ 
+// 88   88 `8b  d8' 88  88  88 88.          88      88   88 88. ~8~ 88.     
+// YP   YP  `Y88P'  YP  YP  YP Y88888P      88      YP   YP  Y888P  Y88888P 
+                                                                         
+                                                                         
+// */
+// // .nexora-landing {
+// //     max-width: 1200px;
+// //     margin: 0 auto;
+
+// //     /* Project Header */
+// //     .nexora-project-header {
+// //         display: flex;
+// //         flex-direction: column;
+// //         gap: 1rem;
+// //         padding: 1.5rem 2rem;
+// //         background: $nexora-light;
+// //         border-bottom: 2px solid $nexora-border;
+
+// //         @media (max-width: 480px) {
+// //             padding: 1rem 1.25rem;
+// //             gap: 0.75rem;
+// //         }
+
+// //         .project-name {
+// //             font-family: Georgia, 'Times New Roman', serif;
+// //             font-size: 1.5rem;
+// //             font-weight: 700;
+// //             margin: 0;
+// //             color: $nexora-secondaryBG;
+
+// //             @media (max-width: 480px) {
+// //                 font-size: 1.25rem;
+// //             }
+// //         }
+
+// //         .return-btn {
+// //             padding: 0.5rem 1.25rem;
+// //             min-height: 44px;
+// //             background: $nexora-secondaryBG;
+// //             color: $nexora-light;
+// //             text-decoration: none;
+// //             border-radius: 6px;
+// //             font-weight: 600;
+// //             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+// //             transition: background-color 0.2s ease;
+// //             align-self: flex-start;
+// //             display: inline-flex;
+// //             align-items: center;
+// //             width: fit-content;
+
+// //             &:hover {
+// //                 background: $nexora-btnPrim;
+// //                 color: $nexora-light;
+// //             }
+
+// //             &:focus-visible {
+// //                 outline: 3px solid $nexora-accent;
+// //                 outline-offset: 2px;
+// //             }
+// //         }
+// //     }
+
+// //     /* Breadcrumb Navigation */
+// //     .breadcrumb {
+// //         display: flex;
+// //         gap: 0.5rem;
+// //         align-items: center;
+// //         font-size: 0.95rem;
+// //         //  padding: 1rem 2rem;
+// //         background: transparent;
+// //         margin: 0;
+// //         color: $nexora-light;
+
+// //         @media (max-width: 480px) {
+// //             padding: 0.75rem 1.25rem;
+// //             font-size: 0.9rem;
+// //         }
+
+// //         a {
+// //             color: $nexora-light;
+// //             text-decoration: none;
+// //             transition: color 0.2s ease;
+
+// //             &:hover {
+// //                 color: $nexora-accent;
+// //                 text-decoration: underline;
+// //             }
+// //         }
+
+// //         span {
+// //             color: $nexora-light;
+// //         }
+// //     }
+
+// // }
+
+// // .nexora-home {
+// //     background: transparent;
+
+// //     section {
+// //         padding: 4rem 1rem;
+
+// //         @media (max-width: 768px) {
+// //             padding: 2rem 1rem;
+// //         }
+// //     }
+
+// //     /* block1 and block2 are sibling sections in the markup; use a
+// //                    comma-separated selector so the background applies to each
+// //                    block individually (not only when block2 is nested inside
+// //                    block1). */
+// //     // moved demo-only block backgrounds to demo-mode scope later
+
+// //     // Hero Section
+// //     .hero-section {
+// //         background: transparent;
+// //         color: $nexora-light;
+// //         text-align: center;
+// //         padding: 5rem 2rem !important;
+// //         display: flex;
+// //         flex-direction: column;
+// //         align-items: center;
+// //         gap: 2rem;
+
+// //         @media (max-width: 768px) {
+// //             padding: 3rem 1.5rem !important;
+// //         }
+
+// //         .hero-content {
+// //             max-width: 800px;
+
+
+// //             .hero-subtitle {
+// //                 font-size: 1.25rem;
+// //                 margin-bottom: 2rem;
+// //                 opacity: 0.95;
+// //                 line-height: 1.6;
+// //                 color: $nexora-light;
+
+// //                 @media (max-width: 768px) {
+// //                     font-size: 1.1rem;
+// //                 }
+// //             }
+
+// //             .hero-cta {
+// //                 display: flex;
+// //                 gap: 1rem;
+// //                 justify-content: center;
+// //                 flex-wrap: wrap;
+
+// //                 .btn-primary.CTAbutton {
+// //                     background: $nexora-btnPrim; // green
+// //                     color: $nexora-light;
+
+// //                     &:hover {
+// //                         background: color.adjust($nexora-btnPrim, $lightness: -10%); // darker green;
+// //                         color: $nexora-light;
+// //                         box-shadow: 0 8px 20px rgba(86, 210, 45, 0.4);
+// //                     }
+// //                 }
+
+// //                 .btn-primary,
+// //                 .btn-secondary {
+// //                     padding: 1rem 2rem;
+// //                     border-radius: 8px;
+// //                     text-decoration: none;
+// //                     font-weight: 600;
+// //                     //font-size: 1.1rem;
+// //                     transition: all 0.3s ease;
+// //                     display: inline-block;
+// //                     flex: 1;
+// //                     min-width: 200px;
+// //                     text-align: center;
+// //                 }
+
+// //                 .btn-primary {
+// //                     background: $nexora-secondaryBG;
+// //                     color: $nexora-light;
+
+
+// //                     &:hover {
+// //                         background: #245a13;
+// //                         transform: translateY(-2px);
+// //                         box-shadow: 0 4px 12px rgba(44, 107, 23, 0.3);
+// //                     }
+// //                 }
+
+// //                 .btn-secondary {
+// //                     background: $nexora-light;
+// //                     color: $nexora-secondaryBG;
+
+// //                     &:hover {
+// //                         background: $nexora-light;
+// //                         transform: translateY(-2px);
+// //                         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+// //                         color: $nexora-accent;
+// //                     }
+// //                 }
+// //             }
+// //         }
+
+// //         .hero-preview {
+// //             max-width: 900px;
+// //             width: 100%;
+// //             border-radius: 12px;
+// //             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+// //         }
+// //     }
+
+// //     // Services Overview
+// //     .services-overview {
+// //         background: $nexora-light;
+
+
+
+// //         .services-grid-preview {
+// //             display: grid;
+// //             /* 4 equal columns on wide screens, responsive down to 2/1 */
+// //             grid-template-columns: repeat(4, 1fr);
+// //             max-width: 1200px;
+// //             margin: 0 auto;
+// //             gap: 1rem;
+// //             width: fit-content;
+// //             align-items: stretch;
+
+// //             @media (max-width: 1100px) {
+// //                 grid-template-columns: repeat(2, 1fr);
+// //             }
+
+// //             @media (max-width: 640px) {
+// //                 grid-template-columns: 1fr;
+// //                 width: 100%;
+// //                 padding: 0 1rem;
+// //             }
+
+// //             .service-card {
+// //                 background: $nexora-light;
+// //                 padding: 2rem;
+// //                 min-width: 16.5rem;
+// //                 width: 100%;
+// //                 border-radius: 12px;
+// //                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+// //                 transition: all 0.3s ease;
+
+// //                 @media (max-width: 640px) {
+// //                     min-width: unset;
+// //                 }
+
+
+// //                 // &:hover {
+// //                 //     transform: translateY(-8px);
+// //                 //     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+// //                 // }
+
+
+
+
+
+// //                 .service-link {
+// //                     color: $nexora-light;
+// //                     background: $nexora-secondaryBG;
+// //                     text-decoration: none;
+// //                     font-weight: 600;
+// //                     display: inline-flex;
+// //                     align-items: center;
+// //                     gap: 0.5rem;
+// //                     padding: 0.75rem 1.5rem;
+// //                     border-radius: 8px;
+// //                     border: none;
+// //                     font-size: 1rem;
+// //                     transition: all 0.3s ease;
+
+// //                     &:hover {
+// //                         background: #2c6b17 !important;
+// //                         color: $nexora-light;
+// //                         gap: 0.75rem;
+// //                         box-shadow: 0 4px 12px rgba(80, 118, 246, 0.2);
+// //                     }
+// //                 }
+// //             }
+// //         }
+// //     }
+
+// //     .services-more {
+// //         display: flex;
+// //         justify-content: center;
+// //         margin-top: 1.5rem;
+
+// //         .btn-primary-large {
+// //             padding: 1.25rem 3rem;
+// //             background: $nexora-secondaryBG;
+// //             color: $nexora-light;
+// //             text-decoration: none;
+// //             font-weight: 600;
+// //             font-size: 1.25rem;
+// //             border-radius: 8px;
+// //             display: inline-block;
+// //             transition: all 0.3s ease;
+// //             text-align: center;
+// //             //margin-top: 2rem;
+
+// //             &:hover {
+// //                 background: $nexora-btnPrim;
+// //                 transform: translateY(-2px);
+// //                 box-shadow: 0 8px 20px rgba(86, 210, 45, 0.5);
+// //             }
+
+// //             @media (max-width: 639px) {
+// //                 padding: 0.875rem 1.5rem;
+// //                 font-size: 1rem;
+// //                 width: 100%;
+// //                 max-width: 300px;
+// //             }
+
+// //             @media (min-width: 640px) and (max-width: 1000px) {
+// //                 font-size: 0.85rem;
+// //             }
+// //         }
+// //     }
+
+// //     // Trust Section
+// //     .trust-section {
+// //         text-align: center;
+// //         background: $nexora-light;
+
+// //         h2 {
+// //             font-size: 2.5rem;
+// //             color: $nexora-secondaryBG;
+// //             margin: 0 0 3rem 0;
+// //         }
+
+// //         .trust-stats {
+// //             display: grid;
+// //             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+// //             gap: 2rem;
+// //             max-width: 1000px;
+// //             margin: 0 auto 3rem;
+
+// //             .stat {
+// //                 display: flex;
+// //                 flex-direction: column;
+// //                 gap: 0.5rem;
+
+// //                 strong {
+// //                     font-size: 3rem;
+// //                     color: $nexora-accent;
+// //                     font-weight: 700;
+// //                 }
+
+// //                 span {
+// //                     color: $nexora-primaryBG;
+// //                     font-size: 1.1rem;
+// //                 }
+// //             }
+// //         }
+
+// //         .testimonial {
+// //             max-width: 800px;
+// //             margin: 0 auto;
+// //             padding: 2rem;
+// //             background: $nexora-light;
+// //             border-left: 4px solid $nexora-accent;
+// //             border-radius: 8px;
+// //             font-style: italic;
+
+// //             // p {
+// //             //     font-size: 1.25rem;
+// //             //     color: $nexora-text;
+// //             //     line-height: 1.8;
+// //             //     margin: 0 0 1rem 0;
+// //             // }
+
+// //             cite {
+// //                 color: $nexora-accent;
+// //                 font-style: normal;
+// //                 font-weight: 600;
+// //             }
+// //         }
+// //     }
+
+// //     // Value Section
+// //     .value-section {
+// //         background: $nexora-light;
+
+// //         h2 {
+// //             text-align: center;
+// //             font-size: 2.5rem;
+// //             color: $nexora-secondaryBG;
+// //             margin: 0 0 3rem 0;
+// //         }
+
+// //         .value-grid {
+// //             display: grid;
+// //             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+// //             gap: 2rem;
+// //             max-width: 1200px;
+// //             margin: 0 auto;
+
+// //             .value-item {
+// //                 background: $nexora-light;
+// //                 padding: 2rem;
+// //                 border-radius: 12px;
+// //                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+
+
+// //                 // p {
+// //                 //     color: $nexora-dark;
+// //                 //     line-height: 1.6;
+// //                 // }
+// //             }
+// //         }
+// //     }
+
+// //     // CTA Section
+// //     .cta-section {
+// //         background: linear-gradient(135deg, $nexora-primaryBG 0%, $nexora-secondaryBG 100%);
+// //         color: $nexora-light;
+// //         text-align: center;
+
+// //         h2 {
+// //             color: $nexora-accent
+// //         }
+
+// //         p {
+
+// //             margin: 0.5rem 0 0 0;
+// //             color: rgba(255, 255, 255, 0.8);
+// //             font-size: 1rem;
+
+// //         }
+
+// //         .btn-primary-large {
+// //             padding: 1.25rem 3rem;
+// //             background: $nexora-btnPrim;
+// //             color: $nexora-light;
+// //             text-decoration: none;
+// //             font-weight: 600;
+// //             font-size: 1.25rem;
+// //             border-radius: 8px;
+// //             display: inline-block;
+// //             transition: all 0.3s ease;
+// //             margin-top: 2rem;
+
+// //             &:hover {
+// //                 background: color.adjust($nexora-btnPrim, $lightness: -10%);
+// //                 transform: translateY(-2px);
+// //                 box-shadow: 0 8px 20px rgba(86, 210, 45, 0.4);
+// //             }
+// //         }
+// //     }
+// // }
+
+// /*
+//  .d8b.  d8888b.  .d88b.  db    db d888888b 
+// d8' `8b 88  `8D .8P  Y8. 88    88 `~~88~~' 
+// 88ooo88 88oooY' 88    88 88    88    88    
+// 88~~~88 88~~~b. 88    88 88    88    88    
+// 88   88 88   8D `8b  d8' 88b  d88    88    
+// YP   YP Y8888P'  `Y88P'  ~Y8888P'    YP    
+                                           
+                                           
+// d8888b.  .d8b.   d888b  d88888b            
+// 88  `8D d8' `8b 88' Y8b 88'                
+// 88oodD' 88ooo88 88      88ooooo            
+// 88~~~   88~~~88 88  ooo 88~~~~~            
+// 88      88   88 88. ~8~ 88.                
+// 88      YP   YP  Y888P  Y88888P            
+                                           
+                                           
+// */
+
+
+// // // About Page (block2 - team section)
+// // .about-page {
+// //     background: $nexora-primaryBG;
+// //     max-width: 1200px;
+// //     margin: 0 auto;
+// //     //padding: 0 1rem;
+
+// //     .about-team {
+// //         background-color: #F9F9F9;
+// //         padding: 1rem;
+
+// //         h4 {
+// //             padding-top: 2rem;
+// //         }
+
+// //         .team-grid {
+// //             display: grid;
+// //             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+// //             gap: 2rem;
+
+// //             @media (max-width: 640px) {
+// //                 grid-template-columns: 1fr;
+// //                 gap: 1.5rem;
+// //             }
+
+// //             .team-member {
+// //                 background: $nexora-light;
+// //                 padding: 2rem;
+// //                 border-radius: 12px;
+// //                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+// //                 text-align: center;
+// //                 margin: 0 auto 4rem;
+// //                 background-color: white;
+
+// //                 .member-photo,
+// //                 .member-photo-placeholder {
+// //                     width: 120px;
+// //                     height: 120px;
+// //                     border-radius: 50%;
+// //                     object-fit: cover;
+// //                     margin: 0 auto 1rem;
+// //                     display: block;
+// //                     border: 3px solid $nexora-accent;
+// //                     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+// //                 }
+
+// //                 .role {
+// //                     color: $nexora-accent;
+// //                     font-weight: 600;
+// //                     font-size: 1.25rem;
+// //                     margin-bottom: 1rem;
+// //                 }
+
+// //                 .bio {
+// //                     font-style: italic;
+// //                     font-size: 1rem;
+// //                     color: $nexora-btnPrim;
+// //                     line-height: 1.6;
+// //                 }
+// //             }
+// //         }
+
+// //         @media (max-width: 768px) {
+// //             //padding: 1rem;
+
+// //             .team-grid {
+// //                 grid-template-columns: 1fr;
+// //                 gap: 1.5rem;
+// //             }
+
+// //             .team-member {
+// //                 padding: 1.5rem;
+// //                 margin: 0 auto 2rem;
+// //             }
+// //         }
+// //     }
+// // }
+
+// // // About Values (block3 - separate section)
+// // .about-values {
+// //     background: $nexora-light;
+// //     max-width: 1200px;
+// //     margin: 0 auto;
+// //     padding: 1rem;
+
+// //     .values-grid {
+// //         display: grid;
+// //         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+// //         gap: 2rem;
+// //         padding-bottom: 4.5rem;
+
+// //         .value-card {
+// //             background: $nexora-light;
+// //             padding: 2rem;
+// //             border-radius: 12px;
+// //             border-left: 4px solid $nexora-accent;
+// //             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+// //         }
+// //     }
+// // }
+
+// // .about-intro {
+// //     padding: 3.5rem 2rem;
+// //     text-align: center;
+// //     //margin-bottom: 4rem;
+// //     color: $nexora-accent;
+// //     //margin: 0 0 1rem 0;
+
+// //     .about-story {
+// //         max-width: 1200px;
+// //         margin: 0 auto;
+// //         padding: 2rem;
+
+// //         p {
+// //             color: $nexora-light;
+// //             text-align: left;
+// //             font-size: 0.95rem;
+// //         }
+// //     }
+// // }
+
+// /*
+//  .o88b.  .d8b.  .d8888. d88888b      .d8888. d888888b db    db d8888b. d888888b d88888b .d8888. 
+// d8P  Y8 d8' `8b 88'  YP 88'          88'  YP `~~88~~' 88    88 88  `8D   `88'   88'     88'  YP 
+// 8P      88ooo88 `8bo.   88ooooo      `8bo.      88    88    88 88   88    88    88ooooo `8bo.   
+// 8b      88~~~88   `Y8b. 88~~~~~        `Y8b.    88    88    88 88   88    88    88~~~~~   `Y8b. 
+// Y8b  d8 88   88 db   8D 88.          db   8D    88    88b  d88 88  .8D   .88.   88.     db   8D 
+//  `Y88P' YP   YP `8888Y' Y88888P      `8888Y'    YP    ~Y8888P' Y8888D' Y888888P Y88888P `8888Y' 
+                                                                                                
+                                                                                                
+// d8888b.  .d8b.   d888b  d88888b                                                                 
+// 88  `8D d8' `8b 88' Y8b 88'                                                                     
+// 88oodD' 88ooo88 88      88ooooo                                                                 
+// 88~~~   88~~~88 88  ooo 88~~~~~                                                                 
+// 88      88   88 88. ~8~ 88.                                                                     
+// 88      YP   YP  Y888P  Y88888P                                                                 
+                                                                                                
+                                                                                                                                                                                          
+// */
+
+// // .case-studies-page {
+// //     background: $nex-prim-linBG;
+// //     //padding: 3rem 2rem;
+
+// //     .case-studies-header {
+// //         text-align: center;
+// //         // max-width: 800px;
+// //         margin: 0 auto 4rem;
+
+
+
+// //         .case-studies-intro {
+// //             color: $nexora-light;
+// //             line-height: 1.6;
+// //             font-size: 1rem;
+// //         }
+// //     }
+
+// //     .case-studies-grid {
+// //         max-width: 1200px;
+// //         margin: 0 auto;
+// //         display: flex;
+// //         flex-direction: column;
+// //         gap: 3rem;
+// //         padding: 3rem;
+
+// //         .case-study-card {
+// //             background: $nexora-light;
+// //             padding: 2.5rem;
+// //             border-radius: 12px;
+// //             border: 2px solid $nexora-border;
+// //             transition: all 0.3s ease;
+
+// //             &:hover {
+// //                 border-color: $nexora-primaryBG;
+// //                 box-shadow: 0 8px 20px rgba(26, 115, 232, 0.15);
+// //             }
+
+// //             .case-study-header {
+// //                 display: flex;
+// //                 //justify-content: 
+// //                 align-items: flex-start;
+// //                 flex-direction: column;
+// //                 // margin-bottom: 3.5rem;
+// //                 flex-wrap: wrap;
+// //                 //gap: 1rem;
+
+// //                 h4 {
+
+// //                     color: $nexora-text;
+// //                     margin-bottom: 1rem;
+// //                 }
+
+// //                 .industry-tag {
+// //                     //background: $nexora-primaryBG;
+// //                     color: $nexora-accent;
+// //                     //padding: 0.5rem 1rem;
+// //                     border-radius: 20px;
+// //                     font-size: 1.1rem;
+// //                     font-weight: 600;
+// //                 }
+// //             }
+
+// //             .case-study-section {
+// //                 margin-bottom: 2rem;
+
+// //                 h5 {
+// //                     font-size: 1.1rem;
+// //                     margin-bottom: 0;
+
+// //                 }
+
+// //                 p {
+// //                     color: $nexora-text;
+// //                     line-height: 1.7;
+// //                     margin: 0;
+// //                 }
+
+// //                 &.results {
+// //                     ul {
+// //                         list-style: none;
+// //                         padding: 0;
+// //                         margin: 0;
+// //                         display: grid;
+// //                         gap: 0.75rem;
+
+// //                         li {
+// //                             padding-left: 1.5rem;
+// //                             position: relative;
+// //                             color: $nexora-text;
+// //                             line-height: 1.6;
+
+// //                             &::before {
+// //                                 content: "✓";
+// //                                 position: absolute;
+// //                                 left: 0;
+// //                                 color: $nexora-accent;
+// //                                 font-weight: bold;
+// //                                 font-size: 1.2rem;
+// //                             }
+// //                         }
+// //                     }
+// //                 }
+// //             }
+
+// //             .case-study-testimonial {
+// //                 background: $nexora-light;
+// //                 padding: 1.5rem;
+// //                 border-left: 4px solid $nexora-accent;
+// //                 border-radius: 8px;
+// //                 margin: 0;
+
+// //                 // p {
+// //                 //     font-style: italic;
+// //                 //     color: $nexora-text;
+// //                 //     line-height: 1.7;
+// //                 //     margin: 0 0 1rem 0;
+// //                 // }
+
+// //                 cite {
+// //                     color: $nexora-accent;
+// //                     font-style: normal;
+// //                     font-weight: 600;
+// //                 }
+// //             }
+// //         }
+// //     }
+
+// //     .case-studies-cta {
+// //         // text-align: center;
+// //         // // padding: 3rem 2rem;
+// //         // background: $nexora-light;
+// //         // border-radius: 12px;
+// //         // // max-width: 800px;
+// //         // margin: 3rem auto 0;
+
+// //         // h4 {
+// //         //     font-size: 2rem;
+// //         //     color: $nexora-dark;
+// //         //     margin: 0 0 1rem 0;
+// //         // }
+
+// //         // p {
+// //         //     font-size: 1.1rem;
+// //         //     color: $nexora-accent;
+// //         //     margin-bottom: 2rem;
+// //         // }
+
+// //         .btn-primary {
+// //             padding: 1rem 2rem;
+// //             background: $nexora-primaryBG;
+// //             color: $nexora-light;
+// //             text-decoration: none;
+// //             font-weight: 600;
+// //             border-radius: 8px;
+// //             display: inline-block;
+// //             transition: all 0.3s ease;
+
+// //             &:hover {
+// //                 background: $nexora-secondaryBG;
+// //                 transform: translateY(-2px);
+// //                 box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+// //             }
+// //         }
+// //     }
+// // }
+
+// // .case-studies-page {
+// //     // padding: 3rem 2rem;
+// //     // background: $nex-prim-linBG;
+
+// //     .case-studies-header {
+// //         text-align: center;
+// //         // max-width: 800px;
+// //         margin: 0 auto 4rem;
+
+// //         @media (max-width: 768px) {
+// //             margin: 0;
+// //         }
+
+// //         & .case-studies-intro {
+// //             color: $nexora-light;
+// //             padding: 0 2rem;
+// //             //padding: 3rem 2rem;
+// //         }
+// //     }
+
+
+// //     .case-studies-grid {
+// //         max-width: 1200px;
+// //         margin: 0 auto;
+// //         display: grid;
+// //         gap: 3em;
+
+// //         .case-study-card {
+// //             background: $nexora-light;
+// //             padding: 2.5rem;
+// //             border-radius: 12px;
+// //             gap: 2px;
+// //             border: 2px solid $nexora-border;
+// //             transition: all 0.3s ease;
+
+// //             // h4 {
+// //             //     font-size: 2.5rem;
+// //             //     color: $nexora-dark;
+// //             //     margin: 0 0 1rem 0;
+// //             // }
+
+// //             .industry-tag {
+// //                 font-size: 1.25rem;
+// //                 color: $nexora-accent;
+// //                 line-height: 1.6;
+// //             }
+
+// //             .case-study-section {
+// //                 // h5 {
+// //                 //     color: $nexora-primaryBG;
+// //                 //     font-size: 1.1rem;
+// //                 //     margin: 0 0 0.75rem 0;
+// //                 //     text-transform: uppercase;
+// //                 //     letter-spacing: 0.5px;
+// //                 // }
+
+// //                 // p {
+// //                 //     color: $nexora-text;
+// //                 //     line-height: 1.7;
+// //                 //     margin: 0;
+// //                 // }
+
+// //                 &.results {
+// //                     ul {
+// //                         list-style: none;
+// //                         padding: 0;
+// //                         margin: 0;
+// //                         display: grid;
+// //                         gap: 0.75rem;
+
+// //                         li {
+// //                             padding-left: 1.5rem;
+// //                             position: relative;
+// //                             color: $nexora-text;
+// //                             line-height: 1.6;
+
+// //                             &::before {
+// //                                 content: "✓";
+// //                                 position: absolute;
+// //                                 left: 0;
+// //                                 color: $nexora-accent;
+// //                                 font-weight: bold;
+// //                                 font-size: 1.2rem;
+// //                             }
+// //                         }
+// //                     }
+// //                 }
+
+// //             }
+
+// //             .case-study-testimonial {
+// //                 background: $nexora-light;
+// //                 padding: 1.5rem;
+// //                 border-left: 4px solid $nexora-accent;
+// //                 border-radius: 8px;
+// //                 margin: 0;
+
+// //                 p {
+// //                     font-style: italic;
+// //                     color: #2c6b17;
+// //                     line-height: 1.7;
+// //                     margin: 0 0 1rem 0;
+// //                 }
+
+// //                 cite {
+// //                     color: #02306A;
+// //                     font-style: normal;
+// //                     font-weight: 600;
+// //                 }
+// //             }
+// //         }
+// //     }
+
+//     // .case-studies-cta {
+//     //     text-align: center;
+//     //     padding: 3rem;
+//     //     margin: 3rem auto 0;
+
+//     //     @media (max-width: 768px) {
+//     //         margin: 0;
+//     //         padding: 1.5rem;
+
+//     //         h4 {
+//     //             padding: 0 0.5rem;
+//     //         }
+//     //     }
+
+//     //     div {
+//     //         background: $nexora-light;
+//     //         border-radius: 12px;
+//     //         padding: 1rem 0;
+//     //     }
+
+        
+
+//     //     .btn-primary {
+//     //         padding: 1rem 2rem;
+//     //         background: $nexora-btnPrim;
+//     //         color: $nexora-light;
+//     //         text-decoration: none;
+//     //         font-weight: 600;
+//     //         border-radius: 8px;
+//     //         display: inline-block;
+//     //         transition: all 0.3s ease;
+
+//     //         &:hover {
+//     //             background: $nexora-secondaryBG;
+//     //             transform: translateY(-2px);
+//     //             box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+//     //         }
+//     //     }
+//     // }
+
+
+// /*
+//  .o88b.  .d88b.  d8b   db d888888b  .d8b.   .o88b. d888888b 
+// d8P  Y8 .8P  Y8. 888o  88 `~~88~~' d8' `8b d8P  Y8 `~~88~~' 
+// 8P      88    88 88V8o 88    88    88ooo88 8P         88    
+// 8b      88    88 88 V8o88    88    88~~~88 8b         88    
+// Y8b  d8 `8b  d8' 88  V888    88    88   88 Y8b  d8    88    
+//  `Y88P'  `Y88P'  VP   V8P    YP    YP   YP  `Y88P'    YP    
+                                                            
+                                                            
+// d8888b.  .d8b.   d888b  d88888b                             
+// 88  `8D d8' `8b 88' Y8b 88'                                 
+// 88oodD' 88ooo88 88      88ooooo                             
+// 88~~~   88~~~88 88  ooo 88~~~~~                             
+// 88      88   88 88. ~8~ 88.                                 
+// 88      YP   YP  Y888P  Y88888P                             
+                                                            
+                                                            
+// */
+
+// // .contact-section {
+// //     //padding: 0 2rem 2rem 2rem;
+// //     background: linear-gradient(135deg, $nexora-primaryBG 0%, $nexora-secondaryBG 100%);
+
+
+// //     .contact-container {
+// //         max-width: 1200px;
+// //         margin: 6rem auto 4rem auto;
+// //         display: grid;
+// //         grid-template-columns: 1fr 1.5fr;
+// //         gap: 4rem;
+
+// //         @media (max-width: 968px) {
+// //             grid-template-columns: 1fr;
+// //             gap: 3rem;
+// //         }
+
+// //         @media (max-width: 768px) {
+// //             margin: 0 auto 2rem auto;
+// //         }
+
+// //         .contact-info {
+
+
+// //             .contact-intro {
+// //                 font-size: 1.1rem;
+// //                 color: $nexora-light;
+// //                 line-height: 1.7;
+// //                 margin-bottom: 2rem;
+// //             }
+
+// //             &.contact-details,
+// //             .contact-details {
+// //                 display: flex;
+// //                 flex-direction: column;
+// //                 gap: 2rem;
+// //                 color: $nexora-light;
+
+// //                 .contact-item {
+// //                     h4 {
+// //                         font-size: 1.1rem;
+// //                         color: $nexora-accent;
+// //                         margin: 0 0 0.5rem 0;
+// //                         text-transform: uppercase;
+// //                         letter-spacing: 0.5px;
+// //                         text-align: left;
+// //                     }
+
+// //                     p {
+// //                         color: $nexora-light;
+// //                         line-height: 1.6;
+// //                         margin: 0;
+
+// //                     }
+
+// //                     a {
+// //                         color: $nexora-light;
+// //                         text-decoration: none;
+// //                         transition: color 0.3s ease;
+
+// //                         &:hover {
+// //                             color: $nexora-btnPrim;
+// //                         }
+// //                     }
+// //                 }
+// //             }
+// //         }
+
+// //         .contact-form-wrapper {
+// //             background: $nexora-light;
+// //             padding: 2.5rem;
+// //             border-radius: 12px;
+// //             border: 2px solid $nexora-border;
+
+
+// //             .contact-form {
+// //                 // h4 {
+// //                 //     font-size: 1.75rem;
+// //                 //     color: $nexora-dark;
+// //                 //     margin: 0 0 2rem 0;
+// //                 // }
+
+// //                 &.form-group,
+// //                 .form-group {
+// //                     margin-bottom: 1.5rem;
+
+// //                     label {
+// //                         display: block;
+// //                         color: $nexora-text;
+// //                         font-weight: 600;
+// //                         margin-bottom: 0.5rem;
+// //                     }
+
+// //                     input,
+// //                     select,
+// //                     textarea {
+// //                         width: 100%;
+// //                         padding: 0.75rem;
+// //                         border: 2px solid $nexora-border;
+// //                         border-radius: 8px;
+// //                         font-size: 1rem;
+// //                         font-family: inherit;
+// //                         transition: border-color 0.3s ease;
+// //                         background: $nexora-light;
+
+// //                         &:focus {
+// //                             outline: none;
+// //                             border-color: $nexora-primaryBG;
+// //                         }
+// //                     }
+
+// //                     textarea {
+// //                         resize: vertical;
+// //                         min-height: 120px;
+// //                     }
+// //                 }
+
+// //                 .btn-submit {
+// //                     width: 100%;
+// //                     padding: 1rem 2rem;
+// //                     background: $nexora-secondaryBG;
+// //                     color: $nexora-light;
+// //                     border: none;
+// //                     border-radius: 8px;
+// //                     font-size: 1.1rem;
+// //                     font-weight: 600;
+// //                     cursor: pointer;
+// //                     transition: all 0.3s ease;
+
+// //                     &:hover {
+// //                         background: $nexora-btnPrim;
+// //                         color: $nexora-light;
+// //                         transform: translateY(-2px);
+// //                         box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+// //                     }
+// //                 }
+
+// //                 .privacy-note {
+// //                     text-align: center;
+// //                     font-size: 0.9rem;
+// //                     color: $nexora-accent;
+// //                     margin-top: 1rem;
+
+// //                     a {
+// //                         color: $nexora-accent;
+// //                         text-decoration: none;
+
+// //                         &:hover {
+// //                             text-decoration: underline;
+// //                             color: $nexora-btnPrim;
+// //                         }
+// //                     }
+// //                 }
+// //             }
+// //         }
+// //     }
+
+
+// // }
+
+// /*
+// d888888b d8b   db .d8888. d888888b  d888b  db   db d888888b .d8888. 
+//   `88'   888o  88 88'  YP   `88'   88' Y8b 88   88 `~~88~~' 88'  YP 
+//    88    88V8o 88 `8bo.      88    88      88ooo88    88    `8bo.   
+//    88    88 V8o88   `Y8b.    88    88  ooo 88~~~88    88      `Y8b. 
+//   .88.   88  V888 db   8D   .88.   88. ~8~ 88   88    88    db   8D 
+// Y888888P VP   V8P `8888Y' Y888888P  Y888P  YP   YP    YP    `8888Y' 
+                                                                    
+                                                                    
+// d8888b.  .d8b.   d888b  d88888b                                     
+// 88  `8D d8' `8b 88' Y8b 88'                                         
+// 88oodD' 88ooo88 88      88ooooo                                     
+// 88~~~   88~~~88 88  ooo 88~~~~~                                     
+// 88      88   88 88. ~8~ 88.                                         
+// 88      YP   YP  Y888P  Y88888P                                     
+                                                                    
+                                                                    
+// */
+
+// // .insights-page {
+// //     // padding: 3rem 2rem;
+// //     background: $nex-prim-linBG;
+// //     //padding: 1rem;
+
+// //     .block1 {
+// //         min-height: 334px;
+
+// //         @media (max-width: 768px) {
+// //             min-height: 212px;
+// //         }
+// //     }
+
+// //     .block2 {
+// //         padding: 3rem;
+
+// //         @media (max-width: 768px) {
+// //             padding: 1rem;
+// //         }
+// //     }
+
+// //     .insights-header {
+// //         max-width: 1200px;
+// //         margin: 0 auto;
+// //         text-align: center;
+// //         padding-bottom: 4rem;
+
+// //         @media (max-width: 768px) {
+// //             padding-bottom: 0;
+// //         }
+
+// //         .insights-subtitle {
+// //             font-size: 1.1rem;
+// //             color: $nexora-light;
+// //             text-align: center;
+// //             line-height: 1.6;
+// //             padding: 0 1rem;
+
+// //             @media (max-width: 768px) {
+// //                 padding: 0 1rem 1rem 1rem;
+// //             }
+// //         }
+
+// //     }
+
+// //     .insights-grid {
+// //         display: grid;
+// //         grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+// //         gap: 2rem;
+
+// //         @media (max-width: 768px) {
+// //             grid-template-columns: 1fr;
+// //         }
+
+// //         .insights-card {
+// //             background: $nexora-light;
+// //             padding: 2rem;
+// //             border-radius: 12px;
+// //             border: 2px solid $nexora-border;
+// //             transition: all 0.3s ease;
+// //             display: flex;
+// //             flex-direction: column;
+
+// //             &:hover {
+// //                 border-color: $nexora-primaryBG;
+// //                 transform: translateY(-5px);
+// //                 box-shadow: 0 8px 20px rgba(26, 115, 232, 0.15);
+// //             }
+
+// //             .insights-category {
+// //                 display: inline-block;
+// //                 background: $nexora-primaryBG;
+// //                 color: $nexora-light;
+// //                 padding: 0.4rem 0.8rem;
+// //                 border-radius: 4px;
+// //                 font-size: 0.85rem;
+// //                 font-weight: 600;
+// //                 margin-bottom: 1rem;
+// //                 align-self: flex-start;
+
+
+// //             }
+
+// //             h4 {
+// //                 font-size: 1rem;
+// //                 text-align: left;
+// //                 margin: 0 0 1rem 0;
+// //                 line-height: 1.3;
+// //             }
+
+// //             // h4 {
+// //             //     font-size: 1.5rem;
+// //             //     color: $nexora-dark;
+// //             //     margin: 0 0 1rem 0;
+// //             //     line-height: 1.3;
+// //             // }
+
+// //             .insights-meta {
+// //                 display: flex;
+// //                 gap: 1rem;
+// //                 color: $nexora-text;
+// //                 font-size: 0.9rem;
+// //                 margin-bottom: 1rem;
+
+// //                 time {
+// //                     font-weight: 500;
+// //                 }
+
+// //                 .read-time {
+// //                     &::before {
+// //                         content: "•";
+// //                         margin-right: 0.5rem;
+// //                     }
+// //                 }
+// //             }
+
+// //             .insights-excerpt {
+// //                 color: $nexora-btnPrim;
+// //                 line-height: 1.7;
+// //                 margin-bottom: 1.5rem;
+// //                 flex-grow: 1;
+// //             }
+
+// //             .insights-link {
+// //                 color: $nexora-accent;
+// //                 text-decoration: none;
+// //                 font-weight: 600;
+// //                 display: inline-flex;
+// //                 align-items: center;
+// //                 gap: 0.5rem;
+// //                 transition: gap 0.3s ease;
+// //                 align-self: flex-start;
+
+// //                 &:hover {
+// //                     gap: 0.75rem;
+// //                     text-decoration: underline;
+// //                     color: $nexora-text;
+// //                 }
+// //             }
+// //         }
+// //     }
+// // }
+
+// /*
+// .d8888. d88888b d8888b. db    db d888888b  .o88b. d88888b .d8888. 
+// 88'  YP 88'     88  `8D 88    88   `88'   d8P  Y8 88'     88'  YP 
+// `8bo.   88ooooo 88oobY' Y8    8P    88    8P      88ooooo `8bo.   
+//   `Y8b. 88~~~~~ 88`8b   `8b  d8'    88    8b      88~~~~~   `Y8b. 
+// db   8D 88.     88 `88.  `8bd8'    .88.   Y8b  d8 88.     db   8D 
+// `8888Y' Y88888P 88   YD    YP    Y888888P  `Y88P' Y88888P `8888Y' 
+                                                                  
+                                                                  
+// d8888b.  .d8b.   d888b  d88888b                                   
+// 88  `8D d8' `8b 88' Y8b 88'                                       
+// 88oodD' 88ooo88 88      88ooooo                                   
+// 88~~~   88~~~88 88  ooo 88~~~~~                                   
+// 88      88   88 88. ~8~ 88.                                       
+// 88      YP   YP  Y888P  Y88888P                                   
+                                                                  
+                                                                  
+// */
+
+// // .services-page {
+// //     background: linear-gradient(135deg, $nexora-primaryBG 0%, $nexora-secondaryBG 100%);
+// //     color: $nexora-light;
+// //     // padding: 3rem 2rem;
+// //     max-width: 1200px;
+// //     margin: 0 auto;
+// //     font-size: 1.25rem;
+
+// //     & .services-header {
+// //         text-align: center;
+// //         //  max-width: 800px;
+// //         margin: 0 auto 1rem;
+// //         padding-top: 3rem;
+
+// //         .services-intro {
+
+// //             margin: 0.5rem 0 0 0;
+// //             color: rgba(255, 255, 255, 0.8);
+// //             font-size: 1rem;
+
+// //             @media (max-width: 640px) {
+// //                 padding: 0 2rem;
+// //             }
+
+// //         }
+
+// //     }
+
+
+// //     & .services-detailed {
+// //         max-width: 1200px;
+// //         margin: 0 auto;
+// //         padding: 2rem;
+
+// //         @media (max-width: 640px) {
+// //             font-size: 0.9rem;
+// //             padding: 1rem;
+
+// //             /* Override service-cta font size at mobile breakpoint */
+// //             .service-category .service-cards .service-detail-card .service-cta {
+// //                 font-size: 0.85rem !important;
+// //             }
+// //         }
+
+// //         .service-category {
+// //             padding: 1rem;
+
+// //             &:not(:last-child) {
+// //                 margin-bottom: 2rem;
+// //             }
+
+// //             .category-title {
+// //                 font-size: 2rem;
+// //                 color: $nexora-accent;
+// //                 margin: 2rem 0 1rem 0;
+// //                 justify-content: center;
+// //                 display: flex;
+
+// //                 @media (max-width: 640px) {
+// //                     font-size: 1.25rem;
+// //                     margin: 1.5rem 0 0.75rem 0;
+// //                 }
+// //             }
+
+// //             .category-description {
+// //                 font-size: 1.1rem;
+// //                 color: $nexora-light;
+// //                 margin-bottom: 2rem;
+// //                 display: flex;
+// //                 justify-content: center;
+
+// //                 @media (max-width: 640px) {
+// //                     font-size: 0.95rem;
+// //                     margin-bottom: 1.5rem;
+// //                 }
+// //             }
+
+// //             .service-cards {
+// //                 display: grid;
+// //                 grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+// //                 gap: 2rem;
+
+// //                 .service-detail-card {
+// //                     background: $nexora-light;
+// //                     padding: 2rem;
+// //                     border-radius: 12px;
+// //                     border: 2px solid $nexora-border;
+// //                     transition: all 0.3s ease;
+
+// //                     &:hover {
+// //                         border-color: $nexora-primaryBG;
+// //                         box-shadow: 0 8px 20px rgba(26, 115, 232, 0.15);
+// //                     }
+
+// //                     // h5 {
+// //                     //     font-size: 1.25rem;
+// //                     //     color: $nexora-dark;
+// //                     //     margin: 0 0 0.5rem 0;
+// //                     // }
+
+// //                     .service-detail {
+// //                         margin-bottom: 1rem;
+
+// //                         strong {
+// //                             color: $nexora-primaryBG;
+// //                         }
+
+// //                         .capabilities-list {
+// //                             color: $nexora-btnPrim;
+// //                         }
+// //                     }
+
+// //                     .outcome {
+// //                         strong {
+// //                             color: $nexora-primaryBG;
+// //                         }
+
+// //                         // p {
+// //                         //     color: $nexora-dark;
+// //                         // }
+// //                     }
+
+// //                     .service-cta {
+// //                         display: inline-block;
+// //                         margin-top: 1rem;
+// //                         color: $nexora-accent;
+// //                         font-weight: 600;
+// //                         text-decoration: none;
+
+// //                         &:hover {
+// //                             text-decoration: underline;
+// //                         }
+// //                     }
+
+// //                     /* Mobile breakpoint - explicit override for service-cta */
+// //                     .demo-mode .services-detailed .service-category .service-cards .service-detail-card .service-cta {
+// //                         @media (max-width: 640px) {
+// //                             font-size: 0.85rem !important;
+// //                         }
+// //                     }
+// //                 }
+// //             }
+// //         }
+// //     }
+
+// //     .block2 {
+// //         margin: 4rem 3rem !important;
+// //     }
+
+// //     & .services-cta {
+// //         background: $nexora-light;
+// //         color: $nexora-text;
+// //         padding: 2rem;
+// //         border-radius: 12px;
+// //         text-align: center;
+// //         margin: 4rem auto 0 auto;
+// //         //max-width: 800px;
+
+// //         @media (max-width: 639px) {
+// //             padding: 0;
+// //         }
+
+// //         @media (min-width: 640px) and (max-width: 1000px) {}
+
+
+// //         .btn-primary {
+// //             background: $nexora-secondaryBG; // green
+// //             color: $nexora-light;
+// //             padding: 1rem 2.5rem;
+// //             border-radius: 8px;
+// //             font-size: 1.1rem;
+// //             font-weight: 600;
+// //             text-decoration: none;
+// //             transition: background 0.2s, transform 0.2s;
+
+// //             &:hover {
+// //                 background: $nexora-btnPrim;
+// //                 color: $nexora-light;
+// //                 transform: translateY(-2px);
+// //                 box-shadow: 0 8px 20px rgba(31, 43, 55, 1);
+// //             }
+// //         }
+// //     }
+// // }
+
+// /*
+// d88888b d8888b.  .d88b.  d8b   db d888888b        d88888b d8b   db d8888b.                                        
+// 88'     88  `8D .8P  Y8. 888o  88 `~~88~~'        88'     888o  88 88  `8D                                        
+// 88ooo   88oobY' 88    88 88V8o 88    88           88ooooo 88V8o 88 88   88                                        
+// 88~~~   88`8b   88    88 88 V8o88    88    C8888D 88~~~~~ 88 V8o88 88   88                                        
+// 88      88 `88. `8b  d8' 88  V888    88           88.     88  V888 88  .8D                                        
+// YP      88   YD  `Y88P'  VP   V8P    YP           Y88888P VP   V8P Y8888D'                                        
+                                                                                                                  
+                                                                                                                  
+// .88b  d88.  .d88b.  d8888b. d88888b d8888b. d8b   db d888888b d88888D  .d8b.  d888888b d888888b  .d88b.  d8b   db 
+// 88'YbdP`88 .8P  Y8. 88  `8D 88'     88  `8D 888o  88   `88'   YP  d8' d8' `8b `~~88~~'   `88'   .8P  Y8. 888o  88 
+// 88  88  88 88    88 88   88 88ooooo 88oobY' 88V8o 88    88       d8'  88ooo88    88       88    88    88 88V8o 88 
+// 88  88  88 88    88 88   88 88~~~~~ 88`8b   88 V8o88    88      d8'   88~~~88    88       88    88    88 88 V8o88 
+// 88  88  88 `8b  d8' 88  .8D 88.     88 `88. 88  V888   .88.    d8' db 88   88    88      .88.   `8b  d8' 88  V888 
+// YP  YP  YP  `Y88P'  Y8888D' Y88888P 88   YD VP   V8P Y888888P d88888P YP   YP    YP    Y888888P  `Y88P'  VP   V8P 
+                                                                                                                  
+// */
+
+// // .service-detail-page {
+// //     .block1 {
+// //         background: $nex-prim-linBG;
+// //         padding-bottom: 1rem;
+
+// //         .service-detail-header {
+// //             text-align: center;
+// //             padding: 5rem 2rem !important;
+// //             display: flex;
+// //             flex-direction: column;
+// //             align-items: center;
+// //             //gap: 2rem;
+// //             max-width: 856px;
+// //             margin: 0 auto;
+
+// //             p {
+// //                 color: $nexora-light;
+// //                 margin-top: 0;
+// //             }
+// //         }
+
+// //         .service-overview {
+// //             padding: 0 3rem;
+
+// //             h2 {
+// //                 color: $nexora-btnPrim;
+// //                 margin: 0;
+// //             }
+
+// //             p {
+// //                 color: $nexora-light;
+// //                 margin-top: 0;
+// //             }
+// //         }
+// //     }
+
+// //     .block2 {
+// //         background: $nexora-light;
+// //         padding-bottom: 1rem;
+// //         padding: 2rem;
+
+
+// //         .highlights-grid {
+// //             display: grid;
+// //             /* 2 equal columns on wide screens, responsive down to 1 */
+// //             grid-template-columns: repeat(2, 1fr);
+// //             max-width: 1200px;
+// //             margin: 0 auto;
+// //             gap: 2rem;
+// //             align-items: stretch;
+
+// //             @media (max-width: 900px) {
+// //                 grid-template-columns: 1fr;
+// //             }
+
+// //             @media (max-width: 640px) {
+// //                 grid-template-columns: 1fr;
+// //             }
+
+// //             .highlight-card {
+// //                 background: $nexora-light;
+// //                 padding: 2rem;
+// //                 min-width: 16.5rem;
+// //                 width: 100%;
+// //                 border-radius: 12px;
+// //                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+// //                 transition: all 0.3s ease;
+
+
+// //                 // &:hover {
+// //                 //     transform: translateY(-8px);
+// //                 //     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+// //                 // }
+
+// //             }
+// //         }
+
+
+// //     }
+
+// //     .block3 {
+
+// //         background: linear-gradient(180deg, $nexora-light 40%, $nexora-secondaryBG 100%);
+// //         padding: 2rem;
+
+// //         .modern-cta {
+// //             text-align: center;
+// //             padding: 5rem 2rem 0 2rem !important;
+// //             display: flex;
+// //             flex-direction: column;
+// //             align-items: center;
+// //             //gap: 2rem;
+// //             max-width: 856px;
+// //             margin: 0 auto;
+
+// //             h2 {
+// //                 color: #215011;
+// //                 margin: 0;
+// //             }
+
+// //             p {
+// //                 color: $nexora-light;
+// //             }
+// //         }
+
+// //         .services-more {
+
+// //             display: flex;
+// //             justify-content: center;
+
+// //             .btn-primary-large {
+// //                 padding: 1.25rem 3rem;
+// //                 background: $nexora-btnPrim;
+// //                 color: $nexora-light;
+// //                 text-decoration: none;
+// //                 font-weight: 600;
+// //                 font-size: 1.25rem;
+// //                 border-radius: 8px;
+// //                 display: inline-block;
+// //                 transition: all 0.3s ease;
+// //                 //margin-top: 2rem;
+
+// //                 &:hover {
+// //                     background: color.adjust($nexora-btnPrim, $lightness: -10%);
+// //                     transform: translateY(-2px);
+// //                     box-shadow: 0 8px 20px rgba(86, 210, 45, 0.5);
+// //                 }
+// //             }
+// //         }
+// //     }
+
+
+
+
+
+// //     //position: relative;
+// //     // background: linear-gradient(to bottom, $nexora-light, $nexora-light 25%, transparent 100%),
+// //     //     linear-gradient(to bottom right, transparent 0%, #1f2b37 30%, #01306b 100%);
+
+// //     // &::after {
+// //     //     content: "";
+// //     //     //position: absolute;
+// //     //     bottom: 0;
+// //     //     left: 0;
+// //     //     width: 100%;
+// //     //     height: 200px; // adjust for smoother fade
+// //     //     pointer-events: none;
+
+// //     //     // transitional gradient
+// //     //     background: linear-gradient(135deg,
+// //     //             #f9f9f9 0%,
+// //     //             #1F2B37 60%,
+// //     //             #01306b 100%);
+// //     // }
+
+
+
+// //     //          .block3 {
+// //     //              //         // background: linear-gradient(135deg, $nexora-primaryBG 0%, $nexora-secondaryBG 100%)!important;
+// //     //              //        // background: linear-gradient(135deg, rgba(31, 43, 55, 1) 0%, rgba(1, 48, 107, 1) 100%);
+// //     //              background: $nex-prim-linBG;
+
+// //     //              padding: 2rem;
+// //     //              .modern-cta{
+// //     //  text-align: center;
+// //     //      padding: 5rem 2rem 0 2rem !important;
+// //     //      display: flex;
+// //     //      flex-direction: column;
+// //     //      align-items: center;
+// //     //      //gap: 2rem;
+// //     //       max-width: 856px;
+// //     //      margin: 0 auto;
+
+// //     //          h2{
+// //     //              color:$nexora-accent;
+// //     //              margin:0;
+// //     //          }
+// //     //          p{
+// //     //              color:$nexora-light;
+// //     //          }
+// //     //  }
+
+// //     //          .services-more{
+
+// //     //              display:flex;
+// //     //              justify-content:center;
+
+// //     //          .btn-primary-large {
+// //     //              padding: 1.25rem 3rem;
+// //     //              background: $nexora-btnPrim;
+// //     //              color: $nexora-light;
+// //     //              text-decoration: none;
+// //     //              font-weight: 600;
+// //     //              font-size: 1.25rem;
+// //     //              border-radius: 8px;
+// //     //              display: inline-block;
+// //     //              transition: all 0.3s ease;
+// //     //              //margin-top: 2rem;
+
+// //     //              &:hover {
+// //     //                  background: darken($nexora-btnPrim, 10%);
+// //     //                  transform: translateY(-2px);
+// //     //                  box-shadow: 0 8px 20px rgba(86, 210, 45, 0.5);
+// //     //              }
+// //     //          }
+// //     //      }
+// //     //      }
+
+// //     .nexora-footer {
+// //         padding: 5rem 2rem 1.5rem;
+// //         background: linear-gradient(to bottom, #0a3267, #1e2b38)
+// //     }
+// // }
+
+// //152F4D, 08346C
+// /*
+// d8888b. d888888b  d888b  d888888b d888888b  .d8b.  db                                                                     
+// 88  `8D   `88'   88' Y8b   `88'   `~~88~~' d8' `8b 88                                                                     
+// 88   88    88    88         88       88    88ooo88 88                                                                     
+// 88   88    88    88  ooo    88       88    88~~~88 88                                                                     
+// 88  .8D   .88.   88. ~8~   .88.      88    88   88 88booo.                                                                
+// Y8888D' Y888888P  Y888P  Y888888P    YP    YP   YP Y88888P                                                                
+                                                                                                                          
+                                                                                                                          
+// d888888b d8888b.  .d8b.  d8b   db .d8888. d88888b  .d88b.  d8888b. .88b  d88.  .d8b.  d888888b d888888b  .d88b.  d8b   db 
+// `~~88~~' 88  `8D d8' `8b 888o  88 88'  YP 88'     .8P  Y8. 88  `8D 88'YbdP`88 d8' `8b `~~88~~'   `88'   .8P  Y8. 888o  88 
+//    88    88oobY' 88ooo88 88V8o 88 `8bo.   88ooo   88    88 88oobY' 88  88  88 88ooo88    88       88    88    88 88V8o 88 
+//    88    88`8b   88~~~88 88 V8o88   `Y8b. 88~~~   88    88 88`8b   88  88  88 88~~~88    88       88    88    88 88 V8o88 
+//    88    88 `88. 88   88 88  V888 db   8D 88      `8b  d8' 88 `88. 88  88  88 88   88    88      .88.   `8b  d8' 88  V888 
+//    YP    88   YD YP   YP VP   V8P `8888Y' YP       `Y88P'  88   YD YP  YP  YP YP   YP    YP    Y888888P  `Y88P'  VP   V8P 
+                                                                                                                          
+                                                                                                                          
+// */
+
+// // .service-detail-page {
+// //     .block1 {
+// //         background: $nex-prim-linBG;
+// //         padding-bottom: 1rem;
+
+// //         .service-detail-header {
+// //             text-align: center;
+// //             padding: 5rem 2rem !important;
+// //             display: flex;
+// //             flex-direction: column;
+// //             align-items: center;
+// //             //gap: 2rem;
+// //             max-width: 856px;
+// //             margin: 0 auto;
+
+// //             p {
+// //                 color: $nexora-light;
+// //                 margin-top: 0;
+// //             }
+// //         }
+
+// //         .service-overview {
+// //             padding: 0 3rem;
+
+// //             h2 {
+// //                 color: $nexora-btnPrim;
+// //                 margin: 0;
+// //             }
+
+// //             p {
+// //                 color: $nexora-light;
+// //                 margin-top: 0;
+// //             }
+// //         }
+// //     }
+
+// //     .block2 {
+// //         background: $nexora-light;
+// //         padding-bottom: 1rem;
+// //         padding: 2rem;
+
+
+// //         .highlights-grid {
+// //             display: grid;
+// //             /* 2 equal columns on wide screens, responsive down to 1 */
+// //             grid-template-columns: repeat(2, 1fr);
+// //             max-width: 1200px;
+// //             margin: 0 auto;
+// //             gap: 2rem;
+// //             align-items: stretch;
+
+// //             @media (max-width: 900px) {
+// //                 grid-template-columns: 1fr;
+// //             }
+
+// //             @media (max-width: 640px) {
+// //                 grid-template-columns: 1fr;
+// //             }
+
+// //             .highlight-card {
+// //                 background: $nexora-light;
+// //                 padding: 2rem;
+// //                 min-width: 16.5rem;
+// //                 width: 100%;
+// //                 border-radius: 12px;
+// //                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+// //                 transition: all 0.3s ease;
+
+
+// //                 // &:hover {
+// //                 //     transform: translateY(-8px);
+// //                 //     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+// //                 // }
+
+// //             }
+// //         }
+
+
+// //     }
+
+// //     .block3 {
+
+// //         background: linear-gradient(180deg, $nexora-light 40%, $nexora-secondaryBG 100%);
+// //         padding: 2rem;
+
+// //         .digital-cta {
+// //             text-align: center;
+// //             padding: 5rem 2rem 0 2rem !important;
+// //             display: flex;
+// //             flex-direction: column;
+// //             align-items: center;
+// //             //gap: 2rem;
+// //             max-width: 856px;
+// //             margin: 0 auto;
+
+// //             h2 {
+// //                 color: #215011;
+// //                 margin: 0;
+// //             }
+
+// //             p {
+// //                 color: $nexora-light;
+// //             }
+// //         }
+
+// //         .services-more {
+
+// //             display: flex;
+// //             justify-content: center;
+
+// //             .btn-primary-large {
+// //                 padding: 1.25rem 3rem;
+// //                 background: $nexora-btnPrim;
+// //                 color: $nexora-light;
+// //                 text-decoration: none;
+// //                 font-weight: 600;
+// //                 font-size: 1.25rem;
+// //                 border-radius: 8px;
+// //                 display: inline-block;
+// //                 transition: all 0.3s ease;
+// //                 //margin-top: 2rem;
+
+// //                 &:hover {
+// //                     background: color.adjust($nexora-btnPrim, $lightness: -10%);
+// //                     transform: translateY(-2px);
+// //                     box-shadow: 0 8px 20px rgba(86, 210, 45, 0.5);
+// //                 }
+// //             }
+// //         }
+// //     }
+
+// //     .nexora-footer {
+// //         padding: 5rem 2rem 1.5rem;
+// //     }
+// // }
+
+// /*
+// d8888b.  .d8b.  d888888b  .d8b.                                             
+// 88  `8D d8' `8b `~~88~~' d8' `8b                                            
+// 88   88 88ooo88    88    88ooo88                                            
+// 88   88 88~~~88    88    88~~~88                                            
+// 88  .8D 88   88    88    88   88                                            
+// Y8888D' YP   YP    YP    YP   YP                                            
+                                                                            
+                                                                            
+//  .d8b.  d8b   db  .d8b.  db      db    db d888888b d888888b  .o88b. .d8888. 
+// d8' `8b 888o  88 d8' `8b 88      `8b  d8' `~~88~~'   `88'   d8P  Y8 88'  YP 
+// 88ooo88 88V8o 88 88ooo88 88       `8bd8'     88       88    8P      `8bo.   
+// 88~~~88 88 V8o88 88~~~88 88         88       88       88    8b        `Y8b. 
+// 88   88 88  V888 88   88 88booo.    88       88      .88.   Y8b  d8 db   8D 
+// YP   YP VP   V8P YP   YP Y88888P    YP       YP    Y888888P  `Y88P' `8888Y' 
+                                                                            
+                                                                            
+// */
+
+// // .service-detail-page {
+// //     .block1 {
+// //         background: $nex-prim-linBG;
+// //         padding-bottom: 1rem;
+
+// //         .service-detail-header {
+// //             text-align: center;
+// //             padding: 5rem 2rem !important;
+// //             display: flex;
+// //             flex-direction: column;
+// //             align-items: center;
+// //             //gap: 2rem;
+// //             max-width: 856px;
+// //             margin: 0 auto;
+
+// //             p {
+// //                 color: $nexora-light;
+// //                 margin-top: 0;
+// //             }
+// //         }
+
+// //         .service-overview {
+// //             padding: 0 3rem;
+
+// //             h2 {
+// //                 color: $nexora-btnPrim;
+// //                 margin: 0;
+// //             }
+
+// //             p {
+// //                 color: $nexora-light;
+// //                 margin-top: 0;
+// //             }
+// //         }
+// //     }
+
+// //     .block2 {
+// //         background: $nexora-light;
+// //         padding-bottom: 1rem;
+// //         padding: 2rem;
+
+
+// //         .highlights-grid {
+// //             display: grid;
+// //             /* 2 equal columns on wide screens, responsive down to 1 */
+// //             grid-template-columns: repeat(2, 1fr);
+// //             max-width: 1200px;
+// //             margin: 0 auto;
+// //             gap: 2rem;
+// //             align-items: stretch;
+
+// //             @media (max-width: 900px) {
+// //                 grid-template-columns: 1fr;
+// //             }
+
+// //             @media (max-width: 640px) {
+// //                 grid-template-columns: 1fr;
+// //             }
+
+// //             .highlight-card {
+// //                 background: $nexora-light;
+// //                 padding: 2rem;
+// //                 min-width: 16.5rem;
+// //                 width: 100%;
+// //                 border-radius: 12px;
+// //                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+// //                 transition: all 0.3s ease;
+
+
+// //                 // &:hover {
+// //                 //     transform: translateY(-8px);
+// //                 //     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+// //                 // }
+
+// //             }
+// //         }
+
+
+// //     }
+
+// //     .block3 {
+
+// //         background: linear-gradient(180deg, $nexora-light 40%, $nexora-secondaryBG 100%);
+// //         padding: 2rem;
+
+// //         .data-cta {
+// //             text-align: center;
+// //             padding: 5rem 2rem 0 2rem !important;
+// //             display: flex;
+// //             flex-direction: column;
+// //             align-items: center;
+// //             //gap: 2rem;
+// //             max-width: 856px;
+// //             margin: 0 auto;
+
+// //             h2 {
+// //                 color: #215011;
+// //                 margin: 0;
+// //             }
+
+// //             p {
+// //                 color: $nexora-light;
+// //             }
+// //         }
+
+// //         .services-more {
+
+// //             display: flex;
+// //             justify-content: center;
+
+// //             .btn-primary-large {
+// //                 padding: 1.25rem 3rem;
+// //                 background: $nexora-btnPrim;
+// //                 color: $nexora-light;
+// //                 text-decoration: none;
+// //                 font-weight: 600;
+// //                 font-size: 1.25rem;
+// //                 border-radius: 8px;
+// //                 display: inline-block;
+// //                 transition: all 0.3s ease;
+// //                 //margin-top: 2rem;
+
+// //                 &:hover {
+// //                     background: color.adjust($nexora-btnPrim, $lightness: -10%);
+// //                     transform: translateY(-2px);
+// //                     box-shadow: 0 8px 20px rgba(86, 210, 45, 0.5);
+// //                 }
+// //             }
+// //         }
+// //     }
+
+// //     .nexora-footer {
+// //         padding: 5rem 2rem 1.5rem;
+// //     }
+// // }
+
+// /*
+//  .o88b. db    db d8888b. d88888b d8888b. .d8888. d88888b  .o88b. db    db d8888b. d888888b d888888b db    db 
+// d8P  Y8 `8b  d8' 88  `8D 88'     88  `8D 88'  YP 88'     d8P  Y8 88    88 88  `8D   `88'   `~~88~~' `8b  d8' 
+// 8P       `8bd8'  88oooY' 88ooooo 88oobY' `8bo.   88ooooo 8P      88    88 88oobY'    88       88     `8bd8'  
+// 8b         88    88~~~b. 88~~~~~ 88`8b     `Y8b. 88~~~~~ 8b      88    88 88`8b      88       88       88    
+// Y8b  d8    88    88   8D 88.     88 `88. db   8D 88.     Y8b  d8 88b  d88 88 `88.   .88.      88       88    
+//  `Y88P'    YP    Y8888P' Y88888P 88   YD `8888Y' Y88888P  `Y88P' ~Y8888P' 88   YD Y888888P    YP       YP    
+                                                                                                             
+                                                                                                             
+//  .o88b.  .d88b.  .88b  d88. d8888b. db      d888888b  .d8b.  d8b   db  .o88b. d88888b                        
+// d8P  Y8 .8P  Y8. 88'YbdP`88 88  `8D 88        `88'   d8' `8b 888o  88 d8P  Y8 88'                            
+// 8P      88    88 88  88  88 88oodD' 88         88    88ooo88 88V8o 88 8P      88ooooo                        
+// 8b      88    88 88  88  88 88~~~   88         88    88~~~88 88 V8o88 8b      88~~~~~                        
+// Y8b  d8 `8b  d8' 88  88  88 88      88booo.   .88.   88   88 88  V888 Y8b  d8 88.                            
+//  `Y88P'  `Y88P'  YP  YP  YP 88      Y88888P Y888888P YP   YP VP   V8P  `Y88P' Y88888P                        
+                                                                                                                                                                                                                        
+// */
+
+// // .service-detail-page {
+// //     .block1 {
+// //         background: $nex-prim-linBG;
+// //         padding-bottom: 1rem;
+
+// //         .service-detail-header {
+// //             text-align: center;
+// //             padding: 5rem 2rem !important;
+// //             display: flex;
+// //             flex-direction: column;
+// //             align-items: center;
+// //             //gap: 2rem;
+// //             max-width: 856px;
+// //             margin: 0 auto;
+
+// //             p {
+// //                 color: $nexora-light;
+// //                 margin-top: 0;
+// //             }
+// //         }
+
+// //         .service-overview {
+// //             padding: 0 3rem;
+
+// //             h2 {
+// //                 color: $nexora-btnPrim;
+// //                 margin: 0;
+// //             }
+
+// //             p {
+// //                 color: $nexora-light;
+// //                 margin-top: 0;
+// //             }
+// //         }
+// //     }
+
+// //     .block2 {
+// //         background: $nexora-light;
+// //         padding-bottom: 1rem;
+// //         padding: 2rem;
+
+
+// //         .highlights-grid {
+// //             display: grid;
+// //             /* 2 equal columns on wide screens, responsive down to 1 */
+// //             grid-template-columns: repeat(2, 1fr);
+// //             max-width: 1200px;
+// //             margin: 0 auto;
+// //             gap: 2rem;
+// //             align-items: stretch;
+
+// //             @media (max-width: 900px) {
+// //                 grid-template-columns: 1fr;
+// //             }
+
+// //             @media (max-width: 640px) {
+// //                 grid-template-columns: 1fr;
+// //             }
+
+// //             .highlight-card {
+// //                 background: $nexora-light;
+// //                 padding: 2rem;
+// //                 min-width: 16.5rem;
+// //                 width: 100%;
+// //                 border-radius: 12px;
+// //                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+// //                 transition: all 0.3s ease;
+
+
+// //                 // &:hover {
+// //                 //     transform: translateY(-8px);
+// //                 //     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+// //                 // }
+
+// //             }
+// //         }
+
+
+// //     }
+
+// //     .block3 {
+
+// //         background: linear-gradient(180deg, $nexora-light 40%, $nexora-secondaryBG 100%);
+// //         padding: 2rem;
+
+// //         .security-cta {
+// //             text-align: center;
+// //             padding: 5rem 2rem 0 2rem !important;
+// //             display: flex;
+// //             flex-direction: column;
+// //             align-items: center;
+// //             //gap: 2rem;
+// //             max-width: 856px;
+// //             margin: 0 auto;
+
+// //             h2 {
+// //                 color: #215011;
+// //                 margin: 0;
+// //             }
+
+// //             p {
+// //                 color: $nexora-light;
+// //             }
+// //         }
+
+// //         .services-more {
+
+// //             display: flex;
+// //             justify-content: center;
+
+// //             .btn-primary-large {
+// //                 padding: 1.25rem 3rem;
+// //                 background: $nexora-btnPrim;
+// //                 color: $nexora-light;
+// //                 text-decoration: none;
+// //                 font-weight: 600;
+// //                 font-size: 1.25rem;
+// //                 border-radius: 8px;
+// //                 display: inline-block;
+// //                 transition: all 0.3s ease;
+// //                 //margin-top: 2rem;
+
+// //                 &:hover {
+// //                     background: color.adjust($nexora-btnPrim, $lightness: -10%);
+// //                     transform: translateY(-2px);
+// //                     box-shadow: 0 8px 20px rgba(86, 210, 45, 0.5);
+// //                 }
+// //             }
+// //         }
+// //     }
+
+// //     .nexora-footer {
+// //         padding: 5rem 2rem 1.5rem;
+// //     }
+// // }
+
+
+
+
+// /* Accessibility: visible focus outlines for keyboard users */
+// a:focus-visible,
+// button:focus-visible,
+// .btn-primary:focus-visible,
+// [role="button"]:focus-visible {
+//     outline: 3px solid rgba(80, 118, 246, 0.28);
+//     outline-offset: 3px;
+// }
+
+// /* Responsive tweak: reduce avatar size on small screens */
+// @media (max-width: 480px) {
+
+//     .member-photo,
+//     .member-photo-placeholder {
+//         width: 90px;
+//         height: 90px;
+//         font-size: 1.5rem;
+//         margin-bottom: 1rem;
+//     }
+// }
+
+// /*
+// d8888b. d88888b .88b  d88.  .d88b.                                        
+// 88  `8D 88'     88'YbdP`88 .8P  Y8.                                       
+// 88   88 88ooooo 88  88  88 88    88                                       
+// 88   88 88~~~~~ 88  88  88 88    88                                       
+// 88  .8D 88.     88  88  88 `8b  d8'                                       
+// Y8888D' Y88888P YP  YP  YP  `Y88P'                                        
+                                                                          
+                                                                          
+// .d8888. d8888b. d88888b  .o88b. d888888b d88888b d888888b  .o88b. .d8888. 
+// 88'  YP 88  `8D 88'     d8P  Y8   `88'   88'       `88'   d8P  Y8 88'  YP 
+// `8bo.   88oodD' 88ooooo 8P         88    88ooo      88    8P      `8bo.   
+//   `Y8b. 88~~~   88~~~~~ 8b         88    88~~~      88    8b        `Y8b. 
+// db   8D 88      88.     Y8b  d8   .88.   88        .88.   Y8b  d8 db   8D 
+// `8888Y' 88      Y88888P  `Y88P' Y888888P YP      Y888888P  `Y88P' `8888Y' 
+//   */
+
+// /* Demo-mode scoped overrides
+//    These rules are conservative and mirror key layout/header/footer
+//    behaviors only when the demo wrapper applies the `.demo-mode` class.
+//    This helps prevent demo-only visuals from leaking into non-demo pages. */
+// .demo-mode .nexora,
+// .nexora.demo-mode {
+//     padding-bottom: 0;
+//     max-width: 1200px;
+//     margin: 0 auto;
+// }
+
+// /* Ensure any page-level `.container` inside demo mode matches demo widths/padding
+//    so header, nav, and content align exactly. Many pages include `class="container"`.
+//    This rule keeps left/right edges consistent for demo pages. */
+// .demo-mode .container {
+//     max-width: 1200px;
+//     margin: 0 auto;
+//     // padding-left: 2rem;
+//     //  padding-right: 2rem;
+//     box-sizing: border-box;
+// }
+
+// // .demo-mode .nexora-project-header,
+// // .demo-mode .nexora-navbar {
+// //     display: flex;
+// //     flex-direction: row;
+// //     gap: 1rem;
+// //     padding: 1.5rem 2rem;
+// //     background: $nexora-light;
+// //     border-bottom: 2px solid $nexora-border;
+// //     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+// //     z-index: 100;
+// // }
+
+// // .demo-mode .hero-section {
+// //     padding: 5rem 2rem ;
+// // }
+
+// // // .demo-mode .breadcrumb {
+// // //     //padding: 1rem 2rem;
+// // // }
+
+// // .demo-mode .nexora-footer,
+// // .demo-mode .nexora-footer-section {
+// //     max-width: 1200px;
+// //     margin: 0 auto;
+// // }
+
+// /* Tighten header/nav/content spacing and center widths for demo landing */
+// // .demo-mode .nexora-project-header,
+// // .demo-mode .nexora-navbar,
+// // .demo-mode .demo-internal-nav,
+// // .demo-mode .nexora-home,
+// // .nexora-home.demo-mode,
+// // .demo-mode .nexora-footer {
+// //     max-width: 1200px;
+// //     margin: 0 auto;
+// //     box-sizing: border-box;
+// // }
+
+// // .demo-mode .nexora-project-header {
+// //     margin-bottom: 0;
+// //     /* keep horizontal padding consistent with other demo elements */
+// //     padding-left: 2rem;
+// //     padding-right: 2rem;
+// //     padding-top: 1.25rem;
+// //     padding-bottom: 1.25rem;
+// //     /* Use a two-row grid so the project title sits above the return button
+// //        (matches requested 2-row layout: title in row 1, button in row 2). */
+// //     display: grid;
+// //     grid-template-rows: auto auto;
+// //     gap: 0.5rem;
+// //     align-items: start;
+// // }
+
+// // .demo-mode .nexora-navbar,
+// // .demo-mode .demo-internal-nav {
+// //     margin: 0;
+// //     //padding: 0.75rem 2rem;
+// //     border-bottom: none;
+// // }
+
+// /* Ensure header children occupy the intended grid rows */
+// // .demo-mode .nexora-project-header .project-name {
+// //     grid-row: 1;
+// // }
+
+// // .demo-mode .nexora-project-header .return-btn {
+// //     grid-row: 2;
+// //     align-self: start;
+// // }
+
+// // .demo-mode .nexora-home .hero-section,
+// // .nexora-home.demo-mode .hero-section {
+// //     margin-top: 0;
+// //     padding-top: 2.5rem;
+// //     /* keep some inner spacing */
+// // }
+
+// /* Breadcrumb boxed and inside content area */
+// // .demo-mode .landing-breadcrumb-wrapper {
+// //     max-width: 1200px;
+// //     margin: 0 auto;
+// //     padding: 1rem 2rem;
+// //     display: flex;
+// //     flex-direction: row;
+// //     align-items: center
+// // }
+
+// // .demo-mode .landing-breadcrumb-wrapper .breadcrumb {
+// //     display: flex;
+// //     //background: rgba(20, 30, 40, 0.12);
+// //     color: #fff;
+// //     // padding: 0.5rem 0.9rem;
+// //     border-radius: 6px;
+// // }
+
+// /* Demo-only background for landing blocks */
+// .demo-mode .nexora-home .block1,
+// .demo-mode .nexora-home .block2,
+// .nexora-home.demo-mode .block1,
+// .nexora-home.demo-mode .block2 {
+//     background: $nex-prim-linBG;
+// }
+
+// // /* removed empty demo selector for .case-studies-cta .block3 to avoid empty ruleset */
+
+// // .demo-mode .case-studies-page .block1 {
+// //     min-height: 212px;
+// // }
+
+// // .demo-mode .case-studies-page .case-studies-grid.block2 {
+// //     padding: 3rem;
+// // }
+
+// // /* Demo-only: About page hero (block1) using :has() to match the .about-story child */
+// // .demo-mode .block1:has(.about-story) {
+// //     background: $nex-prim-linBG;
+// //     //padding: 3.5rem 2rem;
+// //     color: $nexora-light;
+// // }
+
+// // .demo-mode .block2:has(.contact-container) {
+// //     padding: 3rem;
+// // }
+
+
+
+// /* Demo-only: style Insights page footer only (adjacent sibling selector)
+//    Targets the footer that immediately follows the Insights main element. */
+// .demo-mode main.nexora.insights-page+footer.nexora-footer {
+//     /* example override: make footer darker in demo for Insights page */
+//     background: linear-gradient(to right, #0E2E55, #01306A),
+//         linear-gradient(to bottom, transparent 0%, transparent, #1e2b38 80%, #1e2b38 100%);
+//     background-blend-mode: multiply;
+//     color: $nexora-light;
+// }
+
+// // .demo-mode main.nexora.insights-page+footer.nexora-footer .footer-bottom {
+// //     padding-top: 2.5rem;
+// //     text-align: center;
+// // }
+
+// // /* Mobile spacing reductions for Nexora demo */
+// // @media (max-width: 639px) {
+// //     .nexora {
+
+// //         /* Reduce top/bottom padding on main blocks */
+// //         .block1 {
+// //             padding-top: 1rem;
+// //             padding-bottom: 1rem;
+// //         }
+
+
+// //         /* Reduce margins on headings */
+// //         h1,
+// //         h2,
+// //         h3 {
+// //             margin-top: 0.5rem;
+// //             margin-bottom: 0.5rem;
+// //         }
+
+// //         /* Reduce padding on cards */
+// //         .service-card,
+// //         .case-study-card,
+// //         .insights-card {
+// //             padding: 1.25rem;
+
+// //             .service-cta {
+// //                 font-size: 0.9rem ;
+// //             }
+// //         }
+
+// //         /* Reduce form spacing */
+// //         .form-group {
+// //             margin-bottom: 1rem;
+// //         }
+
+// //         /* Reduce gap in grid layouts */
+// //         .services-grid,
+// //         .case-studies-grid,
+// //         .insights-grid {
+// //             gap: 1rem;
+// //         }
+
+// //         /* Reduce button margins */
+// //         button,
+// //         a.btn,
+// //         [role="button"] {
+// //             margin: 0.5rem 0;
+// //             font-size: 0.8rem;
+// //             padding: 0.5rem 1rem;
+// //         }
+
+// //         /* Reduce primary/secondary button sizes */
+// //         .btn-primary,
+// //         .btn-secondary {
+// //             padding: 0.6rem 1.2rem ;
+// //             font-size: 0.85rem ;
+// //         }
+
+// //         /* Reduce large primary buttons */
+// //         .btn-primary-large {
+// //             padding: 0.7rem 1.5rem ;
+// //             font-size: 0.9rem ;
+// //         }
+
+// //         /* Reduce paragraph margins */
+// //         p {
+// //             margin-bottom: 0.75rem;
+// //         }
+
+// //         /* Reduce section padding */
+// //         section {
+// //             padding: 1.5rem;
+// //         }
+// //     }
+
+// //     /* Reduce padding on Nexora sections */
+// //     .nexora-base-theme {
+
+// //         /* Reduce all paragraph spacing */
+// //         p {
+// //             margin-bottom: 0.75rem;
+// //         }
+
+// //         /* Reduce section padding */
+// //         section {
+// //             padding: 1.5rem;
+// //         }
+// //     }
+
+// //     /* Reduce hero section padding */
+// //     .nexora-hero {
+// //         padding: 2rem 1rem;
+// //     }
+
+// //     /* Reduce demo layout sections */
+// //     .demo-mode .nexora {
+// //         p {
+// //             margin-bottom: 0.75rem;
+// //         }
+
+// //         h1,
+// //         h2,
+// //         h3,
+// //         h4 {
+// //             margin-bottom: 0.5rem;
+// //             margin-top: 0.5rem;
+// //         }
+// //     }
+
+// //     /* Reduce contact section spacing */
+// //     .contact-section {
+
+// //         .contact-info,
+// //         .contact-form-wrapper {
+// //             margin-bottom: 1.5rem;
+// //         }
+
+// //         .contact-info {
+// //             .contact-item {
+// //                 h4 {
+// //                     font-size: 0.95rem ;
+// //                 }
+// //             }
+// //         }
+// //     }
+
+// //     /* Reduce services grid gap */
+// //     .service-details {
+// //         gap: 1rem;
+// //     }
+
+// //     /* Reduce case studies card padding */
+// //     .case-study-details {
+// //         padding: 1.25rem;
+// //     }
+
+// //     /* Reduce trust stats font sizes on mobile */
+// //     .trust-section {
+// //         h2 {
+// //             font-size: 1.6rem ;
+// //         }
+
+// //         .trust-stats {
+// //             gap: 1rem;
+
+// //             .stat {
+// //                 strong {
+// //                     font-size: 1.8rem ;
+// //                 }
+
+// //                 span {
+// //                     font-size: 0.9rem ;
+// //                 }
+// //             }
+// //         }
+
+// //         .testimonial {
+// //             padding: 1rem;
+// //             font-size: 0.9rem ;
+// //         }
+// //     }
+
+// //     /* Reduce footer link font sizes on mobile */
+// //     .nexora-footer {
+// //         .footer-section {
+// //             h4 {
+// //                 font-size: 0.95rem ;
+// //             }
+
+// //             ul li a {
+// //                 font-size: 0.8rem ;
+// //             }
+// //         }
+
+// //         .footer-bottom {
+// //             font-size: 0.8rem ;
+
+// //             .footer-links a {
+// //                 font-size: 0.75rem ;
+// //                 margin: 0 0.25rem ;
+// //             }
+// //         }
+// //     }
+// // }
+
+// // /* Tablet/mid-size screens: apply mobile-friendly font sizing */
+// // @media (min-width: 640px) and (max-width: 1000px) {
+// //     .nexora {
+// //         h1 {
+// //             font-size: clamp(1.4rem, 1rem + 0.5vw, 1.8rem) ;
+// //         }
+
+// //         h2 {
+// //             font-size: clamp(1.2rem, 0.9rem + 0.4vw, 1.6rem) ;
+// //         }
+
+// //         h3 {
+// //             font-size: clamp(1rem, 0.8rem + 0.3vw, 1.4rem) ;
+// //         }
+
+// //         h4 {
+// //             font-size: clamp(0.95rem, 0.75rem + 0.25vw, 1.2rem) ;
+// //         }
+
+// //         h5 {
+// //             font-size: clamp(0.9rem, 0.7rem + 0.2vw, 1.1rem) ;
+// //         }
+
+// //         h6 {
+// //             font-size: clamp(0.85rem, 0.65rem + 0.15vw, 1rem) ;
+// //         }
+
+// //         button {
+// //             font-size: clamp(0.9rem, 0.75rem + 0.2vw, 1.05rem);
+// //             padding: clamp(0.8rem, 0.65rem + 0.25vw, 0.95rem) clamp(1.6rem, 1.3rem + 0.5vw, 1.9rem);
+// //         }
+// //     }
+
+// //     .demo-mode .services-detailed {
+// //         .service-category {
+// //             .service-cards {
+// //                 .service-detail-card {
+// //                     ul li {
+// //                         font-size: 0.85rem ;
+// //                     }
+
+// //                     .service-detail {
+// //                         font-size: 0.85rem ;
+// //                     }
+
+// //                     .service-cta {
+// //                         font-size: 0.85rem ;
+// //                     }
+
+// //                     .outcome {
+// //                         font-size: 0.85rem ;
+// //                     }
+// //                 }
+// //             }
+// //         }
+// //     }
+
+// //     .trust-section {
+// //         h2 {
+// //             font-size: 1.6rem ;
+// //         }
+
+// //         .trust-stats {
+// //             gap: 1rem;
+
+// //             .stat {
+// //                 strong {
+// //                     font-size: 1.8rem ;
+// //                 }
+
+// //                 span {
+// //                     font-size: 0.9rem ;
+// //                 }
+// //             }
+// //         }
+
+// //         .testimonial {
+// //             padding: 1rem;
+// //             font-size: 0.9rem ;
+// //         }
+// //     }
+
+// //     .nexora-footer {
+// //         .footer-section {
+// //             h4 {
+// //                 font-size: 0.95rem ;
+// //             }
+
+// //             ul li a {
+// //                 font-size: 0.8rem ;
+// //             }
+// //         }
+
+// //         .footer-bottom {
+// //             font-size: 0.8rem ;
+
+// //             .footer-links a {
+// //                 font-size: 0.75rem ;
+// //                 margin: 0 0.25rem ;
+// //             }
+// //         }
+// //     }
+// // }
+
+//     // Nexora internal demo navbar styles
+//     .nexora-navbar {
+//         display: flex;
+//         justify-content: center;
+//         gap: 2.5rem;
+//         padding: 1.5rem 0;
+//         background: $nexora-light;
+//         border-bottom: 2px solid $nexora-border;
+//         margin: 0 0 0 0;
+//         // position: sticky;
+//         top: 0;
+//         z-index: 100;
+//         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+//         @media (max-width: 768px) {
+//             gap: 1rem;
+//             flex-wrap: wrap;
+//             padding: 1rem;
+//         }
+
+//         .navbar-links {
+//             display: flex;
+//             gap: 2rem;
+//             list-style: none;
+//             margin: 0;
+//             padding: 0;
+//         }
+
+//         a {
+//             color: $nexora-secondary;
+//             text-decoration: none;
+//             font-weight: 600;
+//             font-size: 1rem;
+//             transition: color 0.2s;
+
+//             &:hover,
+//             &.active {
+//                 color: $nexora-accent;
+//                 text-decoration: underline;
+//             }
+//         }
+//     }
+
+//     // Home Page Styles
+//     .nexora-home {
+//         background: transparent;
+
+//         section {
+//             padding: 4rem 2rem;
+
+//             @media (max-width: 768px) {
+//                 padding: 2rem 1rem;
+//             }
+//         }
+
+//         // Hero Section
+//         .hero-section {
+//             background: linear-gradient(135deg, $nexora-primary 0%, $nexora-secondary 100%);
+//             color: $nexora-light;
+//             text-align: center;
+//             padding: 5rem 2rem !important;
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             gap: 2rem;
+
+//             @media (max-width: 768px) {
+//                 padding: 3rem 1.5rem !important;
+//             }
+
+//             .hero-content {
+//                 max-width: 800px;
+
+//                 h1 {
+//                     font-size: 2.75rem;
+//                     margin: 0 0 1rem 0;
+//                     line-height: 1.2;
+//                     color: $nexora-accent;
+
+//                     @media (max-width: 768px) {
+//                         font-size: 1.75rem;
+//                         color: $nexora-light;
+//                     }
+//                 }
+
+//                 .hero-subtitle {
+//                     font-size: 1.25rem;
+//                     margin-bottom: 2rem;
+//                     opacity: 0.95;
+//                     line-height: 1.6;
+//                     color: $nexora-light;
+
+//                     @media (max-width: 768px) {
+//                         font-size: 1.1rem;
+//                     }
+//                 }
+
+//                 .hero-cta {
+//                     display: flex;
+//                     gap: 1rem;
+//                     justify-content: center;
+//                     flex-wrap: wrap;
+
+//                     @media (max-width: 768px) {
+//                         flex-direction: column;
+//                         align-items: center;
+                        
+//                         .btn-primary,
+//                         .btn-secondary {
+//                             width: 100%;
+//                             max-width: 280px;
+//                         }
+//                     }
+
+//                     .btn-primary.CTAbutton {
+//                         background: $nexora-primary-button; // green
+//                         color: $nexora-light;
+
+//                         &:hover {
+//                             background: darken($nexora-primary-button, 10%); // darker green;
+//                             color: $nexora-light;
+//                             box-shadow: 0 8px 20px rgba(86, 210, 45, 0.4);
+//                         }
+//                     }
+
+//                     .btn-primary,
+//                     .btn-secondary {
+//                         padding: 1rem 2rem;
+//                         border-radius: 8px;
+//                         text-decoration: none;
+//                         font-weight: 600;
+//                         font-size: 1.1rem;
+//                         transition: all 0.3s ease;
+//                         display: inline-block;
+//                     }
+
+//                     .btn-primary {
+//                         background: $nexora-secondary;
+//                         color: $nexora-light;
+
+
+//                         &:hover {
+//                             background: #245a13;
+//                             transform: translateY(-2px);
+//                             box-shadow: 0 4px 12px rgba(44, 107, 23, 0.3);
+//                         }
+//                     }
+
+//                     .btn-secondary {
+//                         background: $nexora-light;
+//                         color: $nexora-secondary;
+
+//                         &:hover {
+//                             background: $nexora-light;
+//                             transform: translateY(-2px);
+//                             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+//                             color: $nexora-text-light;
+//                         }
+//                     }
+//                 }
+//             }
+
+//             .hero-preview {
+//                 max-width: 900px;
+//                 width: 100%;
+//                 border-radius: 12px;
+//                 box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+//             }
+//         }
+
+//         // Services Overview
+//         .services-overview {
+//             background: $nexora-light;
+
+//             h2 {
+//                 text-align: center;
+//                 font-size: 2.5rem;
+//                 color: $nexora-secondary;
+//                 margin: 0 0 3rem 0;
+//             }
+
+//             .services-grid-preview {
+//                 display: grid;
+//                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+//                 gap: 2rem;
+//                 max-width: 1200px;
+//                 margin: 0 auto;
+
+//                 .service-card {
+//                     background: $nexora-light;
+//                     padding: 2rem;
+//                     border-radius: 12px;
+//                     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+//                     transition: all 0.3s ease;
+
+
+//                     &:hover {
+//                         transform: translateY(-8px);
+//                         box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+//                     }
+
+//                     h3 {
+//                         color: $nexora-accent;
+//                         margin: 0 0 1rem 0;
+//                         font-size: 1.5rem;
+//                     }
+
+//                     p {
+//                         color: $nexora-primary;
+//                         line-height: 1.6;
+//                         margin-bottom: 1rem;
+//                     }
+
+//                     .service-link {
+//                         color: $nexora-light;
+//                         background: $nexora-secondary;
+//                         text-decoration: none;
+//                         font-weight: 600;
+//                         display: inline-flex;
+//                         align-items: center;
+//                         gap: 0.5rem;
+//                         padding: 0.75rem 1.5rem;
+//                         border-radius: 8px;
+//                         border: none;
+//                         font-size: 1rem;
+//                         transition: all 0.3s ease;
+
+//                         &:hover {
+//                             background: #2c6b17 !important;
+//                             color: $nexora-light;
+//                             gap: 0.75rem;
+//                             box-shadow: 0 4px 12px rgba(80, 118, 246, 0.2);
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+
+//         // Trust Section
+//         .trust-section {
+//             text-align: center;
+//             background: $nexora-light;
+
+//             h2 {
+//                 font-size: 2.5rem;
+//                 color: $nexora-secondary;
+//                 margin: 0 0 3rem 0;
+//             }
+
+//             .trust-stats {
+//                 display: grid;
+//                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+//                 gap: 2rem;
+//                 max-width: 1000px;
+//                 margin: 0 auto 3rem;
+
+//                 .stat {
+//                     display: flex;
+//                     flex-direction: column;
+//                     gap: 0.5rem;
+
+//                     strong {
+//                         font-size: 3rem;
+//                         color: $nexora-text-light;
+//                         font-weight: 700;
+//                     }
+
+//                     span {
+//                         color: $nexora-primary;
+//                         font-size: 1.1rem;
+//                     }
+//                 }
+//             }
+
+//             .testimonial {
+//                 max-width: 800px;
+//                 margin: 0 auto;
+//                 padding: 2rem;
+//                 background: $nexora-light;
+//                 border-left: 4px solid $nexora-accent;
+//                 border-radius: 8px;
+//                 font-style: italic;
+
+//                 p {
+//                     font-size: 1.25rem;
+//                     color: $nexora-text;
+//                     line-height: 1.8;
+//                     margin: 0 0 1rem 0;
+//                 }
+
+//                 cite {
+//                     color: $nexora-text-light;
+//                     font-style: normal;
+//                     font-weight: 600;
+//                 }
+//             }
+//         }
+
+//         // Value Section
+//         .value-section {
+//             background: $nexora-light;
+
+//             h2 {
+//                 text-align: center;
+//                 font-size: 2.5rem;
+//                 color: $nexora-secondary;
+//                 margin: 0 0 3rem 0;
+//             }
+
+//             .value-grid {
+//                 display: grid;
+//                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//                 gap: 2rem;
+//                 max-width: 1200px;
+//                 margin: 0 auto;
+
+//                 .value-item {
+//                     background: $nexora-light;
+//                     padding: 2rem;
+//                     border-radius: 12px;
+//                     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+//                     h3 {
+//                         color: $nexora-text-light;
+//                         margin: 0 0 1rem 0;
+//                         font-size: 1.5rem;
+//                     }
+
+//                     p {
+//                         color: $nexora-dark;
+//                         line-height: 1.6;
+//                     }
+//                 }
+//             }
+//         }
+
+//         // CTA Section
+//         .cta-section {
+//             background: linear-gradient(135deg, $nexora-primary 0%, $nexora-secondary 100%);
+//             color: $nexora-light;
+//             text-align: center;
+
+//             h2 {
+//                 font-size: 2.5rem;
+//                 margin: 0 0 1rem 0;
+//                 color: $nexora-text-light;
+//             }
+
+//             p {
+//                 font-size: 1.25rem;
+//                 margin-bottom: 2rem;
+//                 opacity: 0.95;
+//             }
+
+//             .btn-primary-large {
+//                 padding: 1.25rem 3rem;
+//                 background: $nexora-primary-button;
+//                 color: $nexora-light;
+//                 text-decoration: none;
+//                 font-weight: 600;
+//                 font-size: 1.25rem;
+//                 border-radius: 8px;
+//                 display: inline-block;
+//                 transition: all 0.3s ease;
+
+//                 &:hover {
+//                     background: darken($nexora-primary-button, 10%);
+//                     transform: translateY(-2px);
+//                     box-shadow: 0 8px 20px rgba(86, 210, 45, 0.4);
+//                 }
+//             }
+//         }
+//     }
+
+//     // Services Page
+//     &.services-page,
+//     .services-page {
+//         background: linear-gradient(135deg, $nexora-primary 0%, $nexora-secondary 100%);
+//         color: $nexora-light;
+//         // padding: 3rem 2rem;
+//         max-width: 1200px;
+//         margin: 0 auto;
+//         font-size: 1.25rem;
+
+//         & .services-header {
+//             text-align: center;
+//             max-width: 800px;
+//             margin: 0 auto 5rem;
+//             padding-top: 3rem;
+
+//             h3 {
+//                 font-size: 2.5rem;
+//                 color: $nexora-accent;
+//                 margin: 0 0 1rem 0;
+//             }
+
+//         }
+
+//         & .services-detailed {
+//             max-width: 1200px;
+//             margin: 0 auto;
+
+//             .service-category {
+//                 margin-bottom: 4rem;
+//                 padding: 1rem;
+
+//                 .category-title {
+//                     font-size: 2rem;
+//                     color: $nexora-accent;
+//                     margin: 2rem 0 1rem 0;
+//                     justify-content: center;
+//                     display: flex;
+//                 }
+
+//                 .category-description {
+//                     font-size: 1.1rem;
+//                     color: $nexora-light;
+//                     margin-bottom: 2rem;
+//                     display: flex;
+//                     justify-content: center;
+//                 }
+
+//                 .service-cards {
+//                     display: grid;
+//                     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+//                     gap: 2rem;
+
+//                     .service-detail-card {
+//                         background: $nexora-light;
+//                         padding: 2rem;
+//                         border-radius: 12px;
+//                         border: 2px solid $nexora-border;
+//                         transition: all 0.3s ease;
+
+//                         &:hover {
+//                             border-color: $nexora-primary;
+//                             box-shadow: 0 8px 20px rgba(26, 115, 232, 0.15);
+//                         }
+
+//                         h5 {
+//                             font-size: 1.25rem;
+//                             color: $nexora-dark;
+//                             margin: 0 0 0.5rem 0;
+//                         }
+
+//                         .service-detail {
+//                             margin-bottom: 1rem;
+
+//                             strong {
+//                                 color: $nexora-primary;
+//                             }
+
+//                             p {
+//                                 color: $nexora-text;
+//                                 margin: 0.5rem 0 0 0;
+//                             }
+//                         }
+
+//                         .outcome {
+//                             strong {
+//                                 color: $nexora-primary;
+//                             }
+
+//                             p {
+//                                 color: $nexora-dark;
+//                             }
+//                         }
+
+//                         .service-cta {
+//                             display: inline-block;
+//                             margin-top: 1rem;
+//                             color: $nexora-accent;
+//                             font-weight: 600;
+//                             text-decoration: none;
+
+//                             &:hover {
+//                                 text-decoration: underline;
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+
+//         & .services-cta {
+//             background: linear-gradient(135deg, $nexora-primary 0%, $nexora-secondary 100%);
+//             color: $nexora-light;
+//             padding: 2rem;
+//             border-radius: 12px;
+//             text-align: center;
+//             margin: 4rem auto 0 auto;
+//             //max-width: 800px;
+
+//             h4 {
+//                 font-size: 1.5rem;
+//                 margin-bottom: 1rem;
+//                 color: $nexora-accent;
+//             }
+
+//             p {
+//                 font-size: 1.1rem;
+//                 margin-bottom: 1.5rem;
+//                 color: $nexora-secondary;
+//             }
+
+//             .btn-primary {
+//                 background: $nexora-secondary; // green
+//                 color: $nexora-light;
+//                 padding: 1rem 2.5rem;
+//                 border-radius: 8px;
+//                 font-size: 1.1rem;
+//                 font-weight: 600;
+//                 text-decoration: none;
+//                 transition: background 0.2s, transform 0.2s;
+
+//                 &:hover {
+//                     background: $nexora-primary-button;
+//                     color: $nexora-light;
+//                     transform: translateY(-2px);
+//                     box-shadow: 0 8px 20px rgba(31, 43, 55, 1);
+//                 }
+//             }
+//         }
+
+//         // (Removed duplicate .services-detailed and .services-cta blocks outside main .services-page)
+
+//         // Case Studies Page
+//         &.case-studies-page,
+//         .case-studies-page {
+//             background: $nexora-light;
+//             // padding: 3rem 2rem;
+
+//             .case-studies-header {
+//                 text-align: center;
+//                 max-width: 800px;
+//                 margin: 0 auto 4rem;
+
+//                 h3 {
+//                     font-size: 2.5rem;
+//                     color: $nexora-dark;
+//                     margin: 0 0 1rem 0;
+//                 }
+
+//                 .case-studies-intro {
+//                     font-size: 1.25rem;
+//                     color: $nexora-text-light;
+//                     line-height: 1.6;
+//                 }
+//             }
+
+//             .case-studies-grid {
+//                 max-width: 1200px;
+//                 margin: 0 auto;
+//                 display: flex;
+//                 flex-direction: column;
+//                 gap: 3rem;
+
+//                 .case-study-card {
+//                     background: $nexora-light;
+//                     padding: 2.5rem;
+//                     border-radius: 12px;
+//                     border: 2px solid $nexora-border;
+//                     transition: all 0.3s ease;
+
+//                     &:hover {
+//                         border-color: $nexora-primary;
+//                         box-shadow: 0 8px 20px rgba(26, 115, 232, 0.15);
+//                     }
+
+//                     .case-study-header {
+//                         display: flex;
+//                         justify-content: space-between;
+//                         align-items: center;
+//                         margin-bottom: 2rem;
+//                         flex-wrap: wrap;
+//                         gap: 1rem;
+
+//                         h4 {
+//                             font-size: 2rem;
+//                             color: $nexora-dark;
+//                             margin: 0;
+//                         }
+
+//                         .industry-tag {
+//                             background: $nexora-primary;
+//                             color: $nexora-light;
+//                             padding: 0.5rem 1rem;
+//                             border-radius: 20px;
+//                             font-size: 0.9rem;
+//                             font-weight: 600;
+//                         }
+//                     }
+
+//                     .case-study-section {
+//                         margin-bottom: 2rem;
+
+//                         h5 {
+//                             color: $nexora-primary;
+//                             font-size: 1.1rem;
+//                             margin: 0 0 0.75rem 0;
+//                             text-transform: uppercase;
+//                             letter-spacing: 0.5px;
+//                         }
+
+//                         p {
+//                             color: $nexora-text;
+//                             line-height: 1.7;
+//                             margin: 0;
+//                         }
+
+//                         &.results {
+//                             ul {
+//                                 list-style: none;
+//                                 padding: 0;
+//                                 margin: 0;
+//                                 display: grid;
+//                                 gap: 0.75rem;
+
+//                                 li {
+//                                     padding-left: 1.5rem;
+//                                     position: relative;
+//                                     color: $nexora-text;
+//                                     line-height: 1.6;
+
+//                                     &::before {
+//                                         content: "✓";
+//                                         position: absolute;
+//                                         left: 0;
+//                                         color: $nexora-accent;
+//                                         font-weight: bold;
+//                                         font-size: 1.2rem;
+//                                     }
+//                                 }
+//                             }
+//                         }
+//                     }
+
+//                     .case-study-testimonial {
+//                         background: $nexora-light;
+//                         padding: 1.5rem;
+//                         border-left: 4px solid $nexora-accent;
+//                         border-radius: 8px;
+//                         margin: 0;
+
+//                         p {
+//                             font-style: italic;
+//                             color: $nexora-text;
+//                             line-height: 1.7;
+//                             margin: 0 0 1rem 0;
+//                         }
+
+//                         cite {
+//                             color: $nexora-text-light;
+//                             font-style: normal;
+//                             font-weight: 600;
+//                         }
+//                     }
+//                 }
+//             }
+
+//             .case-studies-cta {
+//                 text-align: center;
+//                 padding: 3rem 2rem;
+//                 background: $nexora-light;
+//                 border-radius: 12px;
+//                 max-width: 800px;
+//                 margin: 3rem auto 0;
+
+//                 h4 {
+//                     font-size: 2rem;
+//                     color: $nexora-dark;
+//                     margin: 0 0 1rem 0;
+//                 }
+
+//                 p {
+//                     font-size: 1.1rem;
+//                     color: $nexora-text-light;
+//                     margin-bottom: 2rem;
+//                 }
+
+//                 .btn-primary {
+//                     padding: 1rem 2rem;
+//                     background: $nexora-primary;
+//                     color: $nexora-light;
+//                     text-decoration: none;
+//                     font-weight: 600;
+//                     border-radius: 8px;
+//                     display: inline-block;
+//                     transition: all 0.3s ease;
+
+//                     &:hover {
+//                         background: $nexora-secondary;
+//                         transform: translateY(-2px);
+//                         box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+//                     }
+//                 }
+//             }
+//         }
+
+//         // About Page
+//         &.about-section,
+//         .about-section {
+//             background: $nexora-light;
+//             padding: 3rem 2rem;
+//             max-width: 1200px;
+//             margin: 0 auto;
+
+//             h3 {
+//                 font-size: 2.5rem;
+//                 color: $nexora-dark;
+//                 text-align: center;
+//                 margin: 0 0 3rem 0;
+//             }
+
+//             h4 {
+//                 font-size: 2rem;
+//                 color: $nexora-primary;
+//                 margin: 3rem 0 2rem 0;
+//             }
+
+//             .about-story {
+//                 p {
+//                     font-size: 1.1rem;
+//                     line-height: 1.8;
+//                     color: $nexora-text;
+//                     margin-bottom: 1.5rem;
+//                 }
+//             }
+
+//             .team-grid {
+//                 display: grid;
+//                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//                 gap: 2rem;
+
+//                 .team-member {
+//                     background: $nexora-light;
+//                     padding: 2rem;
+//                     border-radius: 12px;
+//                     text-align: center;
+//                     border: 2px solid $nexora-border;
+//                     transition: all 0.3s ease;
+
+//                     &:hover {
+//                         border-color: $nexora-primary;
+//                         transform: translateY(-5px);
+//                         box-shadow: 0 8px 20px rgba(26, 115, 232, 0.15);
+//                     }
+
+//                     .member-photo-placeholder {
+//                         width: 120px;
+//                         height: 120px;
+//                         border-radius: 50%;
+//                         background: linear-gradient(135deg, $nexora-primary, $nexora-secondary);
+//                         color: $nexora-light;
+//                         font-size: 2.5rem;
+//                         font-weight: 700;
+//                         display: flex;
+//                         align-items: center;
+//                         justify-content: center;
+//                         margin: 0 auto 1.5rem;
+//                     }
+
+//                     h5 {
+//                         font-size: 1.5rem;
+//                         color: $nexora-dark;
+//                         margin: 0 0 0.5rem 0;
+//                     }
+
+//                     .role {
+//                         color: $nexora-primary;
+//                         font-weight: 600;
+//                         margin-bottom: 1rem;
+//                     }
+
+//                     .bio {
+//                         color: $nexora-text-light;
+//                         line-height: 1.6;
+//                         text-align: left;
+//                     }
+//                 }
+//             }
+
+//             .values-grid {
+//                 display: grid;
+//                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+//                 gap: 2rem;
+
+//                 .value-card {
+//                     background: $nexora-light;
+//                     padding: 2rem;
+//                     border-radius: 12px;
+//                     border-left: 4px solid $nexora-accent;
+
+//                     h5 {
+//                         font-size: 1.5rem;
+//                         color: $nexora-dark;
+//                         margin: 0 0 1rem 0;
+//                     }
+
+//                     p {
+//                         color: $nexora-text-light;
+//                         line-height: 1.6;
+//                         margin: 0;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+
+//     #about-heading {
+//         text-align: center;
+//         margin-bottom: 4rem;
+//         font-size: 2.5rem;
+//         color: $nexora-text-light;
+//         margin: 0 0 1rem 0;
+//         padding-top: 3rem;
+//     }
+
+//     // Blog Page
+//     .about-page {
+//         background: $nexora-primary;
+//         border-top: 1px solid rgba(214, 239, 255, 0.28);
+
+//         .about-story,
+//         .about-team,
+//         .about-values {
+//             max-width: 1200px;
+//             margin: 0 auto;
+//             padding: 3rem 2rem;
+
+//             h4 {
+//                 color: $nexora-accent;
+//             }
+//         }
+
+//         .about-story {
+
+//             h4 {
+//                 font-size: 2rem;
+//                 color: $nexora-primary-button;
+//                 margin: 3rem 0 2rem 0;
+//                 text-align: center;
+//             }
+
+//             .about-story {
+//                 p {
+//                     font-size: 1.1rem;
+//                     line-height: 1.8;
+//                     color: $nexora-light;
+//                     margin-bottom: 1.5rem;
+//                 }
+//             }
+//         }
+
+//         .about-team {
+//             background-color: white;
+
+//             h4 {
+//                 font-size: 2rem;
+//                 color: $nexora-accent;
+//                 margin: 3rem 0 2rem 0;
+//                 text-align: center;
+//             }
+
+//             .team-grid {
+//                 display: flex;
+//                 flex-wrap: wrap;
+//                 display: grid;
+//                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//                 gap: 2rem;
+
+//                 .team-member {
+//                     background: $nexora-light;
+//                     padding: 2rem;
+//                     border-radius: 12px;
+//                     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+//                     text-align: center;
+//                     // max-width: 800px;
+//                     margin: 0 auto 4rem;
+//                     background-color: white;
+//                     // max-width:fit-content;
+//                     ///     flex-direction: column;
+
+//                     h5 {
+//                         font-size: 1.5rem;
+//                         color: #245a13;
+//                         margin: 0 0 1rem 0;
+//                     }
+
+//                     .role {
+//                         color: $nexora-primary;
+//                         font-weight: 600;
+//                         font-size: 1.25rem;
+//                         margin-bottom: 1rem;
+//                     }
+
+//                     .bio {
+//                         font-size: 1rem;
+//                         color: $nexora-text-light;
+//                         line-height: 1.6;
+//                     }
+//                 }
+//             }
+
+
+//             .about-values {
+//                 background: $nexora-light;
+
+
+//                 h4 {
+//                     text-align: center;
+//                     font-size: 2.5rem;
+//                     color: $nexora-secondary;
+//                     margin: 0 0 3rem 0;
+//                 }
+
+//                 .values-grid {
+//                     display: grid;
+//                     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//                     gap: 2rem;
+//                     max-width: 1200px;
+//                     margin: 0 auto;
+
+//                     .value-item {
+//                         background: $nexora-light;
+//                         padding: 2rem;
+//                         border-radius: 12px;
+//                         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+//                         h3 {
+//                             color: $nexora-text-light;
+//                             margin: 0 0 1rem 0;
+//                             font-size: 1.5rem;
+//                         }
+
+//                         p {
+//                             color: $nexora-dark;
+//                             line-height: 1.6;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+
+//         .about-values {
+//             h4 {
+//                 font-size: 2rem;
+//                 color: $nexora-accent;
+//                 margin: 1rem 0 2rem 0;
+//                 text-align: center;
+//             }
+
+//             .values-grid {
+//                 display: flex;
+//                 flex-wrap: wrap;
+//                 display: grid;
+//                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+//                 gap: 2rem;
+
+//                 .value-card {
+//                     background: $nexora-light;
+//                     padding: 2rem;
+//                     border-radius: 12px;
+//                     border-left: 4px solid $nexora-accent;
+
+//                     h5 {
+//                         font-size: 1.5rem;
+//                         color: $nexora-dark;
+//                         margin: 0 0 1rem 0;
+//                     }
+
+//                     p {
+//                         color: $nexora-text-light;
+//                         line-height: 1.6;
+//                         margin: 0;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+
+//     .case-studies-page {
+//         padding: 3rem 2rem;
+//         background: linear-gradient(to bottom, #1F2B37 0%, #02306A 50%, #1F2B37 75%, #1F2B37 100%);
+
+//         .case-studies-header{
+//             text-align: center;
+//             max-width: 800px;
+//             margin: 0 auto 4rem;
+
+//             h3 {
+//                 font-size: 2.5rem;
+//                 color: $nexora-accent;
+//                 margin: 0 0 1rem 0;
+//             }
+
+//             & .case-studies-intro {
+//                  color: $nexora-light;
+//                  padding: 3rem 2rem;
+//              }
+//         }
+       
+        
+//         .case-studies-grid
+//         {
+//             max-width: 1200px;
+//             margin: 0 auto;
+//             display:grid;
+//             gap:3em;
+
+//             .case-study-card {
+//                 background: $nexora-light;
+//                 padding: 2.5rem;
+//                 border-radius: 12px;
+//                 gap:2px;
+//                 border: 2px solid $nexora-border;
+//                 transition: all 0.3s ease;
+            
+//                 h4 {
+//                     font-size: 2.5rem;
+//                     color: $nexora-dark;
+//                     margin: 0 0 1rem 0;
+//                 }
+
+//                 .industry-tag {
+//                     font-size: 1.25rem;
+//                     color: $nexora-text-light;
+//                     line-height: 1.6;
+//                 }
+//                 .case-study-section{
+//                     h5 {
+//                         color: $nexora-primary;
+//                         font-size: 1.1rem;
+//                         margin: 0 0 0.75rem 0;
+//                         text-transform: uppercase;
+//                         letter-spacing: 0.5px;
+//                     }
+
+//                     p {
+//                         color: $nexora-text;
+//                         line-height: 1.7;
+//                         margin: 0;
+//                     }
+
+//                     &.results {
+//                         ul {
+//                             list-style: none;
+//                             padding: 0;
+//                             margin: 0;
+//                             display: grid;
+//                             gap: 0.75rem;
+
+//                             li {
+//                                 padding-left: 1.5rem;
+//                                 position: relative;
+//                                 color: $nexora-text;
+//                                 line-height: 1.6;
+
+//                                 &::before {
+//                                     content: "✓";
+//                                     position: absolute;
+//                                     left: 0;
+//                                     color: $nexora-accent;
+//                                     font-weight: bold;
+//                                     font-size: 1.2rem;
+//                                 }
+//                             }
+//                         }
+//                     }
+                   
+//                 }
+            
+//                 .case-study-testimonial {
+//                     background: $nexora-light;
+//                     padding: 1.5rem;
+//                     border-left: 4px solid $nexora-accent;
+//                     border-radius: 8px;
+//                     margin: 0;
+
+//                     p {
+//                         font-style: italic;
+//                         color: #2c6b17;
+//                         line-height: 1.7;
+//                         margin: 0 0 1rem 0;
+//                     }
+
+//                     cite {
+//                         color: #02306A;
+//                         font-style: normal;
+//                         font-weight: 600;
+//                     }
+//                 }
+//             }
+//         }
+
+//         .case-studies-cta {
+//             text-align: center;
+//             padding: 3rem 2rem;
+//             background: transparent;
+//             border-radius: 12px;
+//             max-width: 800px;
+//             margin: 3rem auto 0;
+
+//             h4 {
+//                 font-size: 2rem;
+//                 color: $nexora-accent;
+//                 margin: 0 0 1rem 0;
+//             }
+
+//             p {
+//                 font-size: 1.1rem;
+//                 color: $nexora-light;
+//                 margin-bottom: 2rem;
+//             }
+
+//             .btn-primary {
+//                 padding: 1rem 2rem;
+//                 background: $nexora-primary-button;
+//                 color: $nexora-light;
+//                 text-decoration: none;
+//                 font-weight: 600;
+//                 border-radius: 8px;
+//                 display: inline-block;
+//                 transition: all 0.3s ease;
+
+//                 &:hover {
+//                     background: $nexora-secondary;
+//                     transform: translateY(-2px);
+//                     box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+//                 }
+//             }
+//         }
+//     }
+    
+
+//     .insights-page {
+//         padding: 3rem 2rem;
+
+//         .insights-header {
+//             max-width: 1200px;
+//             margin: 0 auto;
+//             text-align: center;
+//             padding-bottom: 4rem;
+//                 h3 {
+//                     font-size: 2.5rem;
+//                     color: $nexora-accent;
+//                     margin: 0 0 1rem 0;
+//                 }
+
+//                 .insights-subtitle {
+//                     font-size: 1rem;
+//                     color: $nexora-light;
+//                     text-align: center;
+//                     line-height: 1.6;
+//                 }
+            
+//          }
+//             .insights-grid {
+//                 display: grid;
+//                 grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+//                 gap: 2rem;
+
+//                 @media (max-width: 768px) {
+//                     grid-template-columns: 1fr;
+//                 }
+
+//                 .insights-card {
+//                     background: $nexora-light;
+//                     padding: 2rem;
+//                     border-radius: 12px;
+//                     border: 2px solid $nexora-border;
+//                     transition: all 0.3s ease;
+//                     display: flex;
+//                     flex-direction: column;
+
+//                     &:hover {
+//                         border-color: $nexora-primary;
+//                         transform: translateY(-5px);
+//                         box-shadow: 0 8px 20px rgba(26, 115, 232, 0.15);
+//                     }
+
+//                     .insights-category {
+//                         display: inline-block;
+//                         background: $nexora-primary;
+//                         color: $nexora-light;
+//                         padding: 0.4rem 0.8rem;
+//                         border-radius: 4px;
+//                         font-size: 0.85rem;
+//                         font-weight: 600;
+//                         margin-bottom: 1rem;
+//                         align-self: flex-start;
+//                     }
+
+//                     h4 {
+//                         font-size: 1.5rem;
+//                         color: $nexora-dark;
+//                         margin: 0 0 1rem 0;
+//                         line-height: 1.3;
+//                     }
+
+//                     .insights-meta {
+//                         display: flex;
+//                         gap: 1rem;
+//                         color: $nexora-text-light;
+//                         font-size: 0.9rem;
+//                         margin-bottom: 1rem;
+
+//                         time {
+//                             font-weight: 500;
+//                         }
+
+//                         .read-time {
+//                             &::before {
+//                                 content: "•";
+//                                 margin-right: 0.5rem;
+//                             }
+//                         }
+//                     }
+
+//                     .insights-excerpt {
+//                         color: $nexora-text;
+//                         line-height: 1.7;
+//                         margin-bottom: 1.5rem;
+//                         flex-grow: 1;
+//                     }
+
+//                     .insights-link {
+//                         color: $nexora-accent;
+//                         text-decoration: none;
+//                         font-weight: 600;
+//                         display: inline-flex;
+//                         align-items: center;
+//                         gap: 0.5rem;
+//                         transition: gap 0.3s ease;
+//                         align-self: flex-start;
+
+//                         &:hover {
+//                             gap: 0.75rem;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+    
+
+//     // Contact Page
+//     .contact-section {
+//         padding: 3rem 2rem 5rem;
+//         background: linear-gradient(135deg, $nexora-primary 0%, $nexora-secondary 100%);
+        
+
+//         .contact-container {
+//             max-width: 1200px;
+//             margin: 0 auto;
+//             display: grid;
+//             grid-template-columns: 1fr 1.5fr;
+//             gap: 4rem;
+
+//             @media (max-width: 968px) {
+//                 grid-template-columns: 1fr;
+//                 gap: 3rem;
+//             }
+
+//             .contact-info {
+//                 h3 {
+//                     font-size: 2.5rem;
+//                     color: $nexora-accent;
+//                     margin: 0 0 1rem 0;
+//                 }
+
+//                 .contact-intro {
+//                     font-size: 1.1rem;
+//                     color: $nexora-light;
+//                     line-height: 1.7;
+//                     margin-bottom: 2rem;
+//                 }
+
+//                 &.contact-details,
+//                 .contact-details {
+//                     display: flex;
+//                     flex-direction: column;
+//                     gap: 2rem;
+//                     color:$nexora-light;
+
+//                     .contact-item {
+//                         h4 {
+//                             font-size: 1.1rem;
+//                             color: $nexora-accent;
+//                             margin: 0 0 0.5rem 0;
+//                             text-transform: uppercase;
+//                             letter-spacing: 0.5px;
+//                         }
+
+//                         p {
+//                             color: $nexora-light;
+//                             line-height: 1.6;
+//                             margin: 0;
+//                         }
+
+//                         a {
+//                             color: $nexora-light;
+//                             text-decoration: none;
+//                             transition: color 0.3s ease;
+
+//                             &:hover {
+//                                 color: $nexora-primary-button;
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+
+//             .contact-form-wrapper {
+//                 background: $nexora-light;
+//                 padding: 2.5rem;
+//                 border-radius: 12px;
+//                 border: 2px solid $nexora-border;
+            
+
+//                 .contact-form {
+//                     h4 {
+//                         font-size: 1.75rem;
+//                         color: $nexora-dark;
+//                         margin: 0 0 2rem 0;
+//                     }
+
+//                     &.form-group,
+//                     .form-group {
+//                         margin-bottom: 1.5rem;
+
+//                         label {
+//                             display: block;
+//                             color: $nexora-dark;
+//                             font-weight: 600;
+//                             margin-bottom: 0.5rem;
+//                         }
+
+//                         input,
+//                         select,
+//                         textarea {
+//                             width: 100%;
+//                             padding: 0.75rem;
+//                             border: 2px solid $nexora-border;
+//                             border-radius: 8px;
+//                             font-size: 1rem;
+//                             font-family: inherit;
+//                             transition: border-color 0.3s ease;
+//                             background: $nexora-light;
+
+//                             &:focus {
+//                                 outline: none;
+//                                 border-color: $nexora-primary;
+//                             }
+//                         }
+
+//                         textarea {
+//                             resize: vertical;
+//                             min-height: 120px;
+//                         }
+//                     }
+
+//                     .btn-submit {
+//                         width: 100%;
+//                         padding: 1rem 2rem;
+//                         background: $nexora-secondary;
+//                         color: $nexora-light;
+//                         border: none;
+//                         border-radius: 8px;
+//                         font-size: 1.1rem;
+//                         font-weight: 600;
+//                         cursor: pointer;
+//                         transition: all 0.3s ease;
+
+//                         &:hover {
+//                             background: $nexora-primary-button;
+//                             color: $nexora-light;
+//                             transform: translateY(-2px);
+//                             box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+//                         }
+//                     }
+
+//                     .privacy-note {
+//                         text-align: center;
+//                         font-size: 0.9rem;
+//                         color: $nexora-text-light;
+//                         margin-top: 1rem;
+
+//                         a {
+//                             color: $nexora-accent;
+//                             text-decoration: none;
+
+//                             &:hover {
+//                                 text-decoration: underline;
+//                                 color: $nexora-primary-button;
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+
+//         // ...existing code...
+//     }
+//     .nexora-footer-section{
+//         background: linear-gradient(to right, #112E50, #02306A),
+//         linear-gradient(to bottom, transparent 0%, transparent, #1e2b38 90%, #1e2b38 100%);
+//         background-blend-mode: multiply;
+
+//         padding: 3rem 2rem 2rem;
+      
+//         .footer-content {
+//             max-width: 1200px;
+//             margin: 0 auto;
+//             display: flex;
+//             flex-wrap: wrap;
+//             justify-content: space-between;
+//             gap: 2rem;
+
+//             .footer-column {
+//                 flex: 1 1 200px;
+
+//                 h4 {
+//                     font-size: 1.25rem;
+//                     color: $nexora-accent;
+//                     margin-bottom: 1rem;
+//                 }
+
+//                 ul {
+//                     list-style: none;
+//                     padding: 0;
+//                     margin: 0;
+
+//                     li {
+//                         margin-bottom: 0.75rem;
+
+//                         a {
+//                             color: $nexora-light;
+//                             text-decoration: none;
+//                             transition: color 0.3s ease;
+
+//                             &:hover {
+//                                 color: $nexora-primary-button;
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     .footer-bottom {
+//         max-width: 1200px;
+//         margin: 0 auto;
+//         padding-top: 2rem;
+//         border-top: 1px solid rgba(255, 255, 255, 0.2);
+//         text-align: center;
+
+//         p {
+//             color: rgba(255, 255, 255, 0.7);
+//             margin: 0.5rem 0;
+//             font-size: 0.9rem;
+//         }
+
+//         .demo-note {
+//             color: rgba(255, 255, 255, 0.5);
+//             font-size: 0.85rem;
+//             font-style: italic;
+//         }
+//     }
+
+//     /* Accessibility: visible focus outlines for keyboard users */
+//     .nexora a:focus-visible,
+//     .nexora button:focus-visible,
+//     .nexora .btn-primary:focus-visible,
+//     .nexora [role="button"]:focus-visible {
+//         outline: 3px solid rgba(80, 118, 246, 0.28);
+//         outline-offset: 3px;
+//     }
+
+//     /* Responsive tweak: reduce avatar size on small screens */
+//     @media (max-width: 480px) {
+//         .nexora .member-photo-placeholder {
+//             width: 80px;
+//             height: 80px;
+//             font-size: 1.5rem;
+//             margin-bottom: 1rem;
+//         }
+//     }
+
+// }
